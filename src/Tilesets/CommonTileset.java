@@ -137,7 +137,6 @@ public class CommonTileset extends Tileset {
         MapTileBuilder yellowFlowerTile = new MapTileBuilder(yellowFlowerFrames);
 
         mapTiles.add(yellowFlowerTile);
-
         // purple flower
         Frame[] purpleFlowerFrames = new Frame[] {
                 new FrameBuilder(getSubImage(0, 2), 65)
