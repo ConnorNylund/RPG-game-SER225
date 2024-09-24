@@ -287,6 +287,7 @@ public class CommonTileset extends Tileset {
         mapTiles.add(doorTile);
 
         // top water
+        
         Frame[] topWaterFrames = new Frame[] {
             new FrameBuilder(getSubImage(5, 0), 65)
                     .withScale(tileScale)
