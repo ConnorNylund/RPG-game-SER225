@@ -21,7 +21,7 @@ public class WallTileset extends Tileset {
         ArrayList<MapTileBuilder> mapTiles = new ArrayList<>();
 
         // top of snow wall 
-        Frame[] snowWallTopFrames = new Frame[] {
+        Frame[] snowWallTopFrames = new Frame[] { 
                 new FrameBuilder(getSubImage(0, 0), 20)
                     .withScale(tileScale)
                     .build(),
