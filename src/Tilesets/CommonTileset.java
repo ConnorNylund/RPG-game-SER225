@@ -485,7 +485,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder LavaFloorOneTile = new MapTileBuilder(LavaFloorOneFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(LavaFloorOneTile);
 
@@ -495,7 +495,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder LavaFloorTwoTile = new MapTileBuilder(LavaFloorTwoFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(LavaFloorTwoTile);
 
@@ -505,7 +505,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder LavaFloorThreeTile = new MapTileBuilder(LavaFloorThreeFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(LavaFloorThreeTile);
 
@@ -515,7 +515,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder LavaFloorFourTile = new MapTileBuilder(LavaFloorFourFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(LavaFloorFourTile);
 
@@ -525,7 +525,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder GrassFloorOneTile = new MapTileBuilder(GrassFloorOneFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(GrassFloorOneTile);
 
@@ -535,7 +535,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder GrassFloorTwoTile = new MapTileBuilder(GrassFloorTwoFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(GrassFloorTwoTile);
 
@@ -545,7 +545,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder GrassFloorThreeTile = new MapTileBuilder(GrassFloorThreeFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(GrassFloorThreeTile);
 
@@ -555,7 +555,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder GrassFloorFourTile = new MapTileBuilder(GrassFloorFourFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(GrassFloorFourTile);
         
@@ -565,7 +565,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder SnowFloorOneTile = new MapTileBuilder(SnowFloorOneFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(SnowFloorOneTile);
 
@@ -575,7 +575,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder SnowFloorTwoTile = new MapTileBuilder(SnowFloorTwoFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(SnowFloorTwoTile);
 
@@ -585,7 +585,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder SnowFloorThreeTile = new MapTileBuilder(SnowFloorThreeFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(SnowFloorThreeTile);
 
@@ -595,7 +595,7 @@ public class CommonTileset extends Tileset {
                 .build();
 
         MapTileBuilder SnowFloorFourTile = new MapTileBuilder(SnowFloorFourFrame)
-                .withTileType(TileType.NOT_PASSABLE);
+        .withTileType(TileType.PASSABLE);
 
         mapTiles.add(SnowFloorFourTile);
 
