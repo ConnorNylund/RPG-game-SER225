@@ -318,6 +318,167 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(topWaterTile);
 
+        // top of Lava wall 
+        Frame[] LavaWallTopFrames = new Frame[] { 
+                new FrameBuilder(getSubImage(0, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(0, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(0, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+        
+        MapTileBuilder LavaWallTopTile = new MapTileBuilder(LavaWallTopFrames)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(LavaWallTopTile);
+
+        // middle of Lava wall 
+        Frame[] LavaWallMiddleFrames = new Frame[] {
+                new FrameBuilder(getSubImage(1, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(1, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(1, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder LavaWallMiddleTile = new MapTileBuilder(LavaWallMiddleFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+        mapTiles.add(LavaWallMiddleTile);
+
+        // bottom of Lava wall 
+        Frame[] LavaWallBottomFrames = new Frame[] {
+                new FrameBuilder(getSubImage(2, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(2, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(2, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder LavaWallBottomTile = new MapTileBuilder(LavaWallBottomFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(LavaWallBottomTile);
+
+        // top of snow wall
+        Frame[] SnowWallTopFrames = new Frame[] {
+                new FrameBuilder(getSubImage(3, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(3, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(3, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder SnowWallTopTile = new MapTileBuilder(SnowWallTopFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(SnowWallTopTile);
+
+        // middle of snow wall
+        Frame[] SnowWallMiddleFrames = new Frame[] {
+                new FrameBuilder(getSubImage(4, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(4, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(4, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder SnowWallMiddleTile = new MapTileBuilder(SnowWallMiddleFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(SnowWallMiddleTile);
+
+        // bottom of snow wall
+        Frame[] SnowWallBottomFrames = new Frame[] {
+                new FrameBuilder(getSubImage(5, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(5, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(5, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder SnowWallBottomTile = new MapTileBuilder(SnowWallBottomFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(SnowWallBottomTile);
+
+        // top of brick wall
+        Frame[] BrickWallTopFrames = new Frame[] {
+                new FrameBuilder(getSubImage(6, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(6, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(6, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder BrickWallTopTile = new MapTileBuilder(BrickWallTopFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(BrickWallTopTile);
+
+        // middle of brick wall
+        Frame[] BrickWallMiddleFrames = new Frame[] {
+                new FrameBuilder(getSubImage(7, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(7, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(7, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder BrickWallMiddleTile = new MapTileBuilder(BrickWallMiddleFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(BrickWallMiddleTile);
+
+        // bottom of brick wall
+        Frame[] brickWallBottomFrames = new Frame[] {
+                new FrameBuilder(getSubImage(8, 5), 20)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(8, 6), 20)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(8, 7), 20)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder brickWallBottomTile = new MapTileBuilder(brickWallBottomFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(brickWallBottomTile);
+
 
         return mapTiles;
     }

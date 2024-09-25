@@ -8,7 +8,6 @@ import NPCs.Walrus;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
-import Tilesets.WallTileset;
 
 import java.util.ArrayList;
 
