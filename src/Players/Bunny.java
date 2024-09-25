@@ -13,7 +13,7 @@ import Level.Player;
 public class Bunny extends Player{
 
     public Bunny(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("bloody bunny.png"), 24, 24), x, y, "STAND_RIGHT");
+        super(new SpriteSheet(ImageLoader.load("bloody bunny.png"), 16, 16), x, y, "STAND_RIGHT");
         walkSpeed = 2.3f;
     }
 
