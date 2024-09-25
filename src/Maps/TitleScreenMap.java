@@ -17,7 +17,7 @@ public class TitleScreenMap extends Map {
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
         Point bunnyLocation = getMapTile(8, 5).getLocation().subtractX(6).subtractY(7);
-        bunny = new Sprite(ImageLoader.loadSubImage("bloody bunny.png", Colors.MAGENTA, 0, 0, 16, 16));
+        bunny = new Sprite(ImageLoader.loadSubImage("bloodybunny.png", Colors.MAGENTA, 0, 0, 16, 16));
         bunny.setScale(3);
         bunny.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         bunny.setLocation(bunnyLocation.x, bunnyLocation.y);
