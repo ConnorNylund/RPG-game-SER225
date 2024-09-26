@@ -16,7 +16,7 @@ public class TestMap extends Map {
 
     public TestMap() {
         super("test_map.txt", new CommonTileset());
-        this.playerStartPosition = getMapTile(25, 19).getLocation();
+        this.playerStartPosition = getMapTile(38, 24).getLocation();
     }
 
     @Override
@@ -62,13 +62,15 @@ public class TestMap extends Map {
 
     @Override
     public void loadScripts() {
-        getMapTile(21, 19).setInteractScript(new SimpleTextScript("Cat's house"));
+        //getMapTile(21, 19).setInteractScript(new SimpleTextScript("Cat's house"));
 
-        getMapTile(7, 26).setInteractScript(new SimpleTextScript("Walrus's house"));
+        //getMapTile(7, 26).setInteractScript(new SimpleTextScript("Walrus's house"));
 
-        getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
+        //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
+
+        getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
     }
