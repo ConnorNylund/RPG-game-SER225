@@ -2,13 +2,12 @@ package Maps;
 
 import EnhancedMapTiles.PushableRock;
 import Level.*;
-import NPCs.Bug;
-import NPCs.Dinosaur;
-import NPCs.Walrus;
+// import NPCs.Bug;
+// import NPCs.Dinosaur;
+// import NPCs.Walrus;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
-import Tilesets.WallTileset;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ public class TestMap extends Map {
 
     public TestMap() {
         super("test_map.txt", new CommonTileset());
-        this.playerStartPosition = getMapTile(17, 20).getLocation();
+        this.playerStartPosition = getMapTile(25, 19).getLocation();
     }
 
     @Override
@@ -34,18 +33,20 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        walrus.setInteractScript(new WalrusScript());
-        npcs.add(walrus);
+        // Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
+        // walrus.setInteractScript(new WalrusScript());
+        // npcs.add(walrus);
 
-        Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
-        dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        dinosaur.setInteractScript(new DinoScript());
-        npcs.add(dinosaur);
+        // Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
+        // dinosaur.setExistenceFlag("hasTalkedToDinosaur");
+        // dinosaur.setInteractScript(new DinoScript());
+        // npcs.add(dinosaur);
         
-        Bug bug = new Bug(3, getMapTile(7, 12).getLocation().subtractX(20));
-        bug.setInteractScript(new BugScript());
-        npcs.add(bug);
+        //Removing the Npcs we are not using
+
+        // Bug bug = new Bug(3, getMapTile(7, 12).getLocation().subtractX(20));
+        // bug.setInteractScript(new BugScript());
+        // npcs.add(bug);
 
         return npcs;
     }
@@ -66,6 +67,8 @@ public class TestMap extends Map {
         getMapTile(7, 26).setInteractScript(new SimpleTextScript("Walrus's house"));
 
         getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
+
+        getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
     }

@@ -22,6 +22,7 @@ public class PushableRock extends EnhancedMapTile {
     @Override
     public void update(Player player) {
         super.update(player);
+        //Registers if the player is on the rock and moves it accordingly
         if (player.touching(this) && player.getPlayerState() == PlayerState.WALKING) {
             if (player.getCurrentWalkingXDirection() == Direction.LEFT) {
                 if (canMoveLeft(player)) {
