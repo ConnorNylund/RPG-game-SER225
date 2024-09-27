@@ -599,6 +599,26 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(SnowFloorFourTile);
 
+        //Vertical Gate 
+        Frame VeritcalGateFrame = new FrameBuilder(getSubImage(6, 4))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder VeritcalGateTile = new MapTileBuilder(VeritcalGateFrame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(VeritcalGateTile);
+
+        //Horizontal Gate 
+        Frame HorizontalGateFrame = new FrameBuilder(getSubImage(6, 3))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder HorizontalGateTile = new MapTileBuilder(HorizontalGateFrame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(HorizontalGateTile);
+
         return mapTiles;
     }
 }
