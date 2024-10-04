@@ -34,9 +34,12 @@ public class GamePanel extends JPanel {
 	public GamePanel() {
 		super();
 		this.setDoubleBuffered(true);
+		this.setName("test");
 
 		// attaches Keyboard class's keyListener to this JPanel
 		this.addKeyListener(Keyboard.getKeyListener());
+
+		this.addMouseListener(new MouseHandler());
 
 		graphicsHandler = new GraphicsHandler();
 
