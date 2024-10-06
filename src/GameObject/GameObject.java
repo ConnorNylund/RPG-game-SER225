@@ -1,6 +1,7 @@
 package GameObject;
 
 import Engine.GraphicsHandler;
+import Engine.MouseHandler;
 import Level.*;
 import Utils.Direction;
 import Utils.ImageUtils;

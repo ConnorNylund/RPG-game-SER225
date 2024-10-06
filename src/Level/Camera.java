@@ -8,9 +8,56 @@ import GameObject.Rectangle;
 import java.awt.*;
 import java.util.ArrayList;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 // This class represents a Map's "Camera", aka a piece of the map that is currently included in a level's update/draw logic based on what should be shown on screen.
 // A majority of its job is just determining which map tiles, enemies, npcs, and enhanced map tiles are "active" each frame (active = included in update/draw cycle)
 public class Camera extends Rectangle {
+
+    // private static final MouseListener mouseListener = new MouseListener() {
+
+    //     @Override
+    //     public void mouseClicked(MouseEvent e) {
+    //         System.out.println("button pressed");
+    //         if (e.getButton() == 1) {
+    //             System.out.println("left mouse pressed");
+    //             for (int i = 0; i < Camera.getActiveEnhancedMapTiles().size(); i++) {
+    //                 if (e.getX() >= activeEnhancedMapTiles.get(i).getX1() && 
+    //                 e.getX() <= activeEnhancedMapTiles.get(i).getX2() && 
+    //                 e.getY() >= activeEnhancedMapTiles.get(i).getY1() &&
+    //                 e.getY() <= activeEnhancedMapTiles.get(i).getY2()) {
+    //                     System.out.println("enhanced tile clicked");
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     @Override
+    //     public void mousePressed(MouseEvent e) {
+            
+    //     }
+
+    //     @Override
+    //     public void mouseReleased(MouseEvent e) {
+           
+    //     }
+
+    //     @Override
+    //     public void mouseEntered(MouseEvent e) {
+            
+    //     }
+
+    //     @Override
+    //     public void mouseExited(MouseEvent e) {
+            
+    //     }
+       
+    // };
+
+    // public MouseListener getMouseListener() {
+    //     return mouseListener;
+    // }
 
     // the current map this camera is attached to
     private Map map;
@@ -289,5 +336,9 @@ public class Camera extends Rectangle {
 
     public boolean isAtBottomOfMap() {
         return this.getEndBoundY() >= map.getEndBoundY();
+    }
+
+    public Map getMap() {
+        return this.map;
     }
 }

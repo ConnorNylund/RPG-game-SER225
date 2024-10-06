@@ -10,7 +10,7 @@ import java.awt.*;
 /*
  * This is where the game loop process and render back buffer is setup
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel{
 	// loads Screens on to the JPanel
 	// each screen has its own update and draw methods defined to handle a "section" of the game.
 	private ScreenManager screenManager;
@@ -39,8 +39,8 @@ public class GamePanel extends JPanel {
 		// attaches Keyboard class's keyListener to this JPanel
 		this.addKeyListener(Keyboard.getKeyListener());
 
-		this.addMouseListener(new MouseHandler());
-
+		//this.addMouseListener(new MouseHandler());
+		
 		graphicsHandler = new GraphicsHandler();
 
 		screenManager = new ScreenManager();
