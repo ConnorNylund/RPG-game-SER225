@@ -30,7 +30,7 @@ public class DestroyableWall extends EnhancedMapTile{
         //System.out.println("DEBUG: I am a wall located at x" + x + " y" + y + "\nisDestroyed: " + isDestroyed + " beenDestroyed: " + beenDestroyed);
         if(isDestroyed && !beenDestroyed) {
             System.out.println("I am a wall that sohuld've moved");
-            this.setLocation(x+100, y);
+            this.setLocation(x+4800, y);
             beenDestroyed = true; 
         }
     }
