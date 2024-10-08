@@ -7,6 +7,8 @@ import Maps.Bossmap;
 
 import java.util.ArrayList;
 
+import Game.ScreenCoordinator;
+
 public class EditorMaps {
     public static ArrayList<String> getMapNames() {
         return new ArrayList<String>() {{
@@ -19,11 +21,11 @@ public class EditorMaps {
     public static Map getMapByName(String mapName) {
         switch(mapName) {
             case "TestMap":
-                return new TestMap();
+                return new TestMap(null);
             case "TitleScreen":
-                return new TitleScreenMap();
+                return new TitleScreenMap(null);
             case "Bossmap":
-                return new Bossmap();
+                return new Bossmap(null);
             default:
                 throw new RuntimeException("Unrecognized map name");
         }
