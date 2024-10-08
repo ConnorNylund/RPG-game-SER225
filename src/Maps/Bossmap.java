@@ -1,9 +1,7 @@
 package Maps;
 
 import EnhancedMapTiles.PushableRock;
-import Game.GameState;
 import Level.*;
-import Screens.BossChoiceScreen;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import NPCs.Walrus;
@@ -14,19 +12,19 @@ import Tilesets.CommonTileset;
 import java.util.ArrayList;
 
 // Represents a test map to be used in a level
-public class TestMap extends Map {
+public class Bossmap extends Map {
 
-    public TestMap() {
-        super("test_map.txt", new CommonTileset());
-        this.playerStartPosition = getMapTile(38, 24).getLocation();
+    public Bossmap() {
+        super("Bossmap.txt", new CommonTileset());
+        this.playerStartPosition = getMapTile(5, 5).getLocation();
     }
-    
+
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        enhancedMapTiles.add(pushableRock);
+        // PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        // enhancedMapTiles.add(pushableRock);
 
         return enhancedMapTiles;
     }
@@ -70,14 +68,11 @@ public class TestMap extends Map {
 
         //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
-        getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
+        //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
-        getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
+        //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        getMapTile(2, 6).setInteractScript(new TreeScript());
-
-        getMapTile(25, 19).setInteractScript(new BossChallengeScript());
+        //getMapTile(2, 6).setInteractScript(new TreeScript());
     }
-    
 }
 
