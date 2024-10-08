@@ -1,5 +1,6 @@
 package Maps;
 
+import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
 import Game.GameState;
 import Level.*;
@@ -27,6 +28,30 @@ public class TestMap extends Map {
 
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
         enhancedMapTiles.add(pushableRock);
+
+        //Brady's broken code dump
+        DestroyableWall destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
+        DestroyableWall destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
+        DestroyableWall destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
+
+        DestroyableWall destroyableWallH1 = new DestroyableWall(getMapTile(4, 13).getLocation(), "GateHorizontal.png");
+        DestroyableWall destroyableWallH2 = new DestroyableWall(getMapTile(5, 13).getLocation(), "GateHorizontal.png");
+        DestroyableWall destroyableWallH3 = new DestroyableWall(getMapTile(6, 13).getLocation(), "GateHorizontal.png");
+        DestroyableWall destroyableWallH4 = new DestroyableWall(getMapTile(7, 13).getLocation(), "GateHorizontal.png");
+        DestroyableWall destroyableWallH5 = new DestroyableWall(getMapTile(8, 13).getLocation(), "GateHorizontal.png");
+
+        enhancedMapTiles.add(destroyableWallV1);
+        enhancedMapTiles.add(destroyableWallV2);
+        enhancedMapTiles.add(destroyableWallV3);
+
+        enhancedMapTiles.add(destroyableWallH1);
+        enhancedMapTiles.add(destroyableWallH2);
+        enhancedMapTiles.add(destroyableWallH3);
+        enhancedMapTiles.add(destroyableWallH4);
+        enhancedMapTiles.add(destroyableWallH5);
+        System.out.println("DEBUG: SUCCESFULLY LOADED ALL ENHANCED TILES TO ARRAYLIST");
+
+
 
         return enhancedMapTiles;
     }
