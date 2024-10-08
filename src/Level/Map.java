@@ -3,6 +3,7 @@ package Level;
 import Engine.Config;
 import Engine.GraphicsHandler;
 import Engine.ScreenManager;
+import Game.ScreenCoordinator;
 import GameObject.Rectangle;
 import Utils.Direction;
 import Utils.Point;
@@ -75,11 +76,12 @@ public abstract class Map {
 
     // reference to current player
     protected Player player;
+    protected ScreenCoordinator screenCoordinator;
 
-    public Map(String mapFileName, Tileset tileset) {
+    public Map(String mapFileName, Tileset tileset, ScreenCoordinator screenCoordinator) {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
-        setupMap();
+        setupMap(screenCoordinator);
         this.startBoundX = 0;
         this.startBoundY = 0;
         this.endBoundX = width * tileset.getScaledSpriteWidth();
@@ -87,12 +89,13 @@ public abstract class Map {
         this.xMidPoint = ScreenManager.getScreenWidth() / 2;
         this.yMidPoint = (ScreenManager.getScreenHeight() / 2);
         this.playerStartPosition = new Point(0, 0);
+        this.screenCoordinator = screenCoordinator;
     }
 
     // sets up map by reading in the map file to create the tile map
     // loads in enemies, enhanced map tiles, and npcs
     // and instantiates a Camera
-    public void setupMap() {
+    public void setupMap(ScreenCoordinator screenCoordinator) {
         animatedMapTiles = new ArrayList<>();
 
         loadMapFile();
@@ -112,7 +115,7 @@ public abstract class Map {
             trigger.setMap(this);
         }
 
-        this.loadScripts();
+        this.loadScripts(screenCoordinator);
 
         this.camera = new Camera(0, 0, tileset.getScaledSpriteWidth(), tileset.getScaledSpriteHeight(), this);
         this.textbox = new Textbox(this);
@@ -276,7 +279,7 @@ public abstract class Map {
     }
 
     // list of scripts defined to be a part of the map, should be overridden in a subclass
-    protected void loadScripts() { }
+    protected void loadScripts(ScreenCoordinator screenCoordinator) { }
 
     // list of enhanced map tiles defined to be a part of the map, should be overridden in a subclass
     protected ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
@@ -332,7 +335,7 @@ public abstract class Map {
         }
     }
 
-    public void preloadScripts() {
+    public void preloadScripts(ScreenCoordinator screenCoordinator) {
         // setup map scripts to have references to the map and player
         for (MapTile mapTile : mapTiles) {
             if (mapTile.getInteractScript() != null) {
@@ -567,7 +570,7 @@ public abstract class Map {
     }
 
     public void reset() {
-        setupMap();
+        setupMap(this.screenCoordinator);
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
