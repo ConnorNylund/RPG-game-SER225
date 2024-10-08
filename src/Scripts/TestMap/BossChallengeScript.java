@@ -1,36 +1,43 @@
 package Scripts.TestMap;
 
 import java.util.ArrayList;
-
-import Game.GameState;
 import Level.Script;
 import Level.ScriptState;
 import ScriptActions.LockPlayerScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
 import ScriptActions.ScriptAction;
+import Game.GameState;
+import Game.ScreenCoordinator;
 
-// Script for interacting with an object to challenge the boss
+// Script for challenging the boss
 public class BossChallengeScript extends Script {
+     // Create an instance of ScreenCoordinator
+    private ScreenCoordinator screenCoordinator;
+
+    public BossChallengeScript(ScreenCoordinator screenCoordinator) {
+        this.screenCoordinator = screenCoordinator; // Initialize the screen coordinator
+    }
 
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 
-        // Lock the player during interaction
+        // Lock player movement
         scriptActions.add(new LockPlayerScriptAction());
 
-        // Directly switch to the boss choice screen
+        // Change to the boss map when the player interacts
         scriptActions.add(new ScriptAction() {
             @Override
             public ScriptState execute() {
-                // Assuming screenCoordinator is accessible
+                System.out.println("Transitioning to BossChoiceScreen");
                 screenCoordinator.setGameState(GameState.BOSS);
+                return ScriptState.COMPLETED;
             }
         });
 
-        // Unlock the player after the action
+        // Unlock player movement
         scriptActions.add(new UnlockPlayerScriptAction());
-        
+
         return scriptActions;
     }
 }

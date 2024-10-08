@@ -101,8 +101,9 @@ public class TestMap extends Map {
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
 
-        getMapTile(25, 19).setInteractScript(new BossChallengeScript());
+        getMapTile(26, 18).setInteractScript(new BossChallengeScript());
     }
     
 }
 
+-

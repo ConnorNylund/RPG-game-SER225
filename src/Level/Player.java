@@ -41,7 +41,6 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.S;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SLOW_KEY = Key.V;
-    protected Key BOSS_KEY = Key.B;
 
     protected boolean isLocked = false;
 
