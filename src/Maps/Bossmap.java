@@ -73,7 +73,9 @@ public class Bossmap extends Map {
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        //getMapTile(2, 6).setInteractScript(new TreeScript());
-    }
+        getMapTile(5, 0).setInteractScript(new ReturnScript(screenCoordinator));
+
+        super.loadScripts(screenCoordinator);
+    }    
 }
 

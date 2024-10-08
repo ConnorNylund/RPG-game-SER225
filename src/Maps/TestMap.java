@@ -5,7 +5,6 @@ import EnhancedMapTiles.PushableRock;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
-import Screens.BossChoiceScreen;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import NPCs.Walrus;
