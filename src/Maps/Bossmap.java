@@ -1,6 +1,7 @@
 package Maps;
 
 import EnhancedMapTiles.PushableRock;
+import Game.ScreenCoordinator;
 import Level.*;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -14,8 +15,8 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class Bossmap extends Map {
 
-    public Bossmap() {
-        super("Bossmap.txt", new CommonTileset());
+    public Bossmap(ScreenCoordinator screenCoordinator) {
+        super("Bossmap.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(5, 5).getLocation();
     }
 
@@ -61,7 +62,7 @@ public class Bossmap extends Map {
     }
 
     @Override
-    public void loadScripts() {
+    public void loadScripts(ScreenCoordinator screenCoordinator) {
         //getMapTile(21, 19).setInteractScript(new SimpleTextScript("Cat's house"));
 
         //getMapTile(7, 26).setInteractScript(new SimpleTextScript("Walrus's house"));

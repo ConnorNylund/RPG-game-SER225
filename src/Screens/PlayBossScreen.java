@@ -33,7 +33,7 @@ public class PlayBossScreen extends Screen {
         //flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new Bossmap();
+        map = new Bossmap(screenCoordinator);
         map.setFlagManager(flagManager);
 
         // setup player
@@ -49,7 +49,7 @@ public class PlayBossScreen extends Screen {
 
         // preloads all scripts ahead of time rather than loading them dynamically
         // both are supported, however preloading is recommended
-        map.preloadScripts();
+        map.preloadScripts(screenCoordinator);
 
     }
 

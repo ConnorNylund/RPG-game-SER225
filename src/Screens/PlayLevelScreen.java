@@ -33,7 +33,7 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap();
+        map = new TestMap(screenCoordinator);
         map.setFlagManager(flagManager);
 
         // setup player
@@ -49,7 +49,7 @@ public class PlayLevelScreen extends Screen {
 
         // preloads all scripts ahead of time rather than loading them dynamically
         // both are supported, however preloading is recommended
-        map.preloadScripts();
+        map.preloadScripts(screenCoordinator);
 
         winScreen = new WinScreen(this);
     }
