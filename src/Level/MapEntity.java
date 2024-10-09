@@ -48,7 +48,7 @@ public class MapEntity extends GameObject {
     public MapEntity(float x, float y) {
         super(x, y);
     }
-
+    
     public MapEntityStatus getMapEntityStatus() {
         return mapEntityStatus;
     }
@@ -80,16 +80,6 @@ public class MapEntity extends GameObject {
         return isHidden;
     }
 
-    public boolean isClicked() {
-        if (this.contains(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
-            System.out.println("clicked");
-            return true;
-        }
-        else {
-            System.out.println("not clicked");
-            return false;
-        }
-    }
     public void setIsHidden(boolean isHidden) {
         this.isHidden = isHidden;
     }
