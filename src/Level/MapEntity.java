@@ -6,6 +6,8 @@ import GameObject.SpriteSheet;
 
 import java.util.HashMap;
 
+import Engine.MouseHandler;
+
 // This class represents a map entity, which is any "entity" on a map besides the player
 // it is basically a game object with a few extra features for handling things what to do upon the player interacting with them
 public class MapEntity extends GameObject {
@@ -78,6 +80,16 @@ public class MapEntity extends GameObject {
         return isHidden;
     }
 
+    public boolean isClicked() {
+        if (this.contains(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
+            System.out.println("clicked");
+            return true;
+        }
+        else {
+            System.out.println("not clicked");
+            return false;
+        }
+    }
     public void setIsHidden(boolean isHidden) {
         this.isHidden = isHidden;
     }
