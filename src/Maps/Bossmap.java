@@ -4,7 +4,7 @@ import EnhancedMapTiles.PushableRock;
 import Game.ScreenCoordinator;
 import Level.*;
 // import NPCs.Bug;
-// import NPCs.Dinosaur;
+ import NPCs.Dinosaur;
 // import NPCs.Walrus;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
@@ -39,10 +39,10 @@ public class Bossmap extends Map {
         // walrus.setInteractScript(new WalrusScript());
         // npcs.add(walrus);
 
-        // Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
-        // dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-        // dinosaur.setInteractScript(new DinoScript());
-        // npcs.add(dinosaur);
+         Dinosaur dinosaur = new Dinosaur(2, getMapTile(7, 4).getLocation());
+         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
+         dinosaur.setInteractScript(new DinoScript());
+         npcs.add(dinosaur);
         
         //Removing the Npcs we are not using
 

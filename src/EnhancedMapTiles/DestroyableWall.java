@@ -17,6 +17,7 @@ public class DestroyableWall extends EnhancedMapTile{
     private boolean beenDestroyed;
     private DestroyableWall neighbor;//Doesn't do anything yet, but just an idea to make handling mass amount of walls easier.
 
+
     public DestroyableWall(Point location, String gateTitle) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load(gateTitle), 16, 16), TileType.NOT_PASSABLE);
 
@@ -28,8 +29,8 @@ public class DestroyableWall extends EnhancedMapTile{
     public void update(Player player) {
         super.update(player);
         //System.out.println("DEBUG: I am a wall located at x" + x + " y" + y + "\nisDestroyed: " + isDestroyed + " beenDestroyed: " + beenDestroyed);
-        if(isDestroyed && !beenDestroyed) {
-            System.out.println("I am a wall that sohuld've moved");
+        if(isDestroyed && !beenDestroyed) { //At some point, this should be moved to the destroy method, so this stupid constant comparison doesn't need to be done
+            System.out.println("I am a wall that sohuld've moved at x" + x + " y" + y);
             this.setLocation(x+4800, y);
             beenDestroyed = true; 
         }

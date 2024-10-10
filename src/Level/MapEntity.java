@@ -46,7 +46,7 @@ public class MapEntity extends GameObject {
     public MapEntity(float x, float y) {
         super(x, y);
     }
-
+    
     public MapEntityStatus getMapEntityStatus() {
         return mapEntityStatus;
     }
