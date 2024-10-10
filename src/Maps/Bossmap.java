@@ -15,9 +15,10 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class Bossmap extends Map {
 
-    public Bossmap(ScreenCoordinator screenCoordinator) {
+    public Bossmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Bossmap.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(5, 5).getLocation();
+        this.currentMap = 1;
     }
 
     @Override

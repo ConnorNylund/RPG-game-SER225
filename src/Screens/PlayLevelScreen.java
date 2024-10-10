@@ -5,6 +5,7 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
+import Maps.Bossmap;
 import Maps.TestMap;
 import Players.Cat;
 import Players.Bunny;
@@ -19,6 +20,7 @@ public class PlayLevelScreen extends Screen {
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected int currentMap;  
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -33,7 +35,7 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap(screenCoordinator);
+        map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
 
         // setup player
@@ -61,16 +63,17 @@ public class PlayLevelScreen extends Screen {
             case RUNNING:
                 player.update();
                 map.update(player);
-                break;
+
+                // if (currentMap != map.getCurrentMap()) {
+                //     currentMap = map.getCurrentMap();
+                //     this.map = new Bossmap(screenCoordinator, 1);
+                // }
+                // break;
+
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
-        }
-
-        // if flag is set at any point during gameplay, game is "won"
-        if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
     }
 

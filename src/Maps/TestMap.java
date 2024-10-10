@@ -7,7 +7,7 @@ import Game.ScreenCoordinator;
 import Level.*;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
-// import NPCs.Walrus;
+import NPCs.Walrus;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
@@ -21,10 +21,11 @@ public class TestMap extends Map {
 
     protected ScreenCoordinator screenCoordinator;
 
-    public TestMap(ScreenCoordinator screenCoordinator) {
+    public TestMap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("test_map.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(38, 24).getLocation();
         this.screenCoordinator = screenCoordinator;
+        this.currentMap = 0;
     }
     
     @Override
@@ -65,9 +66,8 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        // Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        // walrus.setInteractScript(new WalrusScript());
-        // npcs.add(walrus);
+        Walrus walrus = new Walrus(1, getMapTile(26, 19).getLocation().subtractY(40));
+        npcs.add(walrus);
 
         // Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
         // dinosaur.setExistenceFlag("hasTalkedToDinosaur");

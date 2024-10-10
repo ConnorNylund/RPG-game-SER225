@@ -78,6 +78,20 @@ public abstract class Map {
     protected Player player;
     protected ScreenCoordinator screenCoordinator;
 
+    public int currentMap = 0;
+
+    public int getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        if (currentMap >= 0) {
+            this.currentMap = currentMap;
+        } else {
+            throw new IllegalArgumentException("Map cannot be negative");
+        }
+    }
+
     public Map(String mapFileName, Tileset tileset, ScreenCoordinator screenCoordinator) {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
