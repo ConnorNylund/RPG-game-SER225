@@ -21,7 +21,7 @@ public class DestroyableWall extends EnhancedMapTile{
     public DestroyableWall(Point location, String gateTitle) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load(gateTitle), 16, 16), TileType.NOT_PASSABLE);
 
-        isDestroyed = false;
+        isDestroyed = true;
         beenDestroyed = false; 
     }
 
