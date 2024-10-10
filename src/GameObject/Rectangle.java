@@ -51,6 +51,17 @@ public class Rectangle implements IntersectableRectangle {
 		this.borderThickness = 0;
 	}
 
+	public boolean contains(Point p) {
+		if (p.x >= this.x &&
+			p.x <= this.getX2() &&
+			p.y >= this.y &&
+			p.y <= this.getY2()) {
+				return true;
+			}
+		else {
+			return false;
+		}
+	}
 	public float getX() {
 		return x;
 	}

@@ -2,10 +2,12 @@ package Level;
 
 import java.awt.Color;
 
+import Game.ScreenCoordinator;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Game.GameState;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
@@ -31,13 +33,14 @@ public abstract class Player extends GameObject {
     protected Direction facingDirection;
     protected Direction lastMovementDirection;
 
-    // define keys Switched arrows to WASD
+    // define keys
     protected KeyLocker keyLocker = new KeyLocker();
     protected Key MOVE_LEFT_KEY = Key.A;
     protected Key MOVE_RIGHT_KEY = Key.D;
     protected Key MOVE_UP_KEY = Key.W;
     protected Key MOVE_DOWN_KEY = Key.S;
     protected Key INTERACT_KEY = Key.SPACE;
+    protected Key SLOW_KEY = Key.V;
 
     protected boolean isLocked = false;
 
@@ -101,9 +104,17 @@ public abstract class Player extends GameObject {
 
     // player WALKING state logic
     protected void playerWalking() {
+    
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
             keyLocker.lockKey(INTERACT_KEY);
             map.entityInteract(this);
+        }
+
+        // if slow key is pressed the player wlakes slower.
+        if (Keyboard.isKeyDown(SLOW_KEY)) {
+            walkSpeed = 1f;
+        }else{
+            walkSpeed = 2.3f;
         }
 
         // if walk left key is pressed, move player to the left
@@ -151,6 +162,8 @@ public abstract class Player extends GameObject {
             playerState = PlayerState.STANDING;
         }
     }
+
+   
 
     protected void updateLockedKeys() {
         if (Keyboard.isKeyUp(INTERACT_KEY) && !isLocked) {
@@ -254,7 +267,6 @@ public abstract class Player extends GameObject {
             moveX(speed);
         }
     }
-
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
     /*

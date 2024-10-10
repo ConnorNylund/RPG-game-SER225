@@ -5,14 +5,14 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
-import Maps.TestMap;
+import Maps.Bossmap;
 import Players.Cat;
 import Players.Bunny;
 import Utils.Direction;
 import Utils.Point;
 
 // This class is for when the RPG game is actually being played
-public class PlayLevelScreen extends Screen {
+public class PlayBossScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -20,20 +20,20 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+    public PlayBossScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasLostBall", false);
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToDinosaur", false);
-        flagManager.addFlag("hasFoundBall", false);
+        //flagManager.addFlag("hasLostBall", false);
+        //flagManager.addFlag("hasTalkedToWalrus", false);
+        //flagManager.addFlag("hasTalkedToDinosaur", false);
+        //flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap(screenCoordinator);
+        map = new Bossmap(screenCoordinator);
         map.setFlagManager(flagManager);
 
         // setup player
@@ -51,7 +51,6 @@ public class PlayLevelScreen extends Screen {
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
 
-        winScreen = new WinScreen(this);
     }
 
     public void update() {

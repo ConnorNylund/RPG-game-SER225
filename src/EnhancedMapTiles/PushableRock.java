@@ -2,6 +2,7 @@ package EnhancedMapTiles;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
+import Engine.MouseHandler;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.SpriteSheet;
@@ -43,6 +44,25 @@ public class PushableRock extends EnhancedMapTile {
                 if (canMoveDown(player)) {
                     moveYHandleCollision(1);
                 }
+            }
+        }
+    
+        if (this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
+            System.out.println("clicked");
+            int rand = (int)(Math.random() * 4 + 1);
+            switch (rand) {
+                case 1:
+                    moveXHandleCollision(-1);
+                    break;
+                case 2:
+                    moveXHandleCollision(1);
+                    break;
+                case 3:
+                    moveYHandleCollision(-1);
+                    break;
+                case 4:
+                    moveYHandleCollision(1);
+                    break;
             }
         }
     }

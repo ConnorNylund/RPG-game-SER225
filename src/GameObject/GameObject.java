@@ -1,7 +1,6 @@
 package GameObject;
 
 import Engine.GraphicsHandler;
-import Engine.MouseHandler;
 import Level.*;
 import Utils.Direction;
 import Utils.ImageUtils;
@@ -273,6 +272,21 @@ public class GameObject extends AnimatedSprite {
 			return Math.round(getY());
 		}
 	}
+
+	// I don't even know why I needed to name this something differently because my inheritance wasn't working
+	// but essentially just returns true if the mouse is hovering over an object
+	public boolean contains2(Utils.Point mousePos) {
+		Rectangle r = this.getCalibratedBounds();
+		if (mousePos.x >= r.x &&
+			mousePos.x <= r.getX2() &&
+			mousePos.y >= r.y &&
+			mousePos.y <= r.getY2()) {
+				return true;
+			}
+		else {
+			return false;
+		}
+	} 
 
 	// gets bounds taking into account map camera position
 	public Rectangle getCalibratedBounds() {

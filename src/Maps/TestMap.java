@@ -2,6 +2,8 @@ package Maps;
 
 import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
+import Game.GameState;
+import Game.ScreenCoordinator;
 import Level.*;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -12,14 +14,19 @@ import Tilesets.CommonTileset;
 
 import java.util.ArrayList;
 
+import Engine.Screen;
+
 // Represents a test map to be used in a level
 public class TestMap extends Map {
 
-    public TestMap() {
-        super("test_map.txt", new CommonTileset());
-        this.playerStartPosition = getMapTile(38, 24).getLocation();
-    }
+    protected ScreenCoordinator screenCoordinator;
 
+    public TestMap(ScreenCoordinator screenCoordinator) {
+        super("test_map.txt", new CommonTileset(), screenCoordinator);
+        this.playerStartPosition = getMapTile(38, 24).getLocation();
+        this.screenCoordinator = screenCoordinator;
+    }
+    
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
@@ -86,7 +93,7 @@ public class TestMap extends Map {
     }
 
     @Override
-    public void loadScripts() {
+    public void loadScripts(ScreenCoordinator screenCoordinator) {
         //getMapTile(21, 19).setInteractScript(new SimpleTextScript("Cat's house"));
 
         //getMapTile(7, 26).setInteractScript(new SimpleTextScript("Walrus's house"));
@@ -98,6 +105,10 @@ public class TestMap extends Map {
         getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
-    }
-}
 
+        getMapTile(26, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
+
+        super.loadScripts(screenCoordinator);
+    }
+
+}
