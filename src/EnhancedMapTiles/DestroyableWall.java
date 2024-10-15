@@ -37,6 +37,8 @@ public class DestroyableWall extends EnhancedMapTile{
     }
     public void destroyWall() { //In theory, calling this method destroys an instance of these walls. In order to destroy an entire section, we could group them all in an array, then call this method on each member of the array horribly inefficient so O'neil would be crying but in theory it would work
         isDestroyed = true;
+        // this.setLocation(x+4800, y);
+        // beenDestroyed = true; 
     }
 
     @Override
