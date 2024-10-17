@@ -1,3 +1,5 @@
+// This is the training dummy code completed but doesnt show sprites in game
+
 package GameObject;
 
 import Engine.GraphicsHandler;
@@ -20,16 +22,16 @@ public class TrainingDummy extends GameObject {
         // Call the GameObject constructor with initial x, y position and sprite frame
         super(x, y, new Frame(ImageLoader.load("Resources/normal.png"), ImageEffect.NONE, 1, null));
 
+
         // Initialize health state and load sprites
         healthState = 0;
         loadSprites();
     }
 
     private void loadSprites() {
-        normalSprite = new Sprite(ImageLoader.load("Resources/normal.png"));
-        damagedSprite = new Sprite(ImageLoader.load("Resources/damaged.png"));
-        heavilyDamagedSprite = new Sprite(ImageLoader.load("Resources/heavily_damaged.png"));
-
+        normalSprite = new Sprite(ImageLoader.load("/Users//RPbillygodoyG-game-SER225/Resources/normal.png"));
+        damagedSprite = new Sprite(ImageLoader.load("/Users/billygodoy/RPG-game-SER225/Resources/damaged.png"));
+        heavilyDamagedSprite = new Sprite(ImageLoader.load("/Users/billygodoy/RPG-game-SER225/Resources/heavily_damaged.png"));
     }
 
     public void setSprite(Sprite sprite) {
@@ -80,3 +82,5 @@ public void draw(GraphicsHandler graphicsHandler) {  // Use GraphicsHandler inst
 
     
 }
+
+
