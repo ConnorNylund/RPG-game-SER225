@@ -17,6 +17,7 @@ public class Bunny extends Player{
 
     public Bunny(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("bloodybunny.png"), 16, 16), x, y, "STAND_RIGHT");
+        walkSpeed = 2.3f;
     }
     
     public void update() {
@@ -55,7 +56,7 @@ public class Bunny extends Player{
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
                             .build(),
@@ -63,14 +64,14 @@ public class Bunny extends Player{
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
                             .build()
             });
 
             put("WALK_LEFT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
                             .withScale(3)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 12, 12, 7)
@@ -80,7 +81,7 @@ public class Bunny extends Player{
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 12, 12, 7)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
                             .withScale(3)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 12, 12, 7)
