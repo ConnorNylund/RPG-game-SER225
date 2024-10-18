@@ -9,16 +9,24 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
+import Level.Map;
 
 public class Bunny extends Player{
 
+        public int slowTileIndex;
+
     public Bunny(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("bloodybunny.png"), 16, 16), x, y, "STAND_RIGHT");
-        walkSpeed = 2.3f;
     }
-
+    
     public void update() {
         super.update();
+    }
+
+    public void slowTileIndex(int tileIndex){
+        slowTileIndex = 42;
+        if(() == slowTileIndex)
+            walkSpeed = 1;
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

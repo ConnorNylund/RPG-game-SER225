@@ -22,6 +22,7 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected int currentMap;  
+    protected int slowTileIndex;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -39,6 +40,8 @@ public class PlayLevelScreen extends Screen {
         map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
 
+
+
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
@@ -46,6 +49,8 @@ public class PlayLevelScreen extends Screen {
         player.setFacingDirection(Direction.LEFT);
 
         map.setPlayer(player);
+
+
 
         // let pieces of map know which button to listen for as the "interact" button
         map.getTextbox().setInteractKey(player.getInteractKey());
@@ -74,7 +79,7 @@ public class PlayLevelScreen extends Screen {
                 //     currentMap = map.getCurrentMap();
                 //     this.map = new Bossmap(screenCoordinator, 1);
                 // }
-                // break;
+                break;
 
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:

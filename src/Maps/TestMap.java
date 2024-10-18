@@ -62,6 +62,8 @@ public class TestMap extends Map {
         return enhancedMapTiles;
     }
 
+    
+
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();

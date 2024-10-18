@@ -6,6 +6,7 @@ import GameObject.IntersectableRectangle;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Point;
+import Level.Map;
 
 // Represents a map tile in a Map's tile map
 public class MapTile extends MapEntity {
@@ -18,7 +19,7 @@ public class MapTile extends MapEntity {
     // top layer of tile ("pasted on top of" bottom layer, covers player)
     protected GameObject topLayer;
 
-    private int tileIndex;
+    public int tileIndex;
 
     public MapTile(float x, float y, GameObject bottomLayer, GameObject topLayer, TileType tileType, int tileIndex) {
         super(x, y);

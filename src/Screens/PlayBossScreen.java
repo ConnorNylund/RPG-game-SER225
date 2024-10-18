@@ -67,7 +67,7 @@ public class PlayBossScreen extends Screen {
                 //     currentMap = map.getCurrentMap();
                 //     this.map = new TestMap(screenCoordinator, 0);
                 // }
-                // break;
+                break;
 
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
