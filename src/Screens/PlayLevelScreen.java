@@ -7,6 +7,7 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
 import Maps.Shopmap;
+import Maps.Bossmap;
 import Maps.TestMap;
 import Players.Bunny;
 import Utils.Direction;
@@ -21,6 +22,8 @@ public class PlayLevelScreen extends Screen {
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected int currentMap;  
+    protected int slowTileIndex;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -35,8 +38,10 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap(screenCoordinator);
+        map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
+
+
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -45,6 +50,8 @@ public class PlayLevelScreen extends Screen {
         player.setFacingDirection(Direction.LEFT);
 
         map.setPlayer(player);
+
+
 
         // let pieces of map know which button to listen for as the "interact" button
         map.getTextbox().setInteractKey(player.getInteractKey());
@@ -68,16 +75,17 @@ public class PlayLevelScreen extends Screen {
             case RUNNING:
                 player.update();
                 map.update(player);
+
+                // if (currentMap != map.getCurrentMap()) {
+                //     currentMap = map.getCurrentMap();
+                //     this.map = new Bossmap(screenCoordinator, 1);
+                // }
                 break;
+
             // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
-        }
-
-        // if flag is set at any point during gameplay, game is "won"
-        if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
     }
 

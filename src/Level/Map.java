@@ -78,6 +78,20 @@ public abstract class Map {
     protected Player player;
     protected ScreenCoordinator screenCoordinator;
 
+    public int currentMap = 0;
+
+    public int getCurrentMap() {
+        return currentMap;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        if (currentMap >= 0) {
+            this.currentMap = currentMap;
+        } else {
+            throw new IllegalArgumentException("Map cannot be negative");
+        }
+    }
+
     public Map(String mapFileName, Tileset tileset, ScreenCoordinator screenCoordinator) {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
@@ -513,6 +527,20 @@ public abstract class Map {
         if (textbox.isActive()) {
             textbox.update();
         }
+
+        if (player != null) {
+            Point playerLocation = player.getLocation();
+            int playerX = (int) Math.floor(playerLocation.x / tileset.getScaledSpriteWidth());
+            int playerY = (int) Math.floor(playerLocation.y / tileset.getScaledSpriteHeight());
+    
+            MapTile tile = getMapTile(playerX, playerY);
+            if (tile != null && tile.getTileIndex() == 42) {
+                player.walkSpeed = 1.5f;
+            } else {
+                player.walkSpeed = 2.3f; 
+            }
+        }
+
     }
 
     // based on the player's current X position (which in a level can potentially be updated each frame),

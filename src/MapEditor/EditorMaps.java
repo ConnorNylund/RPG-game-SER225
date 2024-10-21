@@ -24,13 +24,14 @@ public class EditorMaps {
     public static Map getMapByName(String mapName) {
         switch(mapName) {
             case "TestMap":
-                return new TestMap(null);
+                return new TestMap(null, 0);
             case "TitleScreen":
                 return new TitleScreenMap(null);
             case "Bossmap":
-                return new Bossmap(null);
+                return new Bossmap(null, 1);
             case "Shopmap":
                 return new Shopmap(null);
+
             default:
                 throw new RuntimeException("Unrecognized map name");
         }
