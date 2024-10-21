@@ -23,6 +23,7 @@ public class DestroyableWall extends EnhancedMapTile{
 
         isDestroyed = true;
         beenDestroyed = false; 
+        destroyWall();
     }
 
     @Override
