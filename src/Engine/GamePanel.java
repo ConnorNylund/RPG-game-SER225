@@ -3,6 +3,7 @@ package Engine;
 import GameObject.Rectangle;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
+import Waves.WaveManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +31,8 @@ public class GamePanel extends JPanel{
 	private int currentFPS;
 	private boolean doPaint;
 
+	private SpriteFont waveLabel;
+
 	// The JPanel and various important class instances are setup here
 	public GamePanel() {
 		super();
@@ -52,6 +55,8 @@ public class GamePanel extends JPanel{
 		pauseLabel.setOutlineThickness(2.0f);
 
 		fpsDisplayLabel = new SpriteFont("FPS", 4, 3, "Arial", 12, Color.black);
+
+		waveLabel = new SpriteFont("Wave: " + WaveManager.currentWave, 20, 3, "Arial", 30, Color.white);
 
 		currentFPS = Config.TARGET_FPS;
 
@@ -88,6 +93,8 @@ public class GamePanel extends JPanel{
 		updatePauseState();
 		updateShowFPSState();
 
+		updateWave();
+
 		if (!isGamePaused) {
 			screenManager.update();
 		}
@@ -117,6 +124,10 @@ public class GamePanel extends JPanel{
 		fpsDisplayLabel.setText("FPS: " + currentFPS);
 	}
 
+	private void updateWave() {
+		waveLabel.setText("Wave: " + WaveManager.currentWave);
+	}
+
 	public void draw() {			
 		// draw current game state
 		screenManager.draw(graphicsHandler);
@@ -130,6 +141,8 @@ public class GamePanel extends JPanel{
 		if (showFPS) {
 			fpsDisplayLabel.draw(graphicsHandler);
 		}
+
+		waveLabel.draw(graphicsHandler);
 	}
 
 	@Override
