@@ -4,6 +4,7 @@ import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.SpriteSheet;
 import Level.*;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -14,6 +15,8 @@ import Tilesets.CommonTileset;
 
 import java.util.ArrayList;
 
+import Enemies.Enemy;
+import Engine.ImageLoader;
 import Engine.Screen;
 
 // Represents a test map to be used in a level
@@ -64,6 +67,9 @@ public class TestMap extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
+        //Here for testing purposes, can be deleted if needed
+        Enemy testEnem = new Enemy(1, getMapTile(27, 27).getLocation(), new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), "DAMAGE1", 3); 
+        npcs.add(testEnem);
 
         // Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
         // walrus.setInteractScript(new WalrusScript());

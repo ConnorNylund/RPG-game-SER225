@@ -29,10 +29,9 @@ public class TrainingDummy extends GameObject {
     }
 
     private void loadSprites() {
-        normalSprite = new Sprite(ImageLoader.load("/Users/billygodoy/RPG-game-SER225/Resources/normal.png"));
+        normalSprite = new Sprite(ImageLoader.load("/Users//RPbillygodoyG-game-SER225/Resources/normal.png"));
         damagedSprite = new Sprite(ImageLoader.load("/Users/billygodoy/RPG-game-SER225/Resources/damaged.png"));
         heavilyDamagedSprite = new Sprite(ImageLoader.load("/Users/billygodoy/RPG-game-SER225/Resources/heavily_damaged.png"));
-
     }
 
     public void setSprite(Sprite sprite) {
