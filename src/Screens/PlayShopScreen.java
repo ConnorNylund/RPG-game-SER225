@@ -1,20 +1,18 @@
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Keyboard;  // Import this to use Keyboard handling
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
 import Maps.Shopmap;
-import Maps.TestMap;
+import Players.Cat;
 import Players.Bunny;
 import Utils.Direction;
 import Utils.Point;
-import Engine.Key;  // Import Key class for using specific keys
 
 // This class is for when the RPG game is actually being played
-public class PlayLevelScreen extends Screen {
+public class PlayShopScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -22,26 +20,26 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+    public PlayShopScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasLostBall", false);
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToDinosaur", false);
-        flagManager.addFlag("hasFoundBall", false);
+        //flagManager.addFlag("hasLostBall", false);
+        //flagManager.addFlag("hasTalkedToWalrus", false);
+        //flagManager.addFlag("hasTalkedToDinosaur", false);
+        //flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap(screenCoordinator);
+        map = new Shopmap(screenCoordinator);
         map.setFlagManager(flagManager);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
-        playLevelScreenState = PlayLevelScreenState.RUNNING; 
+        playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
 
         map.setPlayer(player);
@@ -53,15 +51,9 @@ public class PlayLevelScreen extends Screen {
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
 
-        winScreen = new WinScreen(this);
     }
 
     public void update() {
-        // check is the key "T" is pressed to show damage taken
-        if (Keyboard.isKeyDown(Key.T)) {
-            System.out.println("Training dummy has taken damage!");
-        }
-
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
@@ -96,6 +88,7 @@ public class PlayLevelScreen extends Screen {
     public PlayLevelScreenState getPlayLevelScreenState() {
         return playLevelScreenState;
     }
+
 
     public void resetLevel() {
         initialize();

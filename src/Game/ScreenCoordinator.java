@@ -7,6 +7,7 @@ import Screens.CreditsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayBossScreen;
+import Screens.PlayShopScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -50,6 +51,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case BOSS:
 						currentScreen = new PlayBossScreen(this);
+						break;
+					case SHOP :
+						currentScreen = new PlayShopScreen(this);
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);

@@ -100,13 +100,15 @@ public class TestMap extends Map {
 
         //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
-        getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
+       
 
         getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
 
         getMapTile(26, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
+
+        getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }
