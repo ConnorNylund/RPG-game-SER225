@@ -1,4 +1,5 @@
 package Waves;
+import Enemies.Enemy;
 
 import java.util.ArrayList;
 public class WaveManager {
@@ -9,12 +10,6 @@ public class WaveManager {
 
     public WaveManager() {
         currentWave = 1;
-
-        for (int i = 0; i < 5; i++) {
-            // logic to add enemies to the initial wave should go here
-            // the condition in this loop should be i < amount of enemies you want
-            // increment numEnemies as you go
-        }
     }
 
     public void newWave(int numEnemies) {
@@ -23,5 +18,11 @@ public class WaveManager {
 
     public void killEnemy(Enemy e) {
         currentEnemies.remove(e);
+        numEnemies--;
+    }
+
+    public static void addEnemy(Enemy e) {
+        currentEnemies.add(e);
+        numEnemies++;
     }
 } 

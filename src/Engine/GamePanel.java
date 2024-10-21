@@ -6,6 +6,9 @@ import Utils.Colors;
 import Waves.WaveManager;
 
 import javax.swing.*;
+
+import Game.GameState;
+
 import java.awt.*;
 
 /*
