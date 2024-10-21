@@ -7,6 +7,7 @@ import GameObject.SpriteSheet;
 import Level.NPC;
 import Level.Player;
 import Utils.Point;
+import Waves.WaveManager;
 
 import java.util.HashMap;
 
@@ -24,6 +25,8 @@ public class Enemy extends NPC {
         this.totalHealth = totalHealth;
         curHealth = totalHealth;
         antiJankTimer = System.nanoTime(); 
+
+        WaveManager.currentEnemies.add(this);
     }
     public void takeDamage() { //Call this when the enemy takes damage, done as it's own method in case something else needs to call it other than clicking
         curHealth -= 1;
