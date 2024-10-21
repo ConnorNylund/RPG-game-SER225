@@ -64,6 +64,7 @@ public class TestMap extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
+        //Enemy testEnem = new Enemy(1, getMapTile())
 
         // Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
         // walrus.setInteractScript(new WalrusScript());
