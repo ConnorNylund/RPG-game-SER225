@@ -527,6 +527,20 @@ public abstract class Map {
         if (textbox.isActive()) {
             textbox.update();
         }
+
+        if (player != null) {
+            Point playerLocation = player.getLocation();
+            int playerX = (int) Math.floor(playerLocation.x / tileset.getScaledSpriteWidth());
+            int playerY = (int) Math.floor(playerLocation.y / tileset.getScaledSpriteHeight());
+    
+            MapTile tile = getMapTile(playerX, playerY);
+            if (tile != null && tile.getTileIndex() == 42) {
+                player.walkSpeed = 1.5f;
+            } else {
+                player.walkSpeed = 2.3f; 
+            }
+        }
+
     }
 
     // based on the player's current X position (which in a level can potentially be updated each frame),

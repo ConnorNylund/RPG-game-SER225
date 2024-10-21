@@ -12,11 +12,12 @@ import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
+import Utils.Point;
 
 public abstract class Player extends GameObject {
     // values that affect player movement
     // these should be set in a subclass
-    protected float walkSpeed = 0;
+    public float walkSpeed = 0;
     protected int interactionRange = 1;
     protected Direction currentWalkingXDirection;
     protected Direction currentWalkingYDirection;
@@ -108,13 +109,6 @@ public abstract class Player extends GameObject {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
             keyLocker.lockKey(INTERACT_KEY);
             map.entityInteract(this);
-        }
-
-        // if slow key is pressed the player wlakes slower.
-        if (Keyboard.isKeyDown(SLOW_KEY)) {
-            walkSpeed = 1f;
-        }else{
-            walkSpeed = 2.3f;
         }
 
         // if walk left key is pressed, move player to the left

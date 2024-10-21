@@ -6,7 +6,6 @@ import GameObject.IntersectableRectangle;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Point;
-import Level.Map;
 
 // Represents a map tile in a Map's tile map
 public class MapTile extends MapEntity {

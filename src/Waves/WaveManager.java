@@ -3,7 +3,7 @@ import Enemies.Enemy;
 
 import java.util.ArrayList;
 public class WaveManager {
-    public static ArrayList<Enemy> currentEnemies;
+    public static ArrayList<Enemy> currentEnemies = new ArrayList<>();
     public static int numEnemies;
     public static int currentWave;
     public static final int TOTAL_WAVES = 5;
