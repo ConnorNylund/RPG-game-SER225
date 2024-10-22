@@ -71,7 +71,7 @@ public class Shopmap extends Map {
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
-        getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
+        //getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
         getMapTile(5, 0).setInteractScript(new ReturnScript(screenCoordinator));
 
