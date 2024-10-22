@@ -8,6 +8,7 @@ import Builders.FrameBuilder;
 import Engine.MouseHandler;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
+import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
 import Utils.Point;
@@ -35,6 +36,7 @@ public class Enemy extends NPC {
         curHealth -= 1;
         if(curHealth <= 0) {
             isLocked = true; 
+            this.mapEntityStatus = mapEntityStatus.REMOVED;
             //Dead stuff (Doing later cuz I've got a couple solutions and am not sure which is best yet)
             //Lazy plan for this is to setLocation off the map, then changed moveSpeed to 0
         } else {

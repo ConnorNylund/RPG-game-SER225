@@ -21,7 +21,7 @@ public class DinoScript extends Script {
 
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
-        scriptActions.add(new TextboxScriptAction("Isn't my garden so lovely?"));
+        scriptActions.add(new TextboxScriptAction("Welcome to the Shop, take a look at the merchandise "));
 
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
