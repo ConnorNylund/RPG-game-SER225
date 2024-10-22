@@ -49,7 +49,6 @@ public class PushableRock extends EnhancedMapTile {
     
         if (this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
             System.out.println("clicked");
-            System.out.println("DEBUG: " + this.x + "," + this.y); 
             int rand = (int)(Math.random() * 4 + 1);
             switch (rand) {
                 case 1:
