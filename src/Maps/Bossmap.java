@@ -70,7 +70,7 @@ public class Bossmap extends Map {
 
         //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
-        //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
+        //getMapTile(3, 3).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
