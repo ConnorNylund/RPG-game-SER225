@@ -619,6 +619,51 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(HorizontalGateTile);
 
+        Frame ShopFloorFrame = new FrameBuilder(getSubImage(7, 1))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopFloorTile = new MapTileBuilder(ShopFloorFrame)
+        .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(ShopFloorTile);
+
+        Frame ShopGun1Frame = new FrameBuilder(getSubImage(7, 0))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopGun1Tile = new MapTileBuilder(ShopGun1Frame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopGun1Tile);
+
+        Frame ShopGun2Frame = new FrameBuilder(getSubImage(6, 2))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopGun2Tile = new MapTileBuilder(ShopGun2Frame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopGun2Tile);
+
+        Frame ShopGun3Frame = new FrameBuilder(getSubImage(6, 1))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopGun3Tile = new MapTileBuilder(ShopGun3Frame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopGun3Tile);
+
+        Frame ShopGun4Frame = new FrameBuilder(getSubImage(6, 0))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopGun4Tile = new MapTileBuilder(ShopGun4Frame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopGun4Tile);
+
         return mapTiles;
     }
 }
