@@ -16,16 +16,16 @@ import java.util.HashMap;
 
 public class Enemy extends NPC {
     protected int id = 0;
-    protected boolean isLocked = false;
     protected int curHealth;
     protected int totalHealth;
     protected double antiJankTimer;
     protected float moveSpeed;
+    protected float lastAmountMovedY, lastAmountMovedX; 
 
     public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation, int totalHealth) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
-        moveSpeed = 2;
+        moveSpeed = 3;
 
         this.totalHealth = totalHealth;
         curHealth = totalHealth;
@@ -45,7 +45,7 @@ public class Enemy extends NPC {
     }
     public void update(Player player) {
         //System.out.println("DEBUG: Time difference: " + (System.nanoTime()-antiJankTimer)/1000000000.0); //Doing this so the mouse can't just be spammed, puts a 1 second cooldown on the players ability to attack, could maybe make this adjustable in the future if we rlly wanted
-        System.out.println("DEBUG: MousePos-" + MouseHandler.mousePos + " isClicked?-" + MouseHandler.leftMouseDown + " thisPos-x,y" + this.x + "," + this.y);
+        //System.out.println("DEBUG: MousePos-" + MouseHandler.mousePos + " isClicked?-" + MouseHandler.leftMouseDown + " thisPos-x,y" + this.x + "," + this.y);
         if ((System.nanoTime()-antiJankTimer)/1000000000.0 > 1 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
             System.out.println("DEBUG: clicked");
             antiJankTimer = System.nanoTime();
@@ -65,14 +65,20 @@ public class Enemy extends NPC {
         float py = player.getY();
         float ex = this.x;
         float ey = this.y;
-        float xRatio = (px-ex)/(py-ey);
-        float yRatio = (py-ey)/(px-ex);
+        
+        float dx = px-ex;
+        float dy = py-ey;
 
-        double angToPlay = Math.atan2(px-ex, py-ey); //Converts the coordinate to being relative to the enemy (makes the angle more applicable)
+        float dMag = (float)Math.sqrt((double)(dx*dx+dy*dy));
+        float xRatio = dx/dMag; //What percentage of our movement should go in the X direction
+        float yRatio = dy/dMag; //What percentage of our movement should go in the Y direction
+
+        double angToPlay = Math.atan2(dx, dy); //Converts the coordinate to being relative to the enemy (makes the angle more applicable)
         //System.out.println("DEBUG:\n Enemy Coords: " + ex + ", " + ey + "\n Player Coords: " + px + ", " + py + "\n Angle Between: " + angToPlay + "\n\n");
         if(!isLocked) {
-            moveXHandleCollision(moveSpeed*xRatio);
-            moveYHandleCollision(moveSpeed*yRatio);
+            System.out.println("DEBUG: Moving " + moveSpeed * (xRatio/2) + " in X      Moving " + moveSpeed * (yRatio/2) + " in Y");
+            lastAmountMovedX = super.moveXHandleCollision(moveSpeed * (xRatio/2));
+            lastAmountMovedY = super.moveYHandleCollision(moveSpeed * (yRatio/2));
         }
 
     }
