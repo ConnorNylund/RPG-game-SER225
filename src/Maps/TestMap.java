@@ -71,7 +71,7 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
         //Here for testing purposes, can be deleted if needed
-        Enemy testEnem = new Enemy(1, getMapTile(27, 27).getLocation(), new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), "DAMAGE1", 3); 
+        Enemy testEnem = new Enemy(1, getMapTile(27, 27).getLocation(), new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), "DAMAGE3", 3); 
         npcs.add(testEnem);
 
         Walrus walrus = new Walrus(1, getMapTile(26, 19).getLocation().subtractY(40));
