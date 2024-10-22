@@ -77,8 +77,8 @@ public class Enemy extends NPC {
         //System.out.println("DEBUG:\n Enemy Coords: " + ex + ", " + ey + "\n Player Coords: " + px + ", " + py + "\n Angle Between: " + angToPlay + "\n\n");
         if(!isLocked) {
             System.out.println("DEBUG: Moving " + moveSpeed * (xRatio/2) + " in X      Moving " + moveSpeed * (yRatio/2) + " in Y");
-            lastAmountMovedX = super.moveXHandleCollision(moveSpeed * (xRatio/2));
-            lastAmountMovedY = super.moveYHandleCollision(moveSpeed * (yRatio/2));
+            lastAmountMovedX = super.moveXHandleCollision(moveSpeed * (xRatio));
+            lastAmountMovedY = super.moveYHandleCollision(moveSpeed * (yRatio));
         }
 
     }
