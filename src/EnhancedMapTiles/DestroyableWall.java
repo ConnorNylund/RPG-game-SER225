@@ -22,8 +22,7 @@ public class DestroyableWall extends EnhancedMapTile{
         super(location.x, location.y, new SpriteSheet(ImageLoader.load(gateTitle), 16, 16), TileType.NOT_PASSABLE);
 
         isDestroyed = true;
-        beenDestroyed = false; 
-        destroyWall();
+        beenDestroyed = false;
     }
 
     @Override
@@ -38,6 +37,7 @@ public class DestroyableWall extends EnhancedMapTile{
     }
     public void destroyWall() { //In theory, calling this method destroys an instance of these walls. In order to destroy an entire section, we could group them all in an array, then call this method on each member of the array horribly inefficient so O'neil would be crying but in theory it would work
         isDestroyed = true;
+        neighbor.destroyWall();
     }
 
     @Override
