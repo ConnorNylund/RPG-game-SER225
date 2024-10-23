@@ -3,26 +3,27 @@ import Enemies.Enemy;
 
 import java.util.ArrayList;
 public class WaveManager {
-    public static ArrayList<Enemy> currentEnemies = new ArrayList<>();
-    public static int numEnemies;
-    public static int currentWave;
-    public static final int TOTAL_WAVES = 5;
+    private ArrayList<Wave> waves;
+    private int numEnemies;
+    private int currentWaveIndex;
+    private Wave currentWave;
+    private int numWaves;
 
-    public WaveManager() {
-        currentWave = 1;
+    public WaveManager(int numWaves) {
+        this.numWaves = numWaves;
+        currentWaveIndex = 0;
+        waves = 
+        //numEnemies = 5; // replace this with random enemy spawner number of enemies
+        newWave();
     }
 
-    public void newWave(int numEnemies) {
-        currentWave++;
+    public void newWave() {
+        if (currentWaveIndex != 5) {
+            currentWaveIndex++;
+        }
     }
 
-    public void killEnemy(Enemy e) {
-        currentEnemies.remove(e);
-        numEnemies--;
-    }
-
-    public static void addEnemy(Enemy e) {
-        currentEnemies.add(e);
-        numEnemies++;
+    public void addWave(Wave w) {
+        waves.add(w);
     }
 } 
