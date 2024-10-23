@@ -17,7 +17,7 @@ public class Bossmap extends Map {
 
     public Bossmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Bossmap.txt", new CommonTileset(), screenCoordinator);
-        this.playerStartPosition = getMapTile(5, 5).getLocation();
+        this.playerStartPosition = getMapTile(5, 8).getLocation();
         this.currentMap = 1;
     }
 
@@ -74,7 +74,7 @@ public class Bossmap extends Map {
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        getMapTile(5, 0).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(5, 9).setInteractScript(new ReturnScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }    
