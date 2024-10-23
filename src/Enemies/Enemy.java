@@ -90,19 +90,19 @@ public class Enemy extends NPC {
             put("DAMAGE1", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,2))
                     .withScale(3)
-                    .withBounds(6,12,12,7)
+                    .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,1))
                     .withScale(3)
-                    .withBounds(6,12,12,7)
+                    .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,0))
                     .withScale(3)
-                    .withBounds(6,12,12,7)
+                    .withBounds(0,0,16,16)
                     .build(),
             });
 
