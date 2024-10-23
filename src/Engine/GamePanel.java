@@ -60,8 +60,8 @@ public class GamePanel extends JPanel{
 
 		fpsDisplayLabel = new SpriteFont("FPS", 4, 3, "Arial", 12, Color.black);
 
-		waveLabel = new SpriteFont("Wave: 0", 4, 3, "Arial", 30, Color.white);
-		enemyLabel = new SpriteFont("Enemies Remaining: 0", 4, 50, "Arial", 30, Color.white);
+		waveLabel = new SpriteFont("Wave: " + WaveManager.currentWaveIndex, 4, 3, "Arial", 30, Color.white);
+		enemyLabel = new SpriteFont("Enemies Remaining: " + WaveManager.numEnemies, 4, 50, "Arial", 30, Color.white);
 
 		currentFPS = Config.TARGET_FPS;
 
@@ -131,10 +131,10 @@ public class GamePanel extends JPanel{
 	}
 
 	private void updateWave() {
-		waveLabel.setText("Wave: 0");
+		waveLabel.setText("Wave: " + WaveManager.currentWaveIndex);
 	}
 	private void updateEnemyCount() {
-		enemyLabel.setText("Enemies Remaining: 0");
+		enemyLabel.setText("Enemies Remaining: " + WaveManager.numEnemies);
 	}
 
 	public void draw() {			

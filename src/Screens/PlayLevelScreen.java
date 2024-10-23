@@ -12,6 +12,7 @@ import Maps.TestMap;
 import Players.Bunny;
 import Utils.Direction;
 import Utils.Point;
+import Waves.WaveManager;
 import Engine.Key;  // Import Key class for using specific keys
 
 // This class is for when the RPG game is actually being played
@@ -24,6 +25,7 @@ public class PlayLevelScreen extends Screen {
     protected FlagManager flagManager;
     protected int currentMap;  
     protected int slowTileIndex;
+    protected WaveManager waveManager;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -41,7 +43,8 @@ public class PlayLevelScreen extends Screen {
         map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
 
-
+        // setup Wave Manager
+        waveManager = new WaveManager(5);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
