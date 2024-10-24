@@ -1,5 +1,6 @@
 package Waves;
 import Enemies.Enemy;
+import Level.Map;
 
 import java.util.ArrayList;
 public class WaveManager {
@@ -9,10 +10,15 @@ public class WaveManager {
     private Wave currentWave;
     private int numWaves;
 
-    public WaveManager(int numWaves) {
+    public WaveManager(int numWaves, Map map) {
         this.numWaves = numWaves;
         currentWaveIndex = 0;
         waves = new ArrayList<Wave>(5);
+
+        for (int i = 0; i < numWaves; i++) {
+            Wave wave = new Wave((i + 1) * 2, map);
+            waves.add(wave);
+        }
         
         newWave();
     }
@@ -22,6 +28,17 @@ public class WaveManager {
             currentWaveIndex++;
             if (!waves.isEmpty()) {
                 currentWave = waves.get(currentWaveIndex-1);
+                currentWave.Spawn();
+            }
+        }
+    }
+
+    public void update() {
+        if (currentWave != null) {
+            currentWave.update();
+
+            if (currentWave.getEnemiesAlive() <= 0) {
+                newWave();
             }
         }
     }

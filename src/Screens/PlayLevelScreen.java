@@ -44,7 +44,7 @@ public class PlayLevelScreen extends Screen {
         map.setFlagManager(flagManager);
 
         // setup Wave Manager
-        waveManager = new WaveManager(5);
+        waveManager = new WaveManager(5, map);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -71,6 +71,8 @@ public class PlayLevelScreen extends Screen {
         if (Keyboard.isKeyDown(Key.T)) {
             System.out.println("Training dummy has taken damage!");
         }
+
+        waveManager.update();
 
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {

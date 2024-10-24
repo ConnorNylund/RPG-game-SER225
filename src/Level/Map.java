@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.util.Random;
+
 /*
     This class is for defining a map that is used for a specific level
     The map class handles/manages a lot of different things, including:
@@ -28,6 +30,7 @@ import java.util.Scanner;
 public abstract class Map {
     // the tile map (map tiles that make up the entire map image)
     protected MapTile[] mapTiles;
+    protected Random random;
 
     // width and height of the map in terms of the number of tiles width-wise and height-wise
     protected int width;
@@ -78,6 +81,8 @@ public abstract class Map {
     protected Player player;
     protected ScreenCoordinator screenCoordinator;
 
+    protected ArrayList<MapTile> grassTiles;
+
     public int currentMap = 0;
 
     public int getCurrentMap() {
@@ -95,6 +100,8 @@ public abstract class Map {
     public Map(String mapFileName, Tileset tileset, ScreenCoordinator screenCoordinator) {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
+        this.grassTiles = new ArrayList<>();
+        this.random = new Random();
         setupMap(screenCoordinator);
         this.startBoundX = 0;
         this.startBoundY = 0;
@@ -104,6 +111,7 @@ public abstract class Map {
         this.yMidPoint = (ScreenManager.getScreenHeight() / 2);
         this.playerStartPosition = new Point(0, 0);
         this.screenCoordinator = screenCoordinator;
+
     }
 
     // sets up map by reading in the map file to create the tile map
@@ -173,6 +181,10 @@ public abstract class Map {
                 tile.setMap(this);
                 setMapTile(j, i, tile);
 
+                if (tile.getTileIndex() == 40) {
+                    this.grassTiles.add(tile);
+                }
+
                 if (tile.isAnimated()) {
                     animatedMapTiles.add(tile);
                 }
@@ -189,6 +201,11 @@ public abstract class Map {
         fileWriter = new FileWriter(Config.MAP_FILES_PATH + this.mapFileName);
         fileWriter.write("0 0\n");
         fileWriter.close();
+    }
+
+    public MapTile getRandomGrassTile() {
+        int index = random.nextInt(this.grassTiles.size());
+        return this.grassTiles.get(index);
     }
 
     // gets player start position based on player start tile (basically the start tile's position on the map)
