@@ -26,7 +26,7 @@ public class Enemy extends NPC {
     public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation, int totalHealth) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
-        moveSpeed = 2;
+        moveSpeed = 1.7f;
 
         this.totalHealth = totalHealth;
         curHealth = totalHealth;
@@ -89,19 +89,19 @@ public class Enemy extends NPC {
         return new HashMap<String, Frame[]>() {{
             put("DAMAGE1", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,2))
-                    .withScale(3)
+                    .withScale(2)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,1))
-                    .withScale(3)
+                    .withScale(2)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,0))
-                    .withScale(3)
+                    .withScale(2)
                     .withBounds(0,0,16,16)
                     .build(),
             });
