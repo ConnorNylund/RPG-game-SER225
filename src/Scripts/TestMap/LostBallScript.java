@@ -19,7 +19,7 @@ public class LostBallScript extends Script {
         //     addText("Where did my ball go!?");
         //     addText("I left it right here before I took my 22 hour cat nap.");
         //     addText("Maybe Walrus has seen it.");
-        // }});
+        // }}); 
 
         scriptActions.add(new ChangeFlagScriptAction("hasLostBall", true));
 

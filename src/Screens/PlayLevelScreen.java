@@ -1,3 +1,5 @@
+// PLAYLEVELSCREEN CODE
+
 package Screens;
 
 import Engine.GraphicsHandler;
@@ -10,9 +12,11 @@ import Maps.Shopmap;
 import Maps.Bossmap;
 import Maps.TestMap;
 import Players.Bunny;
+import ScriptActions.TextboxScriptAction;
 import Utils.Direction;
 import Utils.Point;
 import Engine.Key;  // Import Key class for using specific keys
+import java.util.ArrayList;
 
 // This class is for when the RPG game is actually being played
 public class PlayLevelScreen extends Screen {
@@ -36,32 +40,30 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
-
+        flagManager.addFlag("hasSeenBlurb", false);
+    
         // define/setup map
         map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
-
-
-
+    
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING; 
         player.setFacingDirection(Direction.LEFT);
-
+    
         map.setPlayer(player);
-
-
-
+    
         // let pieces of map know which button to listen for as the "interact" button
         map.getTextbox().setInteractKey(player.getInteractKey());
-
+    
         // preloads all scripts ahead of time rather than loading them dynamically
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
-
+    
         winScreen = new WinScreen(this);
     }
+    
 
     public void update() {
         // check is the key "T" is pressed to show damage taken
@@ -87,7 +89,9 @@ public class PlayLevelScreen extends Screen {
                 winScreen.update();
                 break;
         }
+
     }
+
 
     public void draw(GraphicsHandler graphicsHandler) {
         // based on screen state, draw appropriate graphics
@@ -118,3 +122,7 @@ public class PlayLevelScreen extends Screen {
         RUNNING, LEVEL_COMPLETED
     }
 }
+
+
+
+
