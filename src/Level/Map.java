@@ -78,6 +78,8 @@ public abstract class Map {
     protected Player player;
     protected ScreenCoordinator screenCoordinator;
 
+
+
     public int currentMap = 0;
 
     public int getCurrentMap() {
@@ -524,6 +526,11 @@ public abstract class Map {
             adjustMovementX(player);
         }
         camera.update(player);
+
+        // for (EnhancedMapTile enhancedMapTile : enhancedMapTiles) {
+        //     enhancedMapTile.update();
+        // }
+
         if (textbox.isActive()) {
             textbox.update();
         }
