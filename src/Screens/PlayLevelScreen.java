@@ -15,6 +15,7 @@ import Players.Bunny;
 import ScriptActions.TextboxScriptAction;
 import Utils.Direction;
 import Utils.Point;
+import Waves.WaveManager;
 import Engine.Key;  // Import Key class for using specific keys
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class PlayLevelScreen extends Screen {
     protected FlagManager flagManager;
     protected int currentMap;  
     protected int slowTileIndex;
+    protected WaveManager waveManager;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -70,6 +72,8 @@ public class PlayLevelScreen extends Screen {
         if (Keyboard.isKeyDown(Key.T)) {
             System.out.println("Training dummy has taken damage!");
         }
+
+        waveManager.update();
 
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {

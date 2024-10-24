@@ -23,7 +23,7 @@ import java.util.Iterator;
 public class Bunny extends Player {
 
     public Bunny(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("bloodybunny.png"), 16, 16), x, y, "STAND_RIGHT");
+        super(new SpriteSheet(ImageLoader.load("bunnyWalkFixed.png"), 16, 16), x, y, "STAND_RIGHT");
     }
 
     public Map getMap() {

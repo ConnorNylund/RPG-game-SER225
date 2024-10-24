@@ -18,7 +18,7 @@ public class Shopmap extends Map {
 
     public Shopmap(ScreenCoordinator screenCoordinator) {
         super("Shopmap.txt", new CommonTileset(), screenCoordinator);
-        this.playerStartPosition = getMapTile(5, 5).getLocation();
+        this.playerStartPosition = getMapTile(6, 10).getLocation();
     }
 
     @Override
@@ -72,9 +72,25 @@ public class Shopmap extends Map {
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
+        getMapTile(3, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
+        getMapTile(4, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
+        getMapTile(5, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
+
+        getMapTile(3, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
+        getMapTile(4, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
+        getMapTile(5, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
+
+        getMapTile(8, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
+        getMapTile(9, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
+        getMapTile(10, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
+
+        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
-        getMapTile(5, 0).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(6, 11).setInteractScript(new ReturnScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }    

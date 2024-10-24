@@ -1,28 +1,54 @@
 package Waves;
 import Enemies.Enemy;
+import Level.Map;
 
 import java.util.ArrayList;
 public class WaveManager {
-    public static ArrayList<Enemy> currentEnemies = new ArrayList<>();
+    private ArrayList<Wave> waves;
     public static int numEnemies;
-    public static int currentWave;
-    public static final int TOTAL_WAVES = 5;
+    public static int currentWaveIndex;
+    private Wave currentWave;
+    private int numWaves;
 
-    public WaveManager() {
-        currentWave = 1;
+    public WaveManager(int numWaves, Map map) {
+        this.numWaves = numWaves;
+        currentWaveIndex = 0;
+        waves = new ArrayList<Wave>(5);
+
+        for (int i = 0; i < numWaves; i++) {
+            Wave wave = new Wave((i + 1) * 2, map);
+            waves.add(wave);
+        }
+        
+        newWave();
     }
 
-    public void newWave(int numEnemies) {
-        currentWave++;
+    public void newWave() {
+        if (currentWaveIndex != numWaves) {
+            currentWaveIndex++;
+            if (!waves.isEmpty()) {
+                currentWave = waves.get(currentWaveIndex-1);
+                currentWave.Spawn();
+            }
+        }
     }
 
-    public void killEnemy(Enemy e) {
-        currentEnemies.remove(e);
-        numEnemies--;
+    public void update() {
+        if (currentWave != null) {
+            currentWave.update();
+            numEnemies = currentWave.getEnemiesAlive();
+
+            if (currentWave.getEnemiesAlive() <= 0) {
+                newWave();
+            }
+        }
     }
 
-    public static void addEnemy(Enemy e) {
-        currentEnemies.add(e);
-        numEnemies++;
+    public void addWave(Wave w) {
+        waves.add(w);
+    }
+
+    public Wave getCurrentWave() {
+        return this.currentWave;
     }
 } 
