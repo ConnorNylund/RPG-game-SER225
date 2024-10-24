@@ -21,6 +21,15 @@ import Engine.Screen;
 
 // Represents a test map to be used in a level
 public class TestMap extends Map {
+    public DestroyableWall destroyableWallV1;
+    public DestroyableWall destroyableWallV2;
+    public DestroyableWall destroyableWallV3;
+     
+    public DestroyableWall destroyableWallH1;
+    public DestroyableWall destroyableWallH2;
+    public DestroyableWall destroyableWallH3;
+    public DestroyableWall destroyableWallH4;
+    public DestroyableWall destroyableWallH5;
 
     protected ScreenCoordinator screenCoordinator;
 
@@ -38,15 +47,15 @@ public class TestMap extends Map {
         PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
         enhancedMapTiles.add(pushableRock);
 
-        DestroyableWall destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
-        DestroyableWall destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
-        DestroyableWall destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
+        destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
+        destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
+        destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
 
-        DestroyableWall destroyableWallH1 = new DestroyableWall(getMapTile(4, 13).getLocation(), "GateHorizontal.png");
-        DestroyableWall destroyableWallH2 = new DestroyableWall(getMapTile(5, 13).getLocation(), "GateHorizontal.png");
-        DestroyableWall destroyableWallH3 = new DestroyableWall(getMapTile(6, 13).getLocation(), "GateHorizontal.png");
-        DestroyableWall destroyableWallH4 = new DestroyableWall(getMapTile(7, 13).getLocation(), "GateHorizontal.png");
-        DestroyableWall destroyableWallH5 = new DestroyableWall(getMapTile(8, 13).getLocation(), "GateHorizontal.png");
+        destroyableWallH1 = new DestroyableWall(getMapTile(4, 13).getLocation(), "GateHorizontal.png");
+        destroyableWallH2 = new DestroyableWall(getMapTile(5, 13).getLocation(), "GateHorizontal.png");
+        destroyableWallH3 = new DestroyableWall(getMapTile(6, 13).getLocation(), "GateHorizontal.png");
+        destroyableWallH4 = new DestroyableWall(getMapTile(7, 13).getLocation(), "GateHorizontal.png");
+        destroyableWallH5 = new DestroyableWall(getMapTile(8, 13).getLocation(), "GateHorizontal.png");
 
         enhancedMapTiles.add(destroyableWallV1);
         enhancedMapTiles.add(destroyableWallV2);
