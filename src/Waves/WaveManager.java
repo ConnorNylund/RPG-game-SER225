@@ -1,6 +1,7 @@
 package Waves;
 import Enemies.Enemy;
 import Level.Map;
+import Maps.TestMap;
 
 import java.util.ArrayList;
 public class WaveManager {
@@ -9,8 +10,10 @@ public class WaveManager {
     public static int currentWaveIndex;
     private Wave currentWave;
     private int numWaves;
+    private Map testMap;
 
     public WaveManager(int numWaves, Map map) {
+        this.testMap = map;
         this.numWaves = numWaves;
         currentWaveIndex = 0;
         waves = new ArrayList<Wave>(5);
@@ -41,6 +44,9 @@ public class WaveManager {
             if (currentWave.getEnemiesAlive() <= 0) {
                 newWave();
             }
+        }
+        if(currentWaveIndex >= 3) {
+            ((TestMap)testMap).destroyWall1(); 
         }
     }
 

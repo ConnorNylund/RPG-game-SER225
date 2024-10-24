@@ -31,7 +31,6 @@ public class TestMap extends Map {
     public DestroyableWall destroyableWallH3;
     public DestroyableWall destroyableWallH4;
     public DestroyableWall destroyableWallH5;
-
     protected ScreenCoordinator screenCoordinator;
 
     public TestMap(ScreenCoordinator screenCoordinator, int currentMap) {
@@ -81,7 +80,11 @@ public class TestMap extends Map {
 
         return enhancedMapTiles;
     }
-
+    public void destroyWall1() {
+        destroyableWallV1.destroyWall();
+        destroyableWallV2.destroyWall();
+        destroyableWallV3.destroyWall();
+    }
     
 
     @Override
