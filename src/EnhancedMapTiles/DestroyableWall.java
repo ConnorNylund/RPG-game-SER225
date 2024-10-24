@@ -39,11 +39,10 @@ public class DestroyableWall extends EnhancedMapTile{
         if(!isDestroyed) {
             this.setLocation(x+4800, y);
             System.out.println("I am a wall that sohuld've moved at x" + x + " y" + y);
+            this.mapEntityStatus = mapEntityStatus.REMOVED;
         }
         isDestroyed = true;
         //neighbor.destroyWall();
-        
-        
     }
 
     @Override
