@@ -2,6 +2,7 @@ package Maps;
 
 import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
+import EnhancedMapTiles.Coin;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.SpriteSheet;
@@ -44,12 +45,20 @@ public class TestMap extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        enhancedMapTiles.add(pushableRock);
+        //PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        //enhancedMapTiles.add(pushableRock);
 
         destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
         destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
         destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
+        // ADDING COIN TO THE MAP
+        Coin coin = new Coin(getMapTile(10, 7).getLocation());
+        enhancedMapTiles.add(coin);
+
+        //Brady's broken code dump
+        DestroyableWall destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
+        DestroyableWall destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
+        DestroyableWall destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
 
         destroyableWallH1 = new DestroyableWall(getMapTile(4, 13).getLocation(), "GateHorizontal.png");
         destroyableWallH2 = new DestroyableWall(getMapTile(5, 13).getLocation(), "GateHorizontal.png");
@@ -100,13 +109,21 @@ public class TestMap extends Map {
     }
 
     @Override
-    public ArrayList<Trigger> loadTriggers() {
-        ArrayList<Trigger> triggers = new ArrayList<>();
-        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
-        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
-        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
-        return triggers;
-    }
+public ArrayList<Trigger> loadTriggers() {
+    ArrayList<Trigger> triggers = new ArrayList<>();
+
+    // Add a trigger for GameBlurbScript near the player's start position
+   // triggers.add(new Trigger(1216, 768, 100, 10, new GameBlurbScript(), "hasSeenBlurb"));
+// 1216
+    // Original LostBallScript triggers
+    triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
+    triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+    triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+
+    return triggers;
+}
+
+    
 
     @Override
     public void loadScripts(ScreenCoordinator screenCoordinator) {
@@ -128,5 +145,6 @@ public class TestMap extends Map {
 
         super.loadScripts(screenCoordinator);
     }
+
 
 }

@@ -541,6 +541,11 @@ public abstract class Map {
             adjustMovementX(player);
         }
         camera.update(player);
+
+        // for (EnhancedMapTile enhancedMapTile : enhancedMapTiles) {
+        //     enhancedMapTile.update();
+        // }
+
         if (textbox.isActive()) {
             textbox.update();
         }
