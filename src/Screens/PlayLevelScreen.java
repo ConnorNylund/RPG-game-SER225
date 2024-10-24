@@ -47,6 +47,8 @@ public class PlayLevelScreen extends Screen {
         // define/setup map
         map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
+
+        waveManager = new WaveManager(5, map);
     
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
