@@ -25,8 +25,8 @@ public class Shopmap extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        enhancedMapTiles.add(pushableRock);
+        //PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        //enhancedMapTiles.add(pushableRock);
 
         return enhancedMapTiles;
     }
