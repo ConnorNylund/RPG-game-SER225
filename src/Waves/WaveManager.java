@@ -45,7 +45,7 @@ public class WaveManager {
                 newWave();
             }
         }
-        if(currentWaveIndex >= 6) {
+        if(currentWaveIndex >= 5) {
             ((TestMap)testMap).destroyWall1(); 
         }
     }
