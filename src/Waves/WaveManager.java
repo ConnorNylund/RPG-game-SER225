@@ -36,6 +36,7 @@ public class WaveManager {
     public void update() {
         if (currentWave != null) {
             currentWave.update();
+            numEnemies = currentWave.getEnemiesAlive();
 
             if (currentWave.getEnemiesAlive() <= 0) {
                 newWave();
