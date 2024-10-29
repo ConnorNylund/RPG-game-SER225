@@ -97,6 +97,7 @@ public abstract class Map {
         }
     }
 
+
     public Map(String mapFileName, Tileset tileset, ScreenCoordinator screenCoordinator) {
         this.mapFileName = mapFileName;
         this.tileset = tileset;

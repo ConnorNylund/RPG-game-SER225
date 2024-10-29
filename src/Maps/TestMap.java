@@ -49,7 +49,7 @@ public class TestMap extends Map {
 
 
         // ADDING COIN TO THE MAP
-        Coin coin = new Coin(getMapTile(10, 7).getLocation());
+        Coin coin = new Coin(getMapTile(35, 20).getLocation());
         enhancedMapTiles.add(coin);
 
         //Brady's broken code dump
