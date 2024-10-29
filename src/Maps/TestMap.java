@@ -114,7 +114,7 @@ public ArrayList<Trigger> loadTriggers() {
     ArrayList<Trigger> triggers = new ArrayList<>();
 
     // Add a trigger for GameBlurbScript near the player's start position
-   // triggers.add(new Trigger(1216, 768, 100, 10, new GameBlurbScript(), "hasSeenBlurb"));
+    // triggers.add(new Trigger(1216, 768, 100, 10, new GameBlurbScript(), "hasSeenBlurb"));
 // 1216
     // Original LostBallScript triggers
     triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
