@@ -5,6 +5,7 @@
 package Enemies;
 
 import Builders.FrameBuilder;
+import Engine.ImageLoader;
 import Engine.MouseHandler;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
@@ -22,13 +23,14 @@ public class Enemy extends NPC {
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
+    static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16);
 
-    public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation, int totalHealth) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
+    public Enemy(int id, Point location, String startingAnimation) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
         moveSpeed = 1.7f;
 
-        this.totalHealth = totalHealth;
+        this.totalHealth = 3;
         curHealth = totalHealth;
         antiJankTimer = System.nanoTime(); 
     }
