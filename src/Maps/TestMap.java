@@ -92,7 +92,7 @@ public class TestMap extends Map {
         // Enemy testEnem = new Enemy(1, getMapTile(27, 27).getLocation(), new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), "DAMAGE3", 3); 
         // npcs.add(testEnem);
 
-        Walrus walrus = new Walrus(1, getMapTile(26, 19).getLocation().subtractY(40));
+        Walrus walrus = new Walrus(1, getMapTile(27, 19).getLocation().subtractY(40));
         npcs.add(walrus);
 
         // Dinosaur dinosaur = new Dinosaur(2, getMapTile(13, 4).getLocation());
@@ -140,7 +140,7 @@ public ArrayList<Trigger> loadTriggers() {
 
         getMapTile(2, 6).setInteractScript(new TreeScript());
 
-        getMapTile(26, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
 
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
 
