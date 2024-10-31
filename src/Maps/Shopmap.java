@@ -84,9 +84,9 @@ public class Shopmap extends Map {
         getMapTile(9, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
         getMapTile(10, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
 
-        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
-        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
-        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
+        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
+        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
