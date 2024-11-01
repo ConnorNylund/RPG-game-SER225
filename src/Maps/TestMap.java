@@ -39,6 +39,7 @@ public class TestMap extends Map {
         this.screenCoordinator = screenCoordinator;
         this.currentMap = 0;
     }
+
     
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {

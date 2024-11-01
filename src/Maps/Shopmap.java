@@ -16,9 +16,19 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class Shopmap extends Map {
 
-    public Shopmap(ScreenCoordinator screenCoordinator) {
+    public Shopmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Shopmap.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(6, 10).getLocation();
+        this.screenCoordinator = screenCoordinator;
+        this.currentMap = 2;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        if (currentMap == 2) {
+            this.currentMap = currentMap;
+        } else {
+            throw new IllegalArgumentException("Map cannot be negative");
+        }
     }
 
     @Override

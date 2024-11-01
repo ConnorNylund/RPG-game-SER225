@@ -664,6 +664,46 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(ShopGun4Tile);
 
+        //----------------------Boss room tiles--------------------------------------
+
+        //boss floor
+        Frame BossfloorFrame = new FrameBuilder(getSubImage(8, 3))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder BossfloorTile = new MapTileBuilder(BossfloorFrame)
+        .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(BossfloorTile);
+
+        //boss wall
+        Frame BossWallFrame = new FrameBuilder(getSubImage(8, 4))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder BossWallTile = new MapTileBuilder(BossWallFrame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(BossWallTile);
+
+        //boss wall W/torch
+        Frame[] bossWallTorchFrames = new Frame[] {
+                new FrameBuilder(getSubImage(7, 2), 30)
+                    .withScale(tileScale)
+                    .build(),
+                new FrameBuilder(getSubImage(7, 3), 30)
+                        .withScale(tileScale)
+                        .build(),
+                new FrameBuilder(getSubImage(7, 4), 30)
+                        .withScale(tileScale)
+                        .build(),
+        };
+
+        MapTileBuilder bossWallTorchTile = new MapTileBuilder(bossWallTorchFrames)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bossWallTorchTile);
+
         return mapTiles;
     }
 }
