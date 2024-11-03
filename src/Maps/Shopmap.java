@@ -105,16 +105,12 @@ public class Shopmap extends Map {
         getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
         getMapTile(10, 3).setInteractScript(new ItemPickUpScript());
 
-<<<<<<< HEAD
         getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
         getMapTile(8, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
-        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
-=======
-        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
-        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
-        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
->>>>>>> c8a4345493ed62483b9b0e7f977499eb5f68c25e
+        getMapTile(9, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(9, 7).setInteractScript(new ItemPickUpScript());
+        getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
