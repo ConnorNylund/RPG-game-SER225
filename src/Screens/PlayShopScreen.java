@@ -33,7 +33,7 @@ public class PlayShopScreen extends Screen {
         //flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new Shopmap(screenCoordinator);
+        map = new Shopmap(screenCoordinator, 2);
         map.setFlagManager(flagManager);
 
         // setup player

@@ -8,11 +8,13 @@ import ScriptActions.UnlockPlayerScriptAction;
 import ScriptActions.ScriptAction;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.Map;
 
 // Script for challenging the boss
 public class ReturnScript extends Script {
      // Create an instance of ScreenCoordinator
     private ScreenCoordinator screenCoordinator;
+    
 
     public ReturnScript(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator; // Initialize the screen coordinator
@@ -33,6 +35,7 @@ public class ReturnScript extends Script {
                 screenCoordinator.setGameState(GameState.LEVEL);
                 return ScriptState.COMPLETED;
             }
+            
         });
 
         // Unlock player movement
