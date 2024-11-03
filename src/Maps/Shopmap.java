@@ -112,7 +112,6 @@ public class Shopmap extends Map {
         getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
         getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
-
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
         getMapTile(6, 11).setInteractScript(new ReturnScript(screenCoordinator));
