@@ -8,6 +8,7 @@ import ScriptActions.UnlockPlayerScriptAction;
 import ScriptActions.ScriptAction;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.Map;
 
 // Script for challenging the boss
 public class BossChallengeScript extends Script {

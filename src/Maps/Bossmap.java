@@ -19,6 +19,7 @@ public class Bossmap extends Map {
     public Bossmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Bossmap.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(5, 8).getLocation();
+        this.screenCoordinator = screenCoordinator;
         this.currentMap = 1;
     }
 

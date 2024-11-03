@@ -39,6 +39,7 @@ public class TestMap extends Map {
         this.screenCoordinator = screenCoordinator;
         this.currentMap = 0;
     }
+
     
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
@@ -49,7 +50,7 @@ public class TestMap extends Map {
 
 
         // ADDING COIN TO THE MAP
-        Coin coin = new Coin(getMapTile(10, 7).getLocation());
+        Coin coin = new Coin(getMapTile(35, 20).getLocation());
         enhancedMapTiles.add(coin);
 
         //Brady's broken code dump
@@ -87,7 +88,7 @@ public class TestMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus walrus = new Walrus(1, getMapTile(26, 19).getLocation().subtractY(40));
+        Walrus walrus = new Walrus(1, getMapTile(27, 19).getLocation().subtractY(40));
         npcs.add(walrus);
 
         // Adding the Fish Bunny NPC
@@ -104,10 +105,13 @@ public class TestMap extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
 
-        // Original LostBallScript triggers
-        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
-        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
-        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+    // Add a trigger for GameBlurbScript near the player's start position
+    // triggers.add(new Trigger(1216, 768, 100, 10, new GameBlurbScript(), "hasSeenBlurb"));
+// 1216
+    // Original LostBallScript triggers
+    triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
+    triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+    triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
         return triggers;
     }
@@ -116,7 +120,7 @@ public class TestMap extends Map {
     public void loadScripts(ScreenCoordinator screenCoordinator) {
         getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
         getMapTile(2, 6).setInteractScript(new TreeScript());
-        getMapTile(26, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);

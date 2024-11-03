@@ -95,7 +95,6 @@ public class PlayLevelScreen extends Screen {
                 winScreen.update();
                 break;
         }
-
     }
 
 
