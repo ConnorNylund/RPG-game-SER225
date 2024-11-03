@@ -8,7 +8,7 @@ import Utils.Direction;
 import java.util.HashMap;
 
 // This class is a base class for all npcs in the game -- all npcs should extend from it
-public class NPC extends MapEntity {
+public class NPC extends MapEntity  {
     protected int id = 0;
     protected boolean isLocked = false;
 

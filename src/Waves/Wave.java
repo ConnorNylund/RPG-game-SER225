@@ -27,7 +27,7 @@ public class Wave {
             Point position = grassTile.getLocation();
             Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
 
-            Enemy testEnem = new Enemy(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), "DAMAGE3", 3); 
+            Enemy testEnem = new Enemy(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
             this.enemies.add(testEnem);
             map.addNPC(testEnem);
         }

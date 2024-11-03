@@ -18,9 +18,19 @@ import java.util.ArrayList;
 // Represents a test map to be used in a level
 public class Shopmap extends Map {
 
-    public Shopmap(ScreenCoordinator screenCoordinator) {
+    public Shopmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Shopmap.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(6, 10).getLocation();
+        this.screenCoordinator = screenCoordinator;
+        this.currentMap = 2;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        if (currentMap == 2) {
+            this.currentMap = currentMap;
+        } else {
+            throw new IllegalArgumentException("Map cannot be negative");
+        }
     }
 
     @Override
@@ -95,10 +105,16 @@ public class Shopmap extends Map {
         getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
         getMapTile(10, 3).setInteractScript(new ItemPickUpScript());
 
+<<<<<<< HEAD
         getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
         getMapTile(8, 7).setInteractScript(new ItemPickUpScript());
         getMapTile(9, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
         getMapTile(10, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+=======
+        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
+        getMapTile(9, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
+        getMapTile(10, 7).setInteractScript(new SimpleTextScript("Bloody Cleaver"));
+>>>>>>> c8a4345493ed62483b9b0e7f977499eb5f68c25e
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
