@@ -8,12 +8,15 @@ import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.Keyboard;
+import Engine.MouseHandler;
 import Engine.Key;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
+import Weapons.TestPistol;
+import Weapons.Weapon;
 import Level.Map;
 import EnhancedMapTiles.Coin; // Import the Coin class from EnhancedMapTiles
 import Level.EnhancedMapTile; // Import the EnhancedMapTile class for reference
@@ -21,9 +24,16 @@ import java.util.Iterator;
 
 
 public class Bunny extends Player {
-
+    private float health;
+    private int dmgState;
+    private Weapon currentWeapon;
+    private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
+    
     public Bunny(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("bunnyWalkFixed.png"), 16, 16), x, y, "STAND_RIGHT");
+        super(sptSht, x, y, "STAND_RIGHT");
+        health = 4; 
+        dmgState = 0;
+        currentWeapon = new TestPistol(this.getLocation(), this.getMap());
     }
 
     public Map getMap() {
@@ -34,7 +44,24 @@ public class Bunny extends Player {
     public void update() {
         super.update();
         checkCoinPickup();
+        if(MouseHandler.leftMouseDown) {
+            currentWeapon.shoot(this.x, this.y, MouseHandler.mousePos.x, MouseHandler.mousePos.y);
+        }
     }
+
+    public void takeDamage() {
+        if(health != 0) {
+            health--;
+            if(dmgState < 3) {
+                dmgState++; 
+                this.animations = loadAnimations(sptSht);
+            }
+        } else {
+            //Put code for player death here
+        }
+        System.out.println("DEBUG: Health = " + health + "Dmg State = " + dmgState);
+    }
+
 
 
     private boolean isNearCoin(Coin coin) {
@@ -91,16 +118,17 @@ public class Bunny extends Player {
 
    @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
+        System.out.println("DEBUG: Anim Dmgstate = " + dmgState); 
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build()
             });
 
             put("STAND_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
@@ -108,41 +136,41 @@ public class Bunny extends Player {
             });
 
             put("WALK_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build()
             });
 
             put("WALK_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
