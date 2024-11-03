@@ -7,6 +7,7 @@ import Engine.Keyboard;  // Import this to use Keyboard handling
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Inventory.Inventory;
 import Level.*;
 import Maps.Shopmap;
 import Maps.Bossmap;
@@ -30,6 +31,7 @@ public class PlayLevelScreen extends Screen {
     protected int currentMap;  
     protected int slowTileIndex;
     protected WaveManager waveManager;
+    protected Inventory inventory;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -49,6 +51,8 @@ public class PlayLevelScreen extends Screen {
         map.setFlagManager(flagManager);
 
         waveManager = new WaveManager(5, map);
+
+        inventory = new Inventory();
     
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);

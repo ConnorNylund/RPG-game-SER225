@@ -3,6 +3,7 @@ package Level;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.SpriteSheet;
+import Inventory.InventoryItem;
 
 import java.util.HashMap;
 
@@ -26,6 +27,8 @@ public class MapEntity extends GameObject {
     // set to true if you do not want this entity to be able to be collided with by other entities
     // example of why you would use this: this is an entity that you want to overlap the player, but you do not want the player to be blocked by/have to worry about this entity's collision bounds when trying to move
     protected boolean isUncollidable = false;
+
+    protected InventoryItem itemData;
 
     public MapEntity(float x, float y, SpriteSheet spriteSheet, String startingAnimation) {
         super(spriteSheet, x, y, startingAnimation);
@@ -69,6 +72,12 @@ public class MapEntity extends GameObject {
         this.interactScript = interactScript;
         this.interactScript.setMapEntity(this);
     }
+
+    public InventoryItem getItemData() {return this.itemData;}
+
+    public void setItemData(InventoryItem itemData) {
+        this.itemData = itemData;
+    }  
 
     protected Script loadScript() {
         return null;

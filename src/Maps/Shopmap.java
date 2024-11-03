@@ -3,9 +3,11 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
 import Game.ScreenCoordinator;
+import Inventory.InventoryItem;
 import Level.*;
 // import NPCs.Bug;
  import NPCs.Dinosaur;
+import Scripts.ItemPickUpScript;
 // import NPCs.Walrus;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
@@ -72,19 +74,29 @@ public class Shopmap extends Map {
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
 
-        getMapTile(3, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
-        getMapTile(4, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
-        getMapTile(5, 3).setInteractScript(new SimpleTextScript("Pistol With Bayonet"));
+        getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        getMapTile(3, 3).setInteractScript(new ItemPickUpScript());
+        getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        getMapTile(4, 3).setInteractScript(new ItemPickUpScript());
+        getMapTile(5, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        getMapTile(5, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(3, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
-        getMapTile(4, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
-        getMapTile(5, 7).setInteractScript(new SimpleTextScript("Carrot Rocket Launcher"));
+        getMapTile(3, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(3, 7).setInteractScript(new ItemPickUpScript());
+        getMapTile(4, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(4, 7).setInteractScript(new ItemPickUpScript());
+        getMapTile(5, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(5, 7).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
-        getMapTile(9, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
-        getMapTile(10, 3).setInteractScript(new SimpleTextScript("Small Machine Gun"));
+        getMapTile(8, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(8, 3).setInteractScript(new ItemPickUpScript());
+        getMapTile(9, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(9, 3).setInteractScript(new ItemPickUpScript());
+        getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(10, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
+        getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(8, 7).setInteractScript(new ItemPickUpScript());
         getMapTile(9, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
         getMapTile(10, 7).setInteractScript(new SimpleTextScript("Blody Cleaver"));
 
