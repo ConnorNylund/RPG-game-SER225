@@ -121,17 +121,26 @@ public class Bunny extends Player {
         System.out.println("DEBUG: Anim Dmgstate = " + dmgState); 
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
+                    .withScale(3)
+                    .withBounds(6,12,12,7)
                     .build()
             });
 
             put("STAND_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState,2), 14)
+                    .withScale(3)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .withBounds(6,12,12,7)
                     .build()
             });
 

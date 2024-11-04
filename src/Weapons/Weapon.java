@@ -22,12 +22,12 @@ public class Weapon extends MapEntity{
     public Weapon(Frame img, Point playerLoc, Map map) { //Copy paste this constructor into your subclass
         super(playerLoc.x, playerLoc.y, img);
         this.map = map; 
-        this.setMap(map);
+        this.setMap(map); //This should be making it so that the item actually exists (it's how Map.java instantiates everything) but it just... isn't
         this.mapEntityStatus = mapEntityStatus.ACTIVE; 
         //Input value for subclass weapon here
-        this.fireRate = 0; 
-        this.DPH = 0;
-        this.bulletSpeed = 0;
+        // this.fireRate = 0; 
+        // this.DPH = 0;
+        // this.bulletSpeed = 0;
         antiJankTimer = 0;
     }
     public void shoot(float Sx, float Sy, float Fx, float Fy) {
