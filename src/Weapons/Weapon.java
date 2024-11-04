@@ -22,6 +22,8 @@ public class Weapon extends MapEntity{
     public Weapon(Frame img, Point playerLoc, Map map) { //Copy paste this constructor into your subclass
         super(playerLoc.x, playerLoc.y, img);
         this.map = map; 
+        this.setMap(map);
+        this.mapEntityStatus = mapEntityStatus.ACTIVE; 
         //Input value for subclass weapon here
         this.fireRate = 0; 
         this.DPH = 0;
@@ -37,5 +39,6 @@ public class Weapon extends MapEntity{
     }
     public void update(Player player) {
         this.setLocation(player.getX(), player.getY()); 
+        System.out.println("DEBUG: Current Gun Position (x,y): " + this.getX() + "," + this.getY());
     }
 }

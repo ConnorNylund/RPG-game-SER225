@@ -24,6 +24,7 @@ public class Bullet extends MapEntity{
     public void update(Player player) { 
         float curX = this.getX();
         float curY = this.getY();
+        System.out.println("DEBUG: Current Bullet Position (x,y): " + this.getX() + "," + this.getY());
 
         float dx = Fx-curX;
         float dy = Fy-curY;
