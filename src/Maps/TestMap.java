@@ -108,6 +108,8 @@ public ArrayList<Trigger> loadTriggers() {
     triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
     triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
+    triggers.add(new Trigger(790, 1030, 100, 10, new GameIntroScript(), "hasSeenScript"));
+
     return triggers;
 }
 

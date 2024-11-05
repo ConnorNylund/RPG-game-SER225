@@ -15,8 +15,8 @@ import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
 import Level.Map;
-import EnhancedMapTiles.Coin; // Import the Coin class from EnhancedMapTiles
-import Level.EnhancedMapTile; // Import the EnhancedMapTile class for reference
+import EnhancedMapTiles.Coin; 
+import Level.EnhancedMapTile; 
 import java.util.Iterator;
 
 
@@ -38,23 +38,23 @@ public class Bunny extends Player {
 
 
     private boolean isNearCoin(Coin coin) {
-        // Define a proximity radius (distance in pixels) within which the bunny can pick up the coin
-        float pickupRadius = 30.0f; // Adjust this value as needed
+        
+        float pickupRadius = 30.0f; 
     
-        // Calculate the distance between the center of the bunny and the center of the coin
+        
         float dx = (this.getX() + this.getWidth() / 2) - (coin.getX() + coin.getWidth() / 2);
         float dy = (this.getY() + this.getHeight() / 2) - (coin.getY() + coin.getHeight() / 2);
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
     
-        // Print the distance for debugging purposes
+        // Print the distance for debugging 
        // System.out.println("Distance to coin: " + distance);
     
-        // Return true if the bunny is within the pickup radius
+        // return true if the bunny is within the pickup radius
         return distance <= pickupRadius;
     }
 
     private void checkCoinPickup() {
-    // Create an iterator to safely remove elements while iterating
+    
     Iterator<EnhancedMapTile> iterator = getMap().getEnhancedMapTiles().iterator();
 
     while (iterator.hasNext()) {
@@ -62,12 +62,12 @@ public class Bunny extends Player {
         if (tile instanceof Coin) {
             Coin coin = (Coin) tile;
 
-            // Check if the coin is near the bunny and not collected yet, and if the 'E' key is being pressed
+            // checks if the coin is near the bunny and not collected yet, and if the 'E' key is being pressed
             if (!coin.isCollected() && isNearCoin(coin)) {
                 if (Keyboard.isKeyDown(Key.SPACE)) {
-                    coin.collect(); // Mark the coin as collected
+                    coin.collect(); // marks the coin as collected
                     System.out.println("Coin picked up! Coin collected status: " + coin.isCollected());
-                    iterator.remove(); // Remove the coin from the map
+                    iterator.remove(); // removes the coin from the map
                     System.out.println("Coin removed from the map.");
                 }
             }

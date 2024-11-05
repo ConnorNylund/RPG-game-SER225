@@ -1,9 +1,9 @@
-// PLAYLEVELSCREEN CODE
+
 
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Keyboard;  // Import this to use Keyboard handling
+import Engine.Keyboard;  
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -42,7 +42,10 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
-        flagManager.addFlag("hasSeenBlurb", false);
+        flagManager.addFlag("hasSeenScript", false);
+
+       // flagManager.addFlag("hasSeenBlurb", false);
+        
     
         // define/setup map
         map = new TestMap(screenCoordinator, 0);

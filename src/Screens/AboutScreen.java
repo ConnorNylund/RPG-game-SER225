@@ -10,15 +10,15 @@ import SpriteFont.SpriteFont;
 import java.awt.*;
 
 // This class is for the credits screen
-public class CreditsScreen extends Screen {
+public class AboutScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map background;
     protected KeyLocker keyLocker = new KeyLocker();
-    protected SpriteFont creditsLabel;
+    protected SpriteFont aboutLabel;
     protected SpriteFont createdByLabel;
     protected SpriteFont returnInstructionsLabel;
 
-    public CreditsScreen(ScreenCoordinator screenCoordinator) {
+    public AboutScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -27,7 +27,7 @@ public class CreditsScreen extends Screen {
         // setup graphics on screen (background map, spritefont text)
         background = new TitleScreenMap(screenCoordinator);
         background.setAdjustCamera(false);
-        creditsLabel = new SpriteFont("Credits", 15, 7, "Times New Roman", 30, Color.white);
+        aboutLabel = new SpriteFont("Credits", 15, 7, "Times New Roman", 30, Color.white);
         createdByLabel = new SpriteFont("Created by Byte Me", 130, 121, "Times New Roman", 20, Color.white);
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 20, 532, "Times New Roman", 30, Color.white);
         keyLocker.lockKey(Key.SPACE);
@@ -48,7 +48,7 @@ public class CreditsScreen extends Screen {
 
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        creditsLabel.draw(graphicsHandler);
+        aboutLabel.draw(graphicsHandler);
         createdByLabel.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
     }

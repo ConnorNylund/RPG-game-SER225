@@ -14,13 +14,11 @@ import Utils.Direction;
 import Utils.Point;
 import Engine.GraphicsHandler;
 
-// This class is for the special rock in the map that can be moved around by the player
-// when the player walks into it, it will be "pushed" forward in the same direction the player was moving in
 public class Coin extends EnhancedMapTile {
     private boolean isCollected;
 
     public void update() {
-        // Check if the coin is collected each time the coin's update method is called
+        // Check if the coin is collected each time the coins update method is called
         System.out.println("Coin update called. Collected status: " + isCollected);
     }
     
@@ -59,6 +57,5 @@ public void draw(GraphicsHandler graphicsHandler) {
         System.out.println("Coin not drawn because it is collected.");
     }
 }
-
 
 }
