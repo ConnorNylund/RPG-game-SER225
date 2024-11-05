@@ -47,6 +47,8 @@ public class Bunny extends Player {
         if(MouseHandler.leftMouseDown) {
             currentWeapon.shoot(this.x, this.y, MouseHandler.mousePos.x, MouseHandler.mousePos.y);
         }
+        currentWeapon.update(this); 
+        System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
     }
 
     public void takeDamage() {
@@ -125,7 +127,7 @@ public class Bunny extends Player {
                     .withScale(3)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
                     .withBounds(6,12,12,7)
                     .build()
@@ -137,7 +139,7 @@ public class Bunny extends Player {
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6, 12, 12, 7)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(dmgState,2), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState,1), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .withBounds(6,12,12,7)

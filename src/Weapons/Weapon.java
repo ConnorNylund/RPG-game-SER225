@@ -19,8 +19,8 @@ public class Weapon extends MapEntity{
     protected float antiJankTimer, bulletSpeed;
     protected Map map;
     
-    public Weapon(Frame img, Point playerLoc, Map map) { //Copy paste this constructor into your subclass
-        super(playerLoc.x, playerLoc.y, img);
+    public Weapon(SpriteSheet spriteSheet, Point playerLoc, Map map) { //Copy paste this constructor into your subclass
+        super(playerLoc.x, playerLoc.y, spriteSheet, "Anim1");
         this.map = map; 
         this.setMap(map); //This should be making it so that the item actually exists (it's how Map.java instantiates everything) but it just... isn't
         this.mapEntityStatus = mapEntityStatus.ACTIVE; 
@@ -40,5 +40,15 @@ public class Weapon extends MapEntity{
     public void update(Player player) {
         this.setLocation(player.getX(), player.getY()); 
         System.out.println("DEBUG: Current Gun Position (x,y): " + this.getX() + "," + this.getY());
+    }
+    public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
+        return new HashMap<String, Frame[]>() {{
+            put("Anim1", new Frame[]{
+                new FrameBuilder(spriteSheet.getSprite(0,0))
+                    .withScale(4)
+                    .withBounds(6,12,12,7)
+                    .build()
+            });
+        }};
     }
 }
