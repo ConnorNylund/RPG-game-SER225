@@ -48,7 +48,7 @@ public class Bunny extends Player {
             currentWeapon.shoot(this.x, this.y, MouseHandler.mousePos.x, MouseHandler.mousePos.y);
         }
         currentWeapon.update(this); 
-        System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
+        //System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
     }
 
     public void takeDamage() {
