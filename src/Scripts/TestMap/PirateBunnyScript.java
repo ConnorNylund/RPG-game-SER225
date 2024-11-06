@@ -22,7 +22,9 @@ public class PirateBunnyScript extends Script {
                 addScriptAction(new TextboxScriptAction() {{
                     addText("Hi Bunny, You have Wondered into the amazing land\n of Sector Survival!");
                     addText("Your goal is to defeat all the invasive species\n who seek to destroy you and your crops");
-                    addText("Located above us there is a shop where you can spend\n where you can spend curreny to \nto improve your arsenal");
+                    addText("Located above us there is a shop \nwhere you can spend your hard earned currency");
+                    addText("At the shop you can customize your arsenal\n and select your choice of steroids ");
+
                 }});
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToPirate", true));
             }});
