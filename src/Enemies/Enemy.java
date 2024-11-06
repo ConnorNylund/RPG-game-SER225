@@ -104,6 +104,7 @@ public class Enemy extends NPC {
         if((float)Math.sqrt(Pdx * Pdx + Pdy * Pdy) < attackRadius) {
             attackPlayer(player);
         }
+        //System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
     }
     private void attackPlayer(Player player) {
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
