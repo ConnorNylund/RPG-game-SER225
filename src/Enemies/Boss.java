@@ -17,25 +17,25 @@ import Utils.Point;
 
 import java.util.HashMap;
 
-public class Enemy extends NPC {
+public class Boss extends NPC {
     protected int id = 0;
     protected int curHealth;
     protected int totalHealth;
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Fox.png"), 16, 16);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16);
     private double lastAttack; 
     private float attackRadius; 
     private float attackSpeed;
 
-    public Enemy(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
+    public Boss(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
         //Variables to change for stats
-        moveSpeed = 1.7f; // Higher is faster
+        moveSpeed = 0.9f; // Higher is faster
         attackRadius = 30; // Higher is farther
-        totalHealth = 3; // Bigger is more health
+        totalHealth = 15; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
 
@@ -115,20 +115,20 @@ public class Enemy extends NPC {
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
         return new HashMap<String, Frame[]>() {{
             put("DAMAGE1", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(2,0))
-                    .withScale(3)
+                new FrameBuilder(spriteSheet.getSprite(0,2))
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(1,0))
-                    .withScale(3)
+                new FrameBuilder(spriteSheet.getSprite(0,1))
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0,0))
-                    .withScale(3)
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });
