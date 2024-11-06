@@ -89,7 +89,7 @@ public class TestMap extends Map {
         ArrayList<NPC> npcs = new ArrayList<>(); 
 
         Walrus walrus = new Walrus(1, getMapTile(27, 19).getLocation().subtractY(40));
-        walrus.setInteractScript(new WalrusScript());  ////
+        //walrus.setInteractScript(new WalrusScript());  ////
         npcs.add(walrus);
 
         // Adding the Fish Bunny NPC
