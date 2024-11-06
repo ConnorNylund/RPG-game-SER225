@@ -7,7 +7,7 @@ import ScriptActions.*;
 
 // script for talking to walrus npc
 // checkout the documentation website for a detailed guide on how this script works
-public class WalrusScript extends Script {
+public class PirateBunnyScript extends Script {
 
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
@@ -18,17 +18,17 @@ public class WalrusScript extends Script {
 
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addRequirement(new FlagRequirement("hasTalkedToWalrus", false));
+                addRequirement(new FlagRequirement("hasTalkedToPirate", false));
                 addScriptAction(new TextboxScriptAction() {{
-                    addText("Hi Cat!");
-                    addText("...oh, you lost your ball?");
-                    addText("Hmmm...my walrus brain remembers seeing Dino with\nit last. Maybe you can check with him?");
-                }}); 
-                addScriptAction(new ChangeFlagScriptAction("hasTalkedToWalrus", true));
+                    addText("Hi Bunny, You have Wondered into the amazing land\n of Sector Survival!");
+                    addText("Your goal is to defeat all the invasive species\n who seek to destroy you and your crops");
+                    addText("Located above us there is a shop where you can spend\n where you can spend curreny to \nto improve your arsenal");
+                }});
+                addScriptAction(new ChangeFlagScriptAction("hasTalkedToPirate", true));
             }});
 
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addRequirement(new FlagRequirement("hasTalkedToWalrus", true));
+                addRequirement(new FlagRequirement("hasTalkedToPirate", true));
                 addScriptAction(new TextboxScriptAction("I sure love doing walrus things!"));
             }});
         }});
