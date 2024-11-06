@@ -86,18 +86,26 @@ public class TestMap extends Map {
 
     @Override
     public ArrayList<NPC> loadNPCs() {
-        ArrayList<NPC> npcs = new ArrayList<>();
+        ArrayList<NPC> npcs = new ArrayList<>(); 
 
         Walrus walrus = new Walrus(1, getMapTile(27, 19).getLocation().subtractY(40));
+        //walrus.setInteractScript(new WalrusScript());  ////
         npcs.add(walrus);
 
         // Adding the Fish Bunny NPC
-        FishBunny fishBunny = new FishBunny(2, getMapTile(17, 37).getLocation().subtractY(40));
+        FishBunny fishBunny = new FishBunny(3, getMapTile(17, 37).getLocation().subtractY(40));
+        fishBunny.setInteractScript(new FisherScript());
         npcs.add(fishBunny);
 
-        PirateBunny pirateBunny = new PirateBunny(2, getMapTile(18, 35).getLocation().subtractY(40));
+
+
+        PirateBunny pirateBunny = new PirateBunny(3, getMapTile(18, 35).getLocation().subtractY(40));
+        pirateBunny.setInteractScript(new PirateBunnyScript());
         npcs.add(pirateBunny);
 
+
+
+        
         return npcs;
     }
 
@@ -122,6 +130,8 @@ public class TestMap extends Map {
         getMapTile(2, 6).setInteractScript(new TreeScript());
         getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
+        
+
 
         super.loadScripts(screenCoordinator);
     }
