@@ -94,14 +94,12 @@ public class TestMap extends Map {
 
         // Adding the Fish Bunny NPC
         FishBunny fishBunny = new FishBunny(3, getMapTile(17, 37).getLocation().subtractY(40));
-        fishBunny.setExistenceFlag("hasTalkedToFisher");
         fishBunny.setInteractScript(new FisherScript());
         npcs.add(fishBunny);
 
 
 
         PirateBunny pirateBunny = new PirateBunny(3, getMapTile(18, 35).getLocation().subtractY(40));
-        pirateBunny.setExistenceFlag("hasTalkedToPirate");
         pirateBunny.setInteractScript(new PirateBunnyScript());
         npcs.add(pirateBunny);
 
