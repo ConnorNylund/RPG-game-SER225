@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Builders.FrameBuilder;
+import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.MouseHandler;
 import GameObject.Frame;
@@ -56,7 +57,7 @@ public class Weapon extends MapEntity{
         return new HashMap<String, Frame[]>() {{
             put("Anim1", new Frame[]{
                 new FrameBuilder(spriteSheet.getSprite(0,0))
-                    .withScale(4)
+                    .withScale(2)
                     .withBounds(6,12,12,7)
                     .build()
             });
