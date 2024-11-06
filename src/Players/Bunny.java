@@ -27,13 +27,15 @@ public class Bunny extends Player {
     private float health;
     private int dmgState;
     private Weapon currentWeapon;
+    private boolean test;
     private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
     
     public Bunny(float x, float y) {
         super(sptSht, x, y, "STAND_RIGHT");
         health = 4; 
         dmgState = 0;
-        currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+        
+        test = true;
     }
 
     public Map getMap() {
@@ -43,10 +45,16 @@ public class Bunny extends Player {
     @Override
     public void update() {
         super.update();
+        if(test) {
+            currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+            test = false; 
+        }
         checkCoinPickup();
         if(MouseHandler.leftMouseDown) {
             currentWeapon.shoot(this.x, this.y, MouseHandler.mousePos.x, MouseHandler.mousePos.y);
         }
+        currentWeapon.update(this); 
+        //System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
     }
 
     public void takeDamage() {
@@ -114,6 +122,7 @@ public class Bunny extends Player {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+        currentWeapon.draw(graphicsHandler);
     }
 
    @Override
@@ -121,36 +130,45 @@ public class Bunny extends Player {
         System.out.println("DEBUG: Anim Dmgstate = " + dmgState); 
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
+                    .withScale(3)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
             put("STAND_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(dmgState, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState,1), 14)
+                    .withScale(3)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
             put("WALK_RIGHT", new Frame[]{
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
@@ -158,22 +176,22 @@ public class Bunny extends Player {
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
         }};

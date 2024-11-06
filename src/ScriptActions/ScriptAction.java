@@ -1,5 +1,6 @@
 package ScriptActions;
 
+import Inventory.Inventory;
 import Level.Map;
 import Level.MapEntity;
 import Level.Player;
