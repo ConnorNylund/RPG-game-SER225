@@ -76,7 +76,7 @@ public class Bunny extends Player {
         } else {
             //Put code for player death here
             this.lock();
-            this.setLocation(this.x+2000, this.y+2000); 
+            this.setLocation(1200, 860); 
             System.out.println("DEBUG: Player has died");
         }
         System.out.println("DEBUG: Health = " + health + "Dmg State = " + dmgState);
