@@ -1,16 +1,22 @@
 package Weapons;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import Builders.FrameBuilder;
+import Enemies.Enemy;
 import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.GameObject;
+import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Level.Map;
 import Level.MapEntity;
+import Level.MapTile;
 import Level.NPC;
 import Level.Player;
+import Players.Bunny;
+import Utils.Point;
 
 public class Bullet extends NPC{
     private float projSpeed; 
@@ -53,14 +59,44 @@ public class Bullet extends NPC{
         
         float tempTest = prevAngle-curAngle; 
         //System.out.println("DEBUG: Angle to Bullet Target Prev-Cur = " + tempTest); 
+        ArrayList<Enemy> activeEnemies = new ArrayList(0);
+            for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
+                try {
+                    activeEnemies.add((Enemy)map.getActiveNPCs().get(i));
+                } catch(ClassCastException e) {
+                    System.out.println("Java getting mad about jank casts");
+                }
+                //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
+            }
+            for(int i = 0; i<activeEnemies.size(); i++) {
+                Enemy temp = activeEnemies.get(i);
+                Rectangle enemHitBox = temp.getCalibratedBounds();
+                int attackRange = 90; //Eventually should be replaced with a splash damage variable of some kind
+                boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
+                boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
+                boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
+                boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
+                if( this.x >= enemHitBox.getX1()-attackRange && 
+                    this.x <= enemHitBox.getX2()+attackRange &&
+                    this.y >= enemHitBox.getY1()-attackRange &&
+                    this.y <= enemHitBox.getY2()+attackRange) {
+                        temp.takeDamage(); 
+                }
+                System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
+            }
 
         if(this.reachedTarget()) {
+            System.out.println("DEBUG: Is reaching target"); 
             //Destroy bullet, damage whats been hit
             this.projSpeed = 0; //Temporary so bullets will stop when they reach their targets 
+
+            this.mapEntityStatus = mapEntityStatus.REMOVED; 
         }
     }
     public boolean reachedTarget() {
-        return false; 
+        // System.out.println("DEBUG: Fx = " + Fx + " CurX = " + this.x);
+        return (int)Fx == (int)this.x || (int)Fy == (int)this.y; 
+        
         //return curAngle!=prevAngle; 
     }
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {

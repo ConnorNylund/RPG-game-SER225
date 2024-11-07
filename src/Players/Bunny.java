@@ -54,6 +54,7 @@ public class Bunny extends Player {
         if(MouseHandler.leftMouseDown) {
             float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
             float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
+            
             currentWeapon.shoot(this.x, this.y, calibratedX, calibratedY);
             System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
         }
