@@ -24,7 +24,7 @@ public class Boss extends NPC {
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("farmersprites.png"), 32, 32);
     private double lastAttack; 
     private float attackRadius; 
     private float attackSpeed;
@@ -63,11 +63,11 @@ public class Boss extends NPC {
         //System.out.println("DEBUG: MousePos-" + MouseHandler.mousePos + " isClicked?-" + MouseHandler.leftMouseDown + " thisPos-x,y" + this.x + "," + this.y);
 
         //Checks if the mouse is on the enemy before taking damage, will need to eventually be updated for projectile detection
-        if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
-            System.out.println("DEBUG: clicked");
-            antiJankTimer = System.nanoTime();
-            this.takeDamage(); 
-        }
+        // if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
+        //     System.out.println("DEBUG: clicked");
+        //     antiJankTimer = System.nanoTime();
+        //     this.takeDamage(); 
+        // }
 
 
         //Player tracker

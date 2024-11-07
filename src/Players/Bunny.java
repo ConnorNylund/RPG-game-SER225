@@ -55,10 +55,10 @@ public class Bunny extends Player {
             float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
             float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
 
-            if(calibratedX > this.x) {
-                currentWeapon.shoot(this.x+10+this.getWidth(), this.y, calibratedX, calibratedY);
+            if(calibratedX > this.x+this.getWidth()) {
+                currentWeapon.shoot(this.x+15+this.getWidth(), this.y, calibratedX, calibratedY);
             } else {
-                currentWeapon.shoot(this.x-10, this.y, calibratedX, calibratedY);
+                currentWeapon.shoot(this.x-15, this.y, calibratedX, calibratedY);
             }
             System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
         }
@@ -75,6 +75,9 @@ public class Bunny extends Player {
             }
         } else {
             //Put code for player death here
+            this.lock();
+            this.setLocation(1200, 860); 
+            System.out.println("DEBUG: Player has died");
         }
         System.out.println("DEBUG: Health = " + health + "Dmg State = " + dmgState);
     }

@@ -16,6 +16,7 @@ public class TestPistol extends Weapon{
             this.fireRate = 1; 
             this.DPH = .5f;
             this.bulletSpeed = 6;
+            this.AOE = 20; 
             System.out.println("DEBUG: Weapon Successfuly created");
     }
 }

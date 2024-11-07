@@ -55,14 +55,10 @@ public class PlayBossScreen extends Screen {
 
         inventory = new Inventory();
 
-        // Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
-        // map.addNPC(testEnem);
-        // testEnem.setMap(map);
 
-        // FARMER
-        // farmerBoss = new FarmerBoss(1, new Point(300, 300), player); // Set spawn location
-        // farmerBoss.setMap(map);
-        // map.addNPC(farmerBoss); // Add FarmerBoss to the map’s NPC list
+        Boss testboss = new Boss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
+        map.addNPC(testboss);
+        testboss.setMap(map);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
