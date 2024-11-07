@@ -72,7 +72,7 @@ public class Bullet extends NPC{
                 try {
                     activeEnemies.add((Enemy)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
                 } catch(ClassCastException e) {
-                    System.out.println("Java getting mad about jank casts");
+                    //System.out.println("Java getting mad about jank casts");
                 }
                 //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
             }
@@ -81,7 +81,7 @@ public class Bullet extends NPC{
                 try {
                     activeBosses.add((Boss)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
                 } catch(ClassCastException e) {
-                    System.out.println("Java getting mad about jank casts");
+                    //System.out.println("Java getting mad about jank casts");
                 }
                 //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
             }
