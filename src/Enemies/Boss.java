@@ -24,7 +24,7 @@ public class Boss extends NPC {
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Eyeboss.png"), 32, 32);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("farmersprites.png"), 32, 32);
     private double lastAttack; 
     private float attackRadius; 
     private float attackSpeed;
