@@ -19,6 +19,7 @@ import Engine.Key;  // Import Key class for using specific keys
 import java.util.ArrayList;
 
 import Enemies.Boss;
+import Enemies.Enemy;
 
 // This class is for when the RPG game is actually being played
 public class PlayBossScreen extends Screen {
@@ -53,12 +54,9 @@ public class PlayBossScreen extends Screen {
 
         inventory = new Inventory();
 
-        Point position = new Point(5, 5);
-
-        Boss testBoss = new Boss(0, position, "DAMAGE3", map.getPlayer());
-        map.addNPC(testBoss);
-        testBoss.setMap(map);
-
+        Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
+        map.addNPC(testEnem);
+        testEnem.setMap(map);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
