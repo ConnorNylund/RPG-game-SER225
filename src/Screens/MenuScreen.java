@@ -1,4 +1,4 @@
-//MENU SCREEN CODE
+// MENU SCREEN CODE
 package Screens;
 
 import Engine.*;
@@ -17,7 +17,7 @@ public class MenuScreen extends Screen {
     protected int menuItemSelected = -1;
     protected SpriteFont playGame;
     protected SpriteFont credits;
-    protected SpriteFont about; // New "About" option
+    protected SpriteFont about; 
     protected Map background;
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
@@ -32,10 +32,12 @@ public class MenuScreen extends Screen {
         playGame = new SpriteFont("PLAY GAME", 200, 123, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
+        
         credits = new SpriteFont("CREDITS", 200, 223, "Arial", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        about = new SpriteFont("ABOUT", 200, 323, "Arial", 30, new Color(49, 207, 240)); // Initialize "About" option
+
+        about = new SpriteFont("ABOUT", 200, 323, "Arial", 30, new Color(49, 207, 240)); 
         about.setOutlineColor(Color.black);
         about.setOutlineThickness(3);
 
