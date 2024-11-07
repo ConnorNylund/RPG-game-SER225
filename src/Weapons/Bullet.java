@@ -24,6 +24,7 @@ public class Bullet extends NPC{
     private float prevAngle, curAngle; //Angle shouldn't change, so if it does, we've passed the target
     private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
     private static int bulletCt = 60;
+    private boolean hasDamaged; 
     public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
         super(bulletCt, Sx+50, Sy, bulletPic, "Anim1");  
         bulletCt++; 
@@ -34,6 +35,7 @@ public class Bullet extends NPC{
         this.projSpeed = projSpeed; 
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
         prevAngle = curAngle; 
+        hasDamaged = false; 
     }
     public void update(Player player) { 
         //float Fx = Fx;
@@ -71,17 +73,22 @@ public class Bullet extends NPC{
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
                 Rectangle enemHitBox = temp.getCalibratedBounds();
-                int attackRange = 90; //Eventually should be replaced with a splash damage variable of some kind
+                int attackRange = 40; //Eventually should be replaced with a splash damage variable of some kind
                 boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
                 boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
                 boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
                 boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
-                if( this.x >= enemHitBox.getX1()-attackRange && 
-                    this.x <= enemHitBox.getX2()+attackRange &&
-                    this.y >= enemHitBox.getY1()-attackRange &&
-                    this.y <= enemHitBox.getY2()+attackRange) {
+                //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
+                if( this.x >= temp.getX()-attackRange && 
+                    this.x <= temp.getX()+attackRange &&
+                    this.y >= temp.getY()-attackRange &&
+                    this.y <= temp.getY()+attackRange &&
+                    !hasDamaged) {
                         temp.takeDamage(); 
+                        hasDamaged = true; 
+                        this.mapEntityStatus = mapEntityStatus.REMOVED; 
                 }
+
                 System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
             }
 
