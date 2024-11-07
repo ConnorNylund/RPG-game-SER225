@@ -34,7 +34,7 @@ public class Enemy extends NPC {
         this.id = id;
         //Variables to change for stats
         moveSpeed = 1.7f; // Higher is faster
-        attackRadius = 50; // Higher is farther
+        attackRadius = 60; // Higher is farther
         totalHealth = 3; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
@@ -59,15 +59,17 @@ public class Enemy extends NPC {
     }
     public void update(Player player) {
         super.update(player); 
+        //System.out.println("DEBUG: RealEnemPos=" + this.getX() + "/" + this.getY());
         //System.out.println("DEBUG: Time difference: " + (System.nanoTime()-antiJankTimer)/1000000000.0); //Doing this so the mouse can't just be spammed, puts a 1 second cooldown on the players ability to attack, could maybe make this adjustable in the future if we rlly wanted
         //System.out.println("DEBUG: MousePos-" + MouseHandler.mousePos + " isClicked?-" + MouseHandler.leftMouseDown + " thisPos-x,y" + this.x + "," + this.y);
 
         //Checks if the mouse is on the enemy before taking damage, will need to eventually be updated for projectile detection
-        if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
-            System.out.println("DEBUG: clicked");
-            antiJankTimer = System.nanoTime();
-            this.takeDamage(); 
-        }
+        // if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
+        //     //System.out.println("DEBUG: clicked");
+        //     //System.out.println("DEBUG: MousePos = " + MouseHandler.mousePos.x + "/" + MouseHandler.mousePos.y);
+        //     antiJankTimer = System.nanoTime();
+        //     this.takeDamage(); 
+        // }
 
 
         //Player tracker

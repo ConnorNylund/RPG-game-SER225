@@ -1,10 +1,11 @@
 package Inventory;
 
 public class Inventory {
-    public static InventoryItem[] items;
+    public static InventoryItem[] items = new InventoryItem[3];
+    public static int currentSelection;
 
     public Inventory() {
-        items = new InventoryItem[3];
+        currentSelection = 0;
     }
 
     // tries to add an item to the inventory, returns true if it works, false if inventory is full

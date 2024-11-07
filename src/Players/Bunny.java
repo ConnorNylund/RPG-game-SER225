@@ -50,8 +50,13 @@ public class Bunny extends Player {
             test = false; 
         }
         checkCoinPickup();
+        getCalibratedXLocation();
         if(MouseHandler.leftMouseDown) {
-            currentWeapon.shoot(this.x, this.y, MouseHandler.mousePos.x, MouseHandler.mousePos.y);
+            float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
+            float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
+            
+            currentWeapon.shoot(this.x, this.y, calibratedX, calibratedY);
+            System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
         }
         currentWeapon.update(this); 
         //System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 

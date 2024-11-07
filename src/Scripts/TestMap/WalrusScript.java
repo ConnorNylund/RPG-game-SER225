@@ -23,7 +23,7 @@ public class WalrusScript extends Script {
                     addText("Hi Cat!");
                     addText("...oh, you lost your ball?");
                     addText("Hmmm...my walrus brain remembers seeing Dino with\nit last. Maybe you can check with him?");
-                }});
+                }}); 
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToWalrus", true));
             }});
 
