@@ -17,25 +17,25 @@ import Utils.Point;
 
 import java.util.HashMap;
 
-public class Enemy extends NPC {
+public class Boss extends NPC {
     protected int id = 0;
     protected int curHealth;
     protected int totalHealth;
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Fox.png"), 16, 16);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16);
     private double lastAttack; 
     private float attackRadius; 
     private float attackSpeed;
 
-    public Enemy(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
+    public Boss(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
         //Variables to change for stats
-        moveSpeed = 1.7f; // Higher is faster
-        attackRadius = 60; // Higher is farther
-        totalHealth = 3; // Bigger is more health
+        moveSpeed = 0.9f; // Higher is faster
+        attackRadius = 30; // Higher is farther
+        totalHealth = 15; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
 
@@ -59,17 +59,15 @@ public class Enemy extends NPC {
     }
     public void update(Player player) {
         super.update(player); 
-        //System.out.println("DEBUG: RealEnemPos=" + this.getX() + "/" + this.getY());
         //System.out.println("DEBUG: Time difference: " + (System.nanoTime()-antiJankTimer)/1000000000.0); //Doing this so the mouse can't just be spammed, puts a 1 second cooldown on the players ability to attack, could maybe make this adjustable in the future if we rlly wanted
         //System.out.println("DEBUG: MousePos-" + MouseHandler.mousePos + " isClicked?-" + MouseHandler.leftMouseDown + " thisPos-x,y" + this.x + "," + this.y);
 
         //Checks if the mouse is on the enemy before taking damage, will need to eventually be updated for projectile detection
-        // if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
-        //     //System.out.println("DEBUG: clicked");
-        //     //System.out.println("DEBUG: MousePos = " + MouseHandler.mousePos.x + "/" + MouseHandler.mousePos.y);
-        //     antiJankTimer = System.nanoTime();
-        //     this.takeDamage(); 
-        // }
+        if ((System.nanoTime()-antiJankTimer)/1000000000.0 > .5 && this.contains2(MouseHandler.mousePos) && MouseHandler.leftMouseDown) {
+            System.out.println("DEBUG: clicked");
+            antiJankTimer = System.nanoTime();
+            this.takeDamage(); 
+        }
 
 
         //Player tracker
@@ -106,7 +104,6 @@ public class Enemy extends NPC {
         if((float)Math.sqrt(Pdx * Pdx + Pdy * Pdy) < attackRadius) {
             attackPlayer(player);
         }
-        //System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
     }
     private void attackPlayer(Player player) {
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
@@ -118,32 +115,20 @@ public class Enemy extends NPC {
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
         return new HashMap<String, Frame[]>() {{
             put("DAMAGE1", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(2,1), 14)
-                    .withScale(3)
-                    .withBounds(0,0,16,16)
-                    .build(),
-                new FrameBuilder(spriteSheet.getSprite(2,2),14)
-                    .withScale(3)
+                new FrameBuilder(spriteSheet.getSprite(0,2))
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(1,1),14)
-                    .withScale(3)
-                    .withBounds(0,0,16,16)
-                    .build(),
-                new FrameBuilder(spriteSheet.getSprite(1,2),14)
-                    .withScale(3)
+                new FrameBuilder(spriteSheet.getSprite(0,1))
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0,1),14)
-                    .withScale(3)
-                    .withBounds(0,0,16,16)
-                    .build(),
-                new FrameBuilder(spriteSheet.getSprite(0,2),14)
-                    .withScale(3)
+                new FrameBuilder(spriteSheet.getSprite(0,0))
+                    .withScale(5)
                     .withBounds(0,0,16,16)
                     .build(),
             });

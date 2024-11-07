@@ -8,12 +8,15 @@ import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.Keyboard;
+import Engine.MouseHandler;
 import Engine.Key;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
+import Weapons.TestPistol;
+import Weapons.Weapon;
 import Level.Map;
 import EnhancedMapTiles.Coin; 
 import Level.EnhancedMapTile; 
@@ -21,9 +24,18 @@ import java.util.Iterator;
 
 
 public class Bunny extends Player {
-
+    private float health;
+    private int dmgState;
+    private Weapon currentWeapon;
+    private boolean test;
+    private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
+    
     public Bunny(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("bunnyWalkFixed.png"), 16, 16), x, y, "STAND_RIGHT");
+        super(sptSht, x, y, "STAND_RIGHT");
+        health = 4; 
+        dmgState = 0;
+        
+        test = true;
     }
 
     public Map getMap() {
@@ -33,8 +45,36 @@ public class Bunny extends Player {
     @Override
     public void update() {
         super.update();
+        if(test) {
+            currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+            test = false; 
+        }
         checkCoinPickup();
+        getCalibratedXLocation();
+        if(MouseHandler.leftMouseDown) {
+            float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
+            float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
+            
+            currentWeapon.shoot(this.x, this.y, calibratedX, calibratedY);
+            System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
+        }
+        currentWeapon.update(this); 
+        //System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
     }
+
+    public void takeDamage() {
+        if(health != 0) {
+            health--;
+            if(dmgState < 3) {
+                dmgState++; 
+                this.animations = loadAnimations(sptSht);
+            }
+        } else {
+            //Put code for player death here
+        }
+        System.out.println("DEBUG: Health = " + health + "Dmg State = " + dmgState);
+    }
+
 
 
     private boolean isNearCoin(Coin coin) {
@@ -87,65 +127,76 @@ public class Bunny extends Player {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+        currentWeapon.draw(graphicsHandler);
     }
 
    @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
+        System.out.println("DEBUG: Anim Dmgstate = " + dmgState); 
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
+                    .withScale(3)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
             put("STAND_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(dmgState,1), 14)
+                    .withScale(3)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
             put("WALK_RIGHT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
 
             put("WALK_LEFT", new Frame[]{
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 1), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 2), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 14)
+                new FrameBuilder(spriteSheet.getSprite(dmgState, 3), 14)
                     .withScale(3)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .withBounds(6, 12, 12, 7)
+                    .withBounds(0, 0, 16, 16)
                     .build()
             });
         }};

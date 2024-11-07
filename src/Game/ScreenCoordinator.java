@@ -26,10 +26,10 @@ public class ScreenCoordinator extends Screen {
         return gameState;
     }
 
-    // Other Screens can set the gameState of this class to force it to change the currentScreen
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
-    }
+	// Other Screens can set the gameState of this class to force it to change the currentScreen
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
 
     @Override
     public void initialize() {
@@ -37,35 +37,32 @@ public class ScreenCoordinator extends Screen {
         gameState = GameState.MENU;
     }
 
-    @Override
-    public void update() {
-        do {
-            // if previousGameState does not equal gameState, it means there was a change in gameState
-            // this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
-            if (previousGameState != gameState) {
-                switch(gameState) {
-                    case MENU:
-                        currentScreen = new MenuScreen(this);
-                        break;
-                    case LEVEL:
-                        currentScreen = new PlayLevelScreen(this);
-                        break;
-                    case BOSS:
-                        currentScreen = new PlayBossScreen(this);
-                        break;
-                    case SHOP:
-                        currentScreen = new PlayShopScreen(this);
-                        break;
-                    case CREDITS:
-                        currentScreen = new CreditsScreen(this);
-                        break;
-                    case ABOUT: // New case for the About screen
-                        currentScreen = new AboutScreen(this);
-                        break;
-                }
-                currentScreen.initialize();
-            }
-            previousGameState = gameState;
+	@Override
+	public void update() {
+		do {
+			// if previousGameState does not equal gameState, it means there was a change in gameState
+			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
+			if (previousGameState != gameState) {
+				switch(gameState) {
+					case MENU:
+						currentScreen = new MenuScreen(this);
+						break;
+					case LEVEL:
+						currentScreen = new PlayLevelScreen(this);
+						break;
+					case BOSS:
+						currentScreen = new PlayBossScreen(this);
+						break;
+					case SHOP :
+						currentScreen = new PlayShopScreen(this);
+						break;
+					case CREDITS:
+						currentScreen = new CreditsScreen(this);
+						break;
+				}
+				currentScreen.initialize();
+			}
+			previousGameState = gameState;
 
             // call the update method for the currentScreen
             currentScreen.update();

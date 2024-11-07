@@ -7,6 +7,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Inventory.Inventory;
 import Level.*;
 import Maps.Shopmap;
 import Maps.Bossmap;
@@ -30,6 +31,8 @@ public class PlayLevelScreen extends Screen {
     protected int currentMap;  
     protected int slowTileIndex;
     protected WaveManager waveManager;
+    protected Inventory inventory;
+    protected InventoryScreen invScreen;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -41,6 +44,8 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasLostBall", false);
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
+        flagManager.addFlag("hasTalkedToPirate", false);
+        flagManager.addFlag("hasTalkedToFisher", false);
         flagManager.addFlag("hasFoundBall", false);
         flagManager.addFlag("hasSeenScript", false);
 
@@ -52,6 +57,8 @@ public class PlayLevelScreen extends Screen {
         map.setFlagManager(flagManager);
 
         waveManager = new WaveManager(5, map);
+
+        inventory = new Inventory();
     
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -69,6 +76,7 @@ public class PlayLevelScreen extends Screen {
         map.preloadScripts(screenCoordinator);
     
         winScreen = new WinScreen(this);
+        invScreen = new InventoryScreen();
     }
     
 
@@ -79,6 +87,7 @@ public class PlayLevelScreen extends Screen {
         }
 
         waveManager.update();
+
 
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
@@ -91,6 +100,7 @@ public class PlayLevelScreen extends Screen {
                 //     currentMap = map.getCurrentMap();
                 //     this.map = new Bossmap(screenCoordinator, 1);
                 // }
+                invScreen.update();
                 break;
 
             // if level has been completed, bring up level cleared screen
@@ -98,7 +108,6 @@ public class PlayLevelScreen extends Screen {
                 winScreen.update();
                 break;
         }
-
     }
 
 
@@ -107,6 +116,7 @@ public class PlayLevelScreen extends Screen {
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
+                invScreen.draw(graphicsHandler);
                 break;
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);

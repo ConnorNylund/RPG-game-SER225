@@ -21,7 +21,7 @@ public class DestroyableWall extends EnhancedMapTile{
     public DestroyableWall(Point location, String gateTitle) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load(gateTitle), 16, 16), TileType.NOT_PASSABLE);
 
-        isDestroyed = true;
+        isDestroyed = false;
         beenDestroyed = false;
     }
 
@@ -29,15 +29,20 @@ public class DestroyableWall extends EnhancedMapTile{
     public void update(Player player) {
         super.update(player);
         //System.out.println("DEBUG: I am a wall located at x" + x + " y" + y + "\nisDestroyed: " + isDestroyed + " beenDestroyed: " + beenDestroyed);
-        if(isDestroyed && !beenDestroyed) { //At some point, this should be moved to the destroy method, so this stupid constant comparison doesn't need to be done
-            System.out.println("I am a wall that sohuld've moved at x" + x + " y" + y);
-            this.setLocation(x+4800, y);
-            beenDestroyed = true; 
-        }
+        // if(isDestroyed && !beenDestroyed) { //At some point, this should be moved to the destroy method, so this stupid constant comparison doesn't need to be done
+            
+        //     
+        //     beenDestroyed = true; 
+        // }
     }
     public void destroyWall() { //In theory, calling this method destroys an instance of these walls. In order to destroy an entire section, we could group them all in an array, then call this method on each member of the array horribly inefficient so O'neil would be crying but in theory it would work
+        if(!isDestroyed) {
+            this.setLocation(x+4800, y);
+            System.out.println("I am a wall that sohuld've moved at x" + x + " y" + y);
+            this.mapEntityStatus = mapEntityStatus.REMOVED;
+        }
         isDestroyed = true;
-        neighbor.destroyWall();
+        //neighbor.destroyWall();
     }
 
     @Override

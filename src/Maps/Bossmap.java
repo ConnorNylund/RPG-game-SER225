@@ -3,6 +3,7 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
 import Game.ScreenCoordinator;
+import GameObject.SpriteSheet;
 import Level.*;
 // import NPCs.Bug;
  import NPCs.Dinosaur;
@@ -13,12 +14,17 @@ import Tilesets.CommonTileset;
 
 import java.util.ArrayList;
 
+import Enemies.Enemy;
+import Enemies.Boss;
+import Engine.ImageLoader;
+
 // Represents a test map to be used in a level
 public class Bossmap extends Map {
 
     public Bossmap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("Bossmap.txt", new CommonTileset(), screenCoordinator);
-        this.playerStartPosition = getMapTile(5, 8).getLocation();
+        this.playerStartPosition = getMapTile(5, 12).getLocation();
+        this.screenCoordinator = screenCoordinator;
         this.currentMap = 1;
     }
 
@@ -26,8 +32,8 @@ public class Bossmap extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        enhancedMapTiles.add(pushableRock);
+        //PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        //enhancedMapTiles.add(pushableRock);
 
 
 
@@ -77,7 +83,7 @@ public class Bossmap extends Map {
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        getMapTile(5, 9).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(5, 14).setInteractScript(new ReturnScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }    

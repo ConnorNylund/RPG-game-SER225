@@ -8,6 +8,7 @@ import ScriptActions.UnlockPlayerScriptAction;
 import ScriptActions.ScriptAction;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.Map;
 
 // Script for challenging the boss
 public class ShopScript extends Script {
@@ -30,6 +31,7 @@ public class ShopScript extends Script {
             @Override
             public ScriptState execute() {
                 System.out.println("Transitioning to ShopChoiceScreen");
+                screenCoordinator.saveState();
                 screenCoordinator.setGameState(GameState.SHOP);
                 return ScriptState.COMPLETED;
             }
