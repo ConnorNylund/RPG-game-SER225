@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import Enemies.Boss;
 import Enemies.Enemy;
+import Enemies.FarmerBoss; // Import FarmerBoss
 
 // This class is for when the RPG game is actually being played
 public class PlayBossScreen extends Screen {
@@ -32,7 +33,7 @@ public class PlayBossScreen extends Screen {
     protected WaveManager waveManager;
     protected int currentMap;  
     protected Inventory inventory;
-
+    protected FarmerBoss farmerBoss; // Declare FarmerBoss instance
 
     public PlayBossScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -54,9 +55,14 @@ public class PlayBossScreen extends Screen {
 
         inventory = new Inventory();
 
-        Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
-        map.addNPC(testEnem);
-        testEnem.setMap(map);
+        // Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
+        // map.addNPC(testEnem);
+        // testEnem.setMap(map);
+
+        // FARMER
+        // farmerBoss = new FarmerBoss(1, new Point(300, 300), player); // Set spawn location
+        // farmerBoss.setMap(map);
+        // map.addNPC(farmerBoss); // Add FarmerBoss to the map’s NPC list
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -72,7 +78,6 @@ public class PlayBossScreen extends Screen {
         // preloads all scripts ahead of time rather than loading them dynamically
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
-
     }
 
     public void update() {
@@ -84,6 +89,7 @@ public class PlayBossScreen extends Screen {
             case RUNNING:
                 player.update();
                 map.update(player);
+                farmerBoss.update(player); // Update FarmerBoss to track player and interact
 
                 // if (currentMap != map.getCurrentMap()) {
                 //     currentMap = map.getCurrentMap();
@@ -103,7 +109,9 @@ public class PlayBossScreen extends Screen {
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
+                farmerBoss.draw(graphicsHandler); // Draw FarmerBoss on the screen
                 break;
+                
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);
                 break;
@@ -113,7 +121,6 @@ public class PlayBossScreen extends Screen {
     public PlayLevelScreenState getPlayLevelScreenState() {
         return playLevelScreenState;
     }
-
 
     public void resetLevel() {
         initialize();
