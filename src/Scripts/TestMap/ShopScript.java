@@ -31,6 +31,7 @@ public class ShopScript extends Script {
             @Override
             public ScriptState execute() {
                 System.out.println("Transitioning to ShopChoiceScreen");
+                screenCoordinator.saveState();
                 screenCoordinator.setGameState(GameState.SHOP);
                 return ScriptState.COMPLETED;
             }

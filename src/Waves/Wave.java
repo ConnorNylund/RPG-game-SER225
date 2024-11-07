@@ -28,15 +28,15 @@ public class Wave {
     }
 
     public void Spawn() {
-        // for (int i = 0; i < this.numBosses; i++) {
-        //     MapTile bossTile = map.getRandomBossTile();
-        //     Point position = bossTile.getLocation();
-        //     Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
+        for (int i = 0; i < this.numBosses; i++) {
+            MapTile bossTile = map.getRandomBossTile();
+            Point position = bossTile.getLocation();
+            Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
 
-        //     Boss testBoss = new Boss(0, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
-        //     this.enemies.add(testBoss);
-        //     map.addNPC(testBoss);
-        // }
+            Boss testBoss = new Boss(0, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
+            this.bosses.add(testBoss);
+            map.addNPC(testBoss);
+        }
 
         for (int i = 0; i < this.numEnemies; i++) {
             MapTile grassTile = map.getRandomGrassTile();
@@ -71,7 +71,7 @@ public class Wave {
         }
 
         for (Boss boss : bossesToDie) {
-            this.enemies.remove(boss);
+            this.bosses.remove(boss);
         }
     }
 

@@ -1,12 +1,15 @@
 package Waves;
 import Enemies.Enemy;
+import Enemies.Boss;
 import Level.Map;
 import Maps.TestMap;
+import Maps.Bossmap;
 
 import java.util.ArrayList;
 public class WaveManager {
     private ArrayList<Wave> waves;
     public static int numEnemies;
+    public static int numBosses;    
     public static int currentWaveIndex;
     private Wave currentWave;
     private int numWaves;
@@ -45,8 +48,19 @@ public class WaveManager {
                 newWave();
             }
         }
-        if(currentWaveIndex >= 5) {
+        if(currentWaveIndex >= 2) {
             ((TestMap)testMap).destroyWall1(); 
+        }
+    }
+
+    public void bossupdate() {
+        if (currentWave != null) {
+            currentWave.update();
+            numBosses = currentWave.getBossesAlive();
+
+            if (currentWave.getBossesAlive() <= 0) {
+                newWave();
+            }
         }
     }
 

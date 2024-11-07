@@ -31,6 +31,7 @@ public class BossChallengeScript extends Script {
             @Override
             public ScriptState execute() {
                 System.out.println("Transitioning to BossChoiceScreen");
+                screenCoordinator.saveState();
                 screenCoordinator.setGameState(GameState.BOSS);
                 return ScriptState.COMPLETED;
             }

@@ -34,7 +34,7 @@ public class Enemy extends NPC {
         this.id = id;
         //Variables to change for stats
         moveSpeed = 1.7f; // Higher is faster
-        attackRadius = 30; // Higher is farther
+        attackRadius = 50; // Higher is farther
         totalHealth = 3; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
@@ -116,19 +116,31 @@ public class Enemy extends NPC {
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
         return new HashMap<String, Frame[]>() {{
             put("DAMAGE1", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(2,0))
+                new FrameBuilder(spriteSheet.getSprite(2,1), 14)
+                    .withScale(3)
+                    .withBounds(0,0,16,16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(2,2),14)
                     .withScale(3)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(1,0))
+                new FrameBuilder(spriteSheet.getSprite(1,1),14)
+                    .withScale(3)
+                    .withBounds(0,0,16,16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(1,2),14)
                     .withScale(3)
                     .withBounds(0,0,16,16)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0,0))
+                new FrameBuilder(spriteSheet.getSprite(0,1),14)
+                    .withScale(3)
+                    .withBounds(0,0,16,16)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(0,2),14)
                     .withScale(3)
                     .withBounds(0,0,16,16)
                     .build(),

@@ -3,6 +3,7 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
 import Game.ScreenCoordinator;
+import GameObject.SpriteSheet;
 import Level.*;
 // import NPCs.Bug;
  import NPCs.Dinosaur;
@@ -12,6 +13,10 @@ import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 
 import java.util.ArrayList;
+
+import Enemies.Enemy;
+import Enemies.Boss;
+import Engine.ImageLoader;
 
 // Represents a test map to be used in a level
 public class Bossmap extends Map {

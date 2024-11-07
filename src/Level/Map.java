@@ -82,8 +82,8 @@ public abstract class Map {
     protected ScreenCoordinator screenCoordinator;
 
     protected ArrayList<MapTile> grassTiles;
-    protected ArrayList<MapTile> bossTiles;
 
+    protected ArrayList<MapTile> bossTiles;
 
     public int currentMap = 0;
 
@@ -189,7 +189,7 @@ public abstract class Map {
                     this.grassTiles.add(tile);
                 }
 
-                if (tile.getTileIndex() == 40) {
+                if (tile.getTileIndex() == 52) {
                     this.bossTiles.add(tile);
                 }
 
