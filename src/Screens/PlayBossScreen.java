@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import Enemies.Boss;
 import Enemies.Enemy;
-import Enemies.FarmerBoss; // Import FarmerBoss
+//import Enemies.FarmerBoss; // Import FarmerBoss
 
 // This class is for when the RPG game is actually being played
 public class PlayBossScreen extends Screen {
@@ -33,7 +33,7 @@ public class PlayBossScreen extends Screen {
     protected WaveManager waveManager;
     protected int currentMap;  
     protected Inventory inventory;
-    protected FarmerBoss farmerBoss; // Declare FarmerBoss instance
+    //protected FarmerBoss farmerBoss; // Declare FarmerBoss instance
 
     public PlayBossScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -85,7 +85,7 @@ public class PlayBossScreen extends Screen {
             case RUNNING:
                 player.update();
                 map.update(player);
-                farmerBoss.update(player); // Update FarmerBoss to track player and interact
+                //farmerBoss.update(player); // Update FarmerBoss to track player and interact
 
                 // if (currentMap != map.getCurrentMap()) {
                 //     currentMap = map.getCurrentMap();
@@ -105,7 +105,7 @@ public class PlayBossScreen extends Screen {
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
-                farmerBoss.draw(graphicsHandler); // Draw FarmerBoss on the screen
+                //farmerBoss.draw(graphicsHandler); // Draw FarmerBoss on the screen
                 break;
                 
             case LEVEL_COMPLETED:
