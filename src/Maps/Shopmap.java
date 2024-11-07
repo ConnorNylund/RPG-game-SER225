@@ -83,33 +83,33 @@ public class Shopmap extends Map {
         //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
-
-        getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        
+        getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
         getMapTile(3, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
         getMapTile(4, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(5, 3).setItemData(new InventoryItem("Pistol With Bayonet", null, 0, 0));
+        getMapTile(5, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
         getMapTile(5, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(3, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(3, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
         getMapTile(3, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(4, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(4, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
         getMapTile(4, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(5, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", null, 0, 0));
+        getMapTile(5, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
         getMapTile(5, 7).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(8, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
         getMapTile(8, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(9, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(9, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
         getMapTile(9, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", null, 0, 0));
+        getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
         getMapTile(10, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
         getMapTile(8, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(9, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(9, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
         getMapTile(9, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", null, 0, 0));
+        getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
         getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));

@@ -21,7 +21,25 @@ public class FisherScript extends Script {
 
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
-        scriptActions.add(new TextboxScriptAction("What a Wonderful day, I belive that Pirate\n over there has something to tell you"));
+        
+        
+
+        scriptActions.add(new ConditionalScriptAction() {{
+            addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
+                addRequirement(new FlagRequirement("hasTalkedToPirate", false));
+                addRequirement(new FlagRequirement("hasTalkedToFisher", false));
+
+                addScriptAction(new WaitScriptAction(70));
+                addScriptAction(new NPCFacePlayerScriptAction());
+                addScriptAction(new TextboxScriptAction () {{
+                    addText("What a Wonderful day, I belive that Pirate\n over there has something to tell you");
+                    
+                }});
+                
+                addScriptAction(new ChangeFlagScriptAction("hasTalkedToFisher", false));
+            }});
+        }});
+
 
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{

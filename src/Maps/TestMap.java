@@ -35,7 +35,7 @@ public class TestMap extends Map {
 
     public TestMap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("test_map.txt", new CommonTileset(), screenCoordinator);
-        this.playerStartPosition = getMapTile(38, 24).getLocation();
+        this.playerStartPosition = getMapTile(25, 27).getLocation();
         this.screenCoordinator = screenCoordinator;
         this.currentMap = 0;
     }
