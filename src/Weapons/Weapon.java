@@ -18,6 +18,7 @@ import Utils.Point;
 public class Weapon extends MapEntity{
     protected int fireRate;
     protected float DPH; //Damage per hit
+    protected float AOE; 
     protected float antiJankTimer, bulletSpeed;
     protected Map map;
     protected ArrayList<Bullet> bullets; 
@@ -38,7 +39,7 @@ public class Weapon extends MapEntity{
         if ((System.nanoTime()-antiJankTimer)/1000000000.0 > fireRate) {
             System.out.println("DEBUG: shot");
             antiJankTimer = System.nanoTime();
-            bullets.add(new Bullet(new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), Sx, Sy, Fx, Fy, bulletSpeed, map));
+            bullets.add(new Bullet(new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), Sx, Sy, Fx, Fy, bulletSpeed, AOE, map));
             System.out.println("DEBUG: Bullet Added to array list, Active bullets: " + bullets.size()); 
         }
     }

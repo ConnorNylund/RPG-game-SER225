@@ -54,9 +54,9 @@ public class PlayBossScreen extends Screen {
 
         inventory = new Inventory();
 
-        Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
-        map.addNPC(testEnem);
-        testEnem.setMap(map);
+        Boss testboss = new Boss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
+        map.addNPC(testboss);
+        testboss.setMap(map);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
