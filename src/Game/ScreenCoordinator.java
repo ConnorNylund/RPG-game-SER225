@@ -53,11 +53,14 @@ public class ScreenCoordinator extends Screen {
 					case BOSS:
 						currentScreen = new PlayBossScreen(this);
 						break;
-					case SHOP :
+					case SHOP:
 						currentScreen = new PlayShopScreen(this);
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
+						break;
+					case ABOUT: // Add this case to handle the About screen
+						currentScreen = new AboutScreen(this);
 						break;
 				}
 				currentScreen.initialize();
@@ -74,4 +77,9 @@ public class ScreenCoordinator extends Screen {
         // call the draw method for the currentScreen
         currentScreen.draw(graphicsHandler);
     }
+
+	public void saveState() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'saveState'");
+	}
 }
