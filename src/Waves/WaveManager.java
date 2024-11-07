@@ -51,6 +51,8 @@ public class WaveManager {
         if(currentWaveIndex >= 2) {
             ((TestMap)testMap).destroyWall1(); 
         }
+
+        
     }
 
     public void bossupdate() {
