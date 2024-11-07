@@ -30,6 +30,13 @@ public class ScreenCoordinator extends Screen {
 		this.gameState = gameState;
 	}
 
+	protected Screen savedScreen = null;
+	protected GameState savedState = null;
+	public void saveState() {
+		savedScreen = this.currentScreen;
+		savedState = this.gameState;
+	}
+
 	@Override
 	public void initialize() {
 		// start game off with Menu Screen
@@ -42,24 +49,32 @@ public class ScreenCoordinator extends Screen {
 			// if previousGameState does not equal gameState, it means there was a change in gameState
 			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
 			if (previousGameState != gameState) {
-				switch(gameState) {
-					case MENU:
-						currentScreen = new MenuScreen(this);
-						break;
-					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
-						break;
-					case BOSS:
-						currentScreen = new PlayBossScreen(this);
-						break;
-					case SHOP :
-						currentScreen = new PlayShopScreen(this);
-						break;
-					case CREDITS:
-						currentScreen = new CreditsScreen(this);
-						break;
+				if (savedScreen != null && savedState != null && savedState == gameState) {
+					currentScreen = savedScreen;
+					gameState = savedState;
+
+					savedScreen = null;
+					savedState = null;
+				} else {
+					switch(gameState) {
+						case MENU:
+							currentScreen = new MenuScreen(this);
+							break;
+						case LEVEL:
+							currentScreen = new PlayLevelScreen(this);
+							break;
+						case BOSS:
+							currentScreen = new PlayBossScreen(this);
+							break;
+						case SHOP :
+							currentScreen = new PlayShopScreen(this);
+							break;
+						case CREDITS:
+							currentScreen = new CreditsScreen(this);
+							break;
+					}
+					currentScreen.initialize();
 				}
-				currentScreen.initialize();
 			}
 			previousGameState = gameState;
 

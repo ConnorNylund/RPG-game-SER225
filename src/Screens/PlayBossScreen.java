@@ -1,16 +1,25 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Keyboard;  // Import this to use Keyboard handling
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Inventory.Inventory;
 import Level.*;
+import Maps.Shopmap;
 import Maps.Bossmap;
 import Maps.TestMap;
-import Players.Cat;
 import Players.Bunny;
+import ScriptActions.TextboxScriptAction;
 import Utils.Direction;
 import Utils.Point;
+import Waves.WaveManager;
+import Engine.Key;  // Import Key class for using specific keys
+import java.util.ArrayList;
+
+import Enemies.Boss;
+import Enemies.Enemy;
 
 // This class is for when the RPG game is actually being played
 public class PlayBossScreen extends Screen {
@@ -20,7 +29,10 @@ public class PlayBossScreen extends Screen {
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected WaveManager waveManager;
     protected int currentMap;  
+    protected Inventory inventory;
+
 
     public PlayBossScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -37,6 +49,14 @@ public class PlayBossScreen extends Screen {
         // define/setup map
         map = new Bossmap(screenCoordinator, 1);
         map.setFlagManager(flagManager);
+
+        // waveManager = new WaveManager(5, map);
+
+        inventory = new Inventory();
+
+        Enemy testEnem = new Enemy(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
+        map.addNPC(testEnem);
+        testEnem.setMap(map);
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -56,6 +76,8 @@ public class PlayBossScreen extends Screen {
     }
 
     public void update() {
+        // waveManager.bossupdate();
+
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going

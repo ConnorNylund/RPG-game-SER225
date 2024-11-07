@@ -85,6 +85,7 @@ public class PlayLevelScreen extends Screen {
 
         waveManager.update();
 
+
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
