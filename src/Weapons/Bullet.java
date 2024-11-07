@@ -25,8 +25,9 @@ public class Bullet extends NPC{
     private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
     private static int bulletCt = 60;
     private boolean hasDamaged; 
+    private float bulletLife, creationTime;
     public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
-        super(bulletCt, Sx+50, Sy, bulletPic, "Anim1");  
+        super(bulletCt, Sx, Sy, bulletPic, "Anim1");  
         bulletCt++; 
         this.setMap(map);
         map.addNPC(this); 
@@ -36,6 +37,8 @@ public class Bullet extends NPC{
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
         prevAngle = curAngle; 
         hasDamaged = false; 
+        creationTime = System.nanoTime(); 
+        bulletLife = 5; 
     }
     public void update(Player player) { 
         //float Fx = Fx;
@@ -64,7 +67,7 @@ public class Bullet extends NPC{
         ArrayList<Enemy> activeEnemies = new ArrayList(0);
             for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
                 try {
-                    activeEnemies.add((Enemy)map.getActiveNPCs().get(i));
+                    activeEnemies.add((Enemy)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
                 } catch(ClassCastException e) {
                     System.out.println("Java getting mad about jank casts");
                 }
@@ -72,12 +75,12 @@ public class Bullet extends NPC{
             }
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
-                Rectangle enemHitBox = temp.getCalibratedBounds();
-                int attackRange = 40; //Eventually should be replaced with a splash damage variable of some kind
-                boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
-                boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
-                boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
-                boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
+                // Rectangle enemHitBox = temp.getCalibratedBounds();
+                int attackRange = 20; //Eventually should be replaced with a splash damage variable of some kind
+                // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
+                // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
+                // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
+                // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
                 //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
                 if( this.x >= temp.getX()-attackRange && 
                     this.x <= temp.getX()+temp.getWidth()+attackRange &&
@@ -89,7 +92,7 @@ public class Bullet extends NPC{
                         this.mapEntityStatus = mapEntityStatus.REMOVED; 
                 }
 
-                System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
+                //System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
             }
 
         if(this.reachedTarget()) {
@@ -98,6 +101,9 @@ public class Bullet extends NPC{
             this.projSpeed = 0; //Temporary so bullets will stop when they reach their targets 
 
             this.mapEntityStatus = mapEntityStatus.REMOVED; 
+        }
+        if((System.nanoTime()-creationTime)/1000000000.0 > bulletLife) {
+            this.mapEntityStatus = mapEntityStatus.REMOVED;
         }
     }
     public boolean reachedTarget() {

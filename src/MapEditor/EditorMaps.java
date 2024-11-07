@@ -30,7 +30,7 @@ public class EditorMaps {
             case "Bossmap":
                 return new Bossmap(null, 1);
             case "Shopmap":
-                return new Shopmap(null, 2);
+                return new Shopmap(null);
 
             default:
                 throw new RuntimeException("Unrecognized map name");
