@@ -31,6 +31,13 @@ public class ScreenCoordinator extends Screen {
 		this.gameState = gameState;
 	}
 
+	protected Screen savedScreen = null;
+	protected GameState savedState = null;
+	public void saveState() {
+		savedScreen = this.currentScreen;
+		savedState = this.gameState;
+	}
+
     @Override
     public void initialize() {
         // start game off with Menu Screen
@@ -43,38 +50,42 @@ public class ScreenCoordinator extends Screen {
 			// if previousGameState does not equal gameState, it means there was a change in gameState
 			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
 			if (previousGameState != gameState) {
-				switch(gameState) {
-					case MENU:
-						currentScreen = new MenuScreen(this);
-						break;
-					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
-						break;
-					case BOSS:
-						currentScreen = new PlayBossScreen(this);
-						break;
-					case SHOP:
-						currentScreen = new PlayShopScreen(this);
-						break;
-					case CREDITS:
-						currentScreen = new CreditsScreen(this);
-						break;
-					case ABOUT: // Add this case to handle the About screen
-						currentScreen = new AboutScreen(this);
-						break;
+				if (savedScreen != null && savedState != null && savedState == gameState) {
+					currentScreen = savedScreen;
+					gameState = savedState;
+					savedScreen = null;
+					savedState = null;
+				} else {
+					switch(gameState) {
+						case MENU:
+							currentScreen = new MenuScreen(this);
+							break;
+						case LEVEL:
+							currentScreen = new PlayLevelScreen(this);
+							break;
+						case BOSS:
+							currentScreen = new PlayBossScreen(this);
+							break;
+						case SHOP :
+							currentScreen = new PlayShopScreen(this);
+							break;
+						case CREDITS:
+							currentScreen = new CreditsScreen(this);
+							break;
+					}
+					currentScreen.initialize();
 				}
-				currentScreen.initialize();
 			}
 			previousGameState = gameState;
 
-            // call the update method for the currentScreen
-            currentScreen.update();
-        } while (previousGameState != gameState);
-    }
+			// call the update method for the currentScreen
+			currentScreen.update();
+		} while (previousGameState != gameState);
+	}
 
-    @Override
-    public void draw(GraphicsHandler graphicsHandler) {
-        // call the draw method for the currentScreen
-        currentScreen.draw(graphicsHandler);
-    }
+	@Override
+	public void draw(GraphicsHandler graphicsHandler) {
+		// call the draw method for the currentScreen
+		currentScreen.draw(graphicsHandler);
+	}
 }
