@@ -3,6 +3,7 @@ package Maps;
 import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
+import EnhancedMapTiles.TestingFarmer; // Import TestingFarmer class
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.SpriteSheet;
@@ -40,20 +41,19 @@ public class TestMap extends Map {
         this.currentMap = 0;
     }
 
-    
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        //PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        //enhancedMapTiles.add(pushableRock);
-
-
-        // ADDING COIN TO THE MAP
+        // Adding a coin to the map
         Coin coin = new Coin(getMapTile(35, 20).getLocation());
         enhancedMapTiles.add(coin);
 
-        //Brady's broken code dump
+        // Adding the farmer to the map
+        TestingFarmer farmer = new TestingFarmer(getMapTile(20, 5).getLocation()); // Set appropriate location for farmer
+        enhancedMapTiles.add(farmer);
+
+        // Adding destroyable walls to the map
         destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
         destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
         destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
@@ -73,11 +73,12 @@ public class TestMap extends Map {
         enhancedMapTiles.add(destroyableWallH3);
         enhancedMapTiles.add(destroyableWallH4);
         enhancedMapTiles.add(destroyableWallH5);
-        System.out.println("DEBUG: SUCCESFULLY LOADED ALL ENHANCED TILES TO ARRAYLIST");
+
+        System.out.println("DEBUG: Successfully loaded all enhanced tiles to ArrayList");
 
         return enhancedMapTiles;
     }
-    
+
     public void destroyWall1() {
         destroyableWallV1.destroyWall();
         destroyableWallV2.destroyWall();
@@ -86,26 +87,19 @@ public class TestMap extends Map {
 
     @Override
     public ArrayList<NPC> loadNPCs() {
-        ArrayList<NPC> npcs = new ArrayList<>(); 
+        ArrayList<NPC> npcs = new ArrayList<>();
 
         Walrus walrus = new Walrus(1, getMapTile(27, 19).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());  ////
         npcs.add(walrus);
 
-        // Adding the Fish Bunny NPC
         FishBunny fishBunny = new FishBunny(3, getMapTile(17, 37).getLocation().subtractY(40));
         fishBunny.setInteractScript(new FisherScript());
         npcs.add(fishBunny);
-
-
 
         PirateBunny pirateBunny = new PirateBunny(3, getMapTile(18, 35).getLocation().subtractY(40));
         pirateBunny.setInteractScript(new PirateBunnyScript());
         npcs.add(pirateBunny);
 
-
-
-        
         return npcs;
     }
 
@@ -113,20 +107,13 @@ public class TestMap extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
 
-    // Add a trigger for GameBlurbScript near the player's start position
-    // triggers.add(new Trigger(1216, 768, 100, 10, new GameBlurbScript(), "hasSeenBlurb"));
-// 1216
-    // Original LostBallScript triggers
-    triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
-    triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
-    triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+        // Add triggers
+        triggers.add(new Trigger(790, 1030, 100, 10, new LostBallScript(), "hasLostBall"));
+        triggers.add(new Trigger(790, 960, 10, 80, new LostBallScript(), "hasLostBall"));
+        triggers.add(new Trigger(890, 960, 10, 80, new LostBallScript(), "hasLostBall"));
 
-    // triggers.add(new Trigger(790, 1030, 100, 10, new GameIntroScript(), "hasSeenScript"));
-
-    return triggers;
-}
-
-    
+        return triggers;
+    }
 
     @Override
     public void loadScripts(ScreenCoordinator screenCoordinator) {
@@ -134,8 +121,6 @@ public class TestMap extends Map {
         getMapTile(2, 6).setInteractScript(new TreeScript());
         getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
-        
-
 
         super.loadScripts(screenCoordinator);
     }

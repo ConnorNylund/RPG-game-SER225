@@ -14,6 +14,8 @@ import Level.NPC;
 import Level.Player;
 import Players.Bunny;
 import Utils.Point;
+import EnhancedMapTiles.Coin;
+import Level.MapTile;
 
 import java.util.HashMap;
 
@@ -44,19 +46,26 @@ public class Enemy extends NPC {
         curHealth = totalHealth;
         antiJankTimer = System.nanoTime(); 
     }
-    public void takeDamage() { //Call this when the enemy takes damage, done as it's own method in case something else needs to call it other than clicking
+    public void takeDamage() {
         curHealth -= 1;
-        if(curHealth <= 0) {
-            isLocked = true; 
-            this.mapEntityStatus = mapEntityStatus.REMOVED;
-            //Dead stuff (Doing later cuz I've got a couple solutions and am not sure which is best yet)
-            //Lazy plan for this is to setLocation off the map, then changed moveSpeed to 0
+        if (curHealth <= 0) {
+            isLocked = true;
+            this.mapEntityStatus = MapEntityStatus.REMOVED;
+            
+            // Spawn a coin at the enemy's current location upon death
+            MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
+                                                 (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
+            Coin droppedCoin = new Coin(currentTile.getLocation());
+            map.addEnhancedMapTile(droppedCoin);
+            
+            System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
         } else {
-            System.out.println("DEBUG: DAMAGE" + curHealth); 
+            System.out.println("DEBUG: DAMAGE" + curHealth);
             setCurrentAnimationName("DAMAGE" + curHealth);
         }
-
     }
+    
+    
     public void update(Player player) {
         super.update(player); 
         //System.out.println("DEBUG: RealEnemPos=" + this.getX() + "/" + this.getY());

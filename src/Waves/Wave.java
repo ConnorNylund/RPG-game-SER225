@@ -3,9 +3,7 @@ package Waves;
 import java.util.ArrayList;
 
 import Enemies.Enemy;
-import Enemies.Boss;
-import Engine.ImageLoader;
-import GameObject.SpriteSheet;
+import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
 import Level.MapTile;
@@ -13,31 +11,35 @@ import Utils.Point;
 
 public class Wave {
     private ArrayList<Enemy> enemies;
-    private ArrayList<Boss> bosses;
+    private ArrayList<FarmerBoss> farmerBosses; // List to hold FarmerBosses
     private int numEnemies;
-    private int numBosses;
+    private int numFarmerBosses; // Number of FarmerBosses
     private Map map;
 
-    public Wave(int numEnemies, Map map) {
+    // Constructor now takes numFarmerBosses as a parameter
+    public Wave(int numEnemies, int numFarmerBosses, Map map) {
         this.enemies = new ArrayList<>();
+        this.farmerBosses = new ArrayList<>(); // Initialize FarmerBosses list
         this.numEnemies = numEnemies;
-        this.map = map;
-        this.bosses = new ArrayList<>();
-        this.numBosses = numBosses;
+        this.numFarmerBosses = numFarmerBosses; // Set the number of FarmerBosses
         this.map = map;
     }
 
+    // Spawn method that adds both fox enemies and FarmerBosses to the map
     public void Spawn() {
-        for (int i = 0; i < this.numBosses; i++) {
+        // Add FarmerBosses to the wave
+        for (int i = 0; i < this.numFarmerBosses; i++) {
             MapTile bossTile = map.getRandomBossTile();
             Point position = bossTile.getLocation();
             Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
 
-            Boss testBoss = new Boss(0, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
-            this.bosses.add(testBoss);
-            map.addNPC(testBoss);
+            // FARMER CODE
+            FarmerBoss farmerBoss = new FarmerBoss(0, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), map.getPlayer()); 
+            this.farmerBosses.add(farmerBoss);
+            map.addNPC(farmerBoss);
         }
 
+        // Add regular enemies (foxes) to the wave
         for (int i = 0; i < this.numEnemies; i++) {
             MapTile grassTile = map.getRandomGrassTile();
             Point position = grassTile.getLocation();
@@ -47,11 +49,11 @@ public class Wave {
             this.enemies.add(testEnem);
             map.addNPC(testEnem);
         }
-
-        
     }
 
+    // Update method for managing active and removed enemies and FarmerBosses
     public void update() {
+        // Remove enemies marked for removal
         ArrayList<Enemy> enemiesToDie = new ArrayList<>();
         for (Enemy enemy : this.enemies) {
             if (enemy.getMapEntityStatus() == MapEntityStatus.REMOVED) {
@@ -63,31 +65,36 @@ public class Wave {
             this.enemies.remove(enemy);
         }
 
-        ArrayList<Boss> bossesToDie = new ArrayList<>();
-        for (Boss boss : this.bosses) {
+        // Remove FarmerBosses marked for removal
+        ArrayList<FarmerBoss> bossesToDie = new ArrayList<>();
+        for (FarmerBoss boss : this.farmerBosses) {
             if (boss.getMapEntityStatus() == MapEntityStatus.REMOVED) {
                 bossesToDie.add(boss);
             }
         }
 
-        for (Boss boss : bossesToDie) {
-            this.bosses.remove(boss);
+        for (FarmerBoss boss : bossesToDie) {
+            this.farmerBosses.remove(boss);
         }
     }
 
+    // Returns the number of regular enemies currently alive
     public int getEnemiesAlive() {
         return this.enemies.size();
     }
 
+    // Returns the number of FarmerBosses currently alive
+    public int getFarmerBossesAlive() {
+        return this.farmerBosses.size();
+    }
+
+    // Getter for the total number of regular enemies in this wave
     public int getNumEnemies() {
         return this.numEnemies;
     }
 
-    public int getBossesAlive() {
-        return this.bosses.size();
-    }
-
-    public int getNumBosses() {
-        return this.numBosses;
+    // Getter for the total number of FarmerBosses in this wave
+    public int getNumFarmerBosses() {
+        return this.numFarmerBosses;
     }
 }
