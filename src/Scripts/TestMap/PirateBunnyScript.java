@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Level.Script;
 import ScriptActions.*;
+import Utils.Direction;
 
 // script for talking to walrus npc
 // checkout the documentation website for a detailed guide on how this script works
@@ -27,11 +28,17 @@ public class PirateBunnyScript extends Script {
 
                 }});
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToPirate", true));
+
+                // addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+                // addScriptAction(new NPCWalkScriptAction(Direction.DOWN, 7, 2));
+                // addScriptAction(new NPCWalkScriptAction(Direction.LEFT, 4, 2));
+
             }});
+            
 
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("hasTalkedToPirate", true));
-                addScriptAction(new TextboxScriptAction("I sure love doing walrus things!"));
+                addScriptAction(new TextboxScriptAction("Goof luck in your adventures!"));
             }});
         }});
 
