@@ -15,7 +15,7 @@ public class TestPistol extends Weapon{
             super(gunPic, playerLoc, map); 
             this.fireRate = 1; 
             this.DPH = .5f;
-            this.bulletSpeed = 3;
+            this.bulletSpeed = 6;
             System.out.println("DEBUG: Weapon Successfuly created");
     }
 }
