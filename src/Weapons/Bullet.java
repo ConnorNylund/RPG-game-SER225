@@ -25,8 +25,9 @@ public class Bullet extends NPC{
     private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
     private static int bulletCt = 60;
     private boolean hasDamaged; 
+    private float AOE; 
     private float bulletLife, creationTime;
-    public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
+    public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, float AOE, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
         super(bulletCt, Sx, Sy, bulletPic, "Anim1");  
         bulletCt++; 
         this.setMap(map);
@@ -34,6 +35,7 @@ public class Bullet extends NPC{
         this.Fx = Fx;
         this.Fy = Fy; 
         this.projSpeed = projSpeed; 
+        this.AOE = AOE;
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
         prevAngle = curAngle; 
         hasDamaged = false; 
@@ -76,16 +78,16 @@ public class Bullet extends NPC{
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
                 // Rectangle enemHitBox = temp.getCalibratedBounds();
-                int attackRange = 20; //Eventually should be replaced with a splash damage variable of some kind
+                
                 // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
                 // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
                 // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
                 // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
                 //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
-                if( this.x >= temp.getX()-attackRange && 
-                    this.x <= temp.getX()+temp.getWidth()+attackRange &&
-                    this.y >= temp.getY()-attackRange &&
-                    this.y <= temp.getY()+temp.getHeight()+attackRange &&
+                if( this.x >= temp.getX()-AOE && 
+                    this.x <= temp.getX()+temp.getWidth()+AOE &&
+                    this.y >= temp.getY()-AOE &&
+                    this.y <= temp.getY()+temp.getHeight()+AOE &&
                     !hasDamaged) {
                         temp.takeDamage(); 
                         hasDamaged = true; 
