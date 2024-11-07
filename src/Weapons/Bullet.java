@@ -17,7 +17,7 @@ public class Bullet extends NPC{
     private float Fx, Fy; //Final X and Y
     private float prevAngle, curAngle; //Angle shouldn't change, so if it does, we've passed the target
     private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
-    private static int bulletCt = 40;
+    private static int bulletCt = 60;
     public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
         super(bulletCt, Sx+50, Sy, bulletPic, "Anim1");  
         bulletCt++; 
@@ -27,12 +27,13 @@ public class Bullet extends NPC{
         this.Fy = Fy; 
         this.projSpeed = projSpeed; 
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
-        prevAngle = (float)Math.atan2(Fy-Sy, Fx-Sx); 
+        prevAngle = curAngle; 
     }
     public void update(Player player) { 
-        
-        float curX = this.getX();
-        float curY = this.getY();
+        //float Fx = Fx;
+        //float Fy = Fy;
+        float curX = this.x;
+        float curY = this.y;
         //System.out.println("DEBUG: Current Bullet Position (x,y): " + curX + "," + curY);
 
         float dx = Fx-curX;
@@ -45,7 +46,7 @@ public class Bullet extends NPC{
         float xRatio = dx/dMag;
         float yRatio = dy/dMag;
 
-        System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
+        //System.out.println("DEBUG: curAngle = " + curAngle + " prevAngle" + prevAngle + " projSpeed = " + projSpeed); 
 
         super.moveXHandleCollision(projSpeed*xRatio);
         super.moveYHandleCollision(projSpeed*yRatio); 
@@ -59,14 +60,15 @@ public class Bullet extends NPC{
         }
     }
     public boolean reachedTarget() {
-        return curAngle!=prevAngle; 
+        return false; 
+        //return curAngle!=prevAngle; 
     }
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
             put("Anim1", new Frame[]{
                 new FrameBuilder(spriteSheet.getSprite(0,0))
                     .withScale(1)
-                    .withBounds(6,12,12,7)
+                    .withBounds(0,0,16,16)
                     .build()
             });
         }};
