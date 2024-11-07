@@ -80,9 +80,9 @@ public class Bullet extends NPC{
                 boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
                 //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
                 if( this.x >= temp.getX()-attackRange && 
-                    this.x <= temp.getX()+attackRange &&
+                    this.x <= temp.getX()+temp.getWidth()+attackRange &&
                     this.y >= temp.getY()-attackRange &&
-                    this.y <= temp.getY()+attackRange &&
+                    this.y <= temp.getY()+temp.getHeight()+attackRange &&
                     !hasDamaged) {
                         temp.takeDamage(); 
                         hasDamaged = true; 
