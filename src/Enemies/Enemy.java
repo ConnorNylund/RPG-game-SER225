@@ -64,6 +64,9 @@ public class Enemy extends NPC {
             setCurrentAnimationName("DAMAGE" + curHealth);
         }
     }
+
+
+    // commit
     
     
     public void update(Player player) {
