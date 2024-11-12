@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Builders.FrameBuilder;
-import Engine.GraphicsHandler;
+import Engine.GraphicsHandler; 
 import Engine.ImageLoader;
 import Engine.Keyboard;
 import Engine.MouseHandler;
@@ -76,7 +76,7 @@ public class Bunny extends Player {
         } else {
             //Put code for player death here
             this.lock();
-            this.setLocation(1200, 860); 
+            this.setLocation(860, 1200); 
             System.out.println("DEBUG: Player has died");
         }
         System.out.println("DEBUG: Health = " + health + "Dmg State = " + dmgState);
