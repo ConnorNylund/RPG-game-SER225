@@ -28,15 +28,20 @@ public class Bullet extends NPC{
     private boolean hasDamaged; 
     private float AOE; 
     private float bulletLife, creationTime;
-    public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, float AOE, Map map) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
+    private float DPH; 
+    private Map map;
+    public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, float AOE, Map map, float DPH) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
         super(bulletCt, Sx, Sy, bulletPic, "Anim1");  
         bulletCt++; 
         this.setMap(map);
         map.addNPC(this); 
+        this.map = map; 
         this.Fx = Fx;
         this.Fy = Fy; 
         this.projSpeed = projSpeed; 
         this.AOE = AOE;
+        this.DPH = DPH;
+
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
         prevAngle = curAngle; 
         hasDamaged = false; 
@@ -72,19 +77,19 @@ public class Bullet extends NPC{
                 try {
                     activeEnemies.add((Enemy)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
                 } catch(ClassCastException e) {
-                    System.out.println("Java getting mad about jank casts");
+                    //System.out.println("Java getting mad about jank casts");
                 }
                 //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
             }
-        ArrayList<Boss> activeBosses = new ArrayList(0);
-            for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
-                try {
-                    activeBosses.add((Boss)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
-                } catch(ClassCastException e) {
-                    System.out.println("Java getting mad about jank casts");
-                }
-                //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
-            }
+        // ArrayList<Boss> activeBosses = new ArrayList(0);
+        //     for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
+        //         try {
+        //             activeBosses.add((Boss)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
+        //         } catch(ClassCastException e) {
+        //             //System.out.println("Java getting mad about jank casts");
+        //         }
+        //         //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
+        //     }
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
                 // Rectangle enemHitBox = temp.getCalibratedBounds();
@@ -98,30 +103,30 @@ public class Bullet extends NPC{
                     this.x <= temp.getX()+temp.getWidth()+AOE &&
                     this.y >= temp.getY()-AOE &&
                     this.y <= temp.getY()+temp.getHeight()+AOE &&
-                    !hasDamaged) {
-                        temp.takeDamage(); 
+                    !hasDamaged) { 
+                        temp.takeDamage(DPH); 
                         hasDamaged = true; 
                         this.mapEntityStatus = mapEntityStatus.REMOVED; 
                 }
-                for(int j = 0; j<activeBosses.size(); j++) {
-                    Boss temps = activeBosses.get(j);
-                    // Rectangle enemHitBox = temp.getCalibratedBounds();
+                // for(int j = 0; j<activeBosses.size(); j++) {
+                //     Boss temps = activeBosses.get(j);
+                //     // Rectangle enemHitBox = temp.getCalibratedBounds();
                     
-                    // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
-                    // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
-                    // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
-                    // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
-                    //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
-                    if( this.x >= temps.getX()-AOE && 
-                        this.x <= temps.getX()+temps.getWidth()+AOE &&
-                        this.y >= temps.getY()-AOE &&
-                        this.y <= temps.getY()+temps.getHeight()+AOE &&
-                        !hasDamaged) {
-                            temps.takeDamage(); 
-                            hasDamaged = true; 
-                            this.mapEntityStatus = mapEntityStatus.REMOVED; 
-                    }
-                }
+                //     // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
+                //     // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
+                //     // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
+                //     // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
+                //     //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
+                //     if( this.x >= temps.getX()-AOE && 
+                //         this.x <= temps.getX()+temps.getWidth()+AOE &&
+                //         this.y >= temps.getY()-AOE &&
+                //         this.y <= temps.getY()+temps.getHeight()+AOE &&
+                //         !hasDamaged) {
+                //             temps.takeDamage(); 
+                //             hasDamaged = true; 
+                //             this.mapEntityStatus = mapEntityStatus.REMOVED; 
+                //     }
+                // }
 
                 //System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
             }

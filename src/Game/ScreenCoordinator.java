@@ -63,6 +63,9 @@ public class ScreenCoordinator extends Screen {
 						case LEVEL:
 							currentScreen = new PlayLevelScreen(this);
 							break;
+						case ABOUT:
+							currentScreen = new AboutScreen(this);
+							break;
 						case BOSS:
 							currentScreen = new PlayBossScreen(this);
 							break;
