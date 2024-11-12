@@ -66,9 +66,9 @@ public class Bunny extends Player {
         //System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
     }
 
-    public void takeDamage() {
+    public void takeDamage(float dmgAmt) {
         if(health != 0) {
-            health--;
+            health -= dmgAmt;
             if(dmgState < 3) {
                 dmgState++; 
                 this.animations = loadAnimations(sptSht);
