@@ -3,7 +3,7 @@ package Maps;
 import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
-import EnhancedMapTiles.TestingFarmer; // Import TestingFarmer class
+//import EnhancedMapTiles.TestingFarmer; // Import TestingFarmer class
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.SpriteSheet;
@@ -49,9 +49,10 @@ public class TestMap extends Map {
         Coin coin = new Coin(getMapTile(35, 20).getLocation());
         enhancedMapTiles.add(coin);
 
-        // Adding the farmer to the map
-        TestingFarmer farmer = new TestingFarmer(getMapTile(20, 5).getLocation()); // Set appropriate location for farmer
-        enhancedMapTiles.add(farmer);
+        // not using this anymore
+        // // Adding the farmer to the map
+        // TestingFarmer farmer = new TestingFarmer(getMapTile(20, 5).getLocation()); // Set appropriate location for farmer
+        // enhancedMapTiles.add(farmer);
 
         // Adding destroyable walls to the map
         destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
