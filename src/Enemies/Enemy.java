@@ -63,10 +63,12 @@ public class Enemy extends NPC {
             map.addEnhancedMapTile(droppedCoin);
             
             System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
-        } else {
+        } else if(curHealth >= 1) {
             int tempHealth = (int)(curHealth+.5f); //Rounds up the dmg amt then casts to int for animations
             System.out.println("DEBUG: DAMAGE" + curHealth);
             setCurrentAnimationName("DAMAGE" + tempHealth);
+        } else {
+            setCurrentAnimationName("DAMAGE1"); 
         }
     }
     

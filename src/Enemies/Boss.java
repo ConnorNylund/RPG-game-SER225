@@ -25,25 +25,41 @@ public class Boss extends Enemy{
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
         return new HashMap<String, Frame[]>() {{
             put("DAMAGE1", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0,3))
+                new FrameBuilder(spriteSheet.getSprite(0, 1), 14)
+                    .withScale(5)
+                    .withBounds(0,0,32,32)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(0, 2), 14)
                     .withScale(5)
                     .withBounds(0,0,32,32)
                     .build(),
             });
             put("DAMAGE2", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0,2))
+                new FrameBuilder(spriteSheet.getSprite(1, 1), 14)
+                    .withScale(5)
+                    .withBounds(0,0,32,32)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(1, 2), 14)
                     .withScale(5)
                     .withBounds(0,0,32,32)
                     .build(),
             });
             put("DAMAGE3", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0,1))
+                new FrameBuilder(spriteSheet.getSprite(2, 1), 14)
+                    .withScale(5)
+                    .withBounds(0,0,32,32)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(2, 2), 14)
                     .withScale(5)
                     .withBounds(0,0,32,32)
                     .build(),
             });
             put("DAMAGE4", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                new FrameBuilder(spriteSheet.getSprite(3, 1), 14)
+                    .withScale(5)
+                    .withBounds(0,0,32,32)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(3, 2), 14)
                     .withScale(5)
                     .withBounds(0,0,32,32)
                     .build()
