@@ -27,6 +27,8 @@ public class Wave {
 
     // Spawn method that adds both fox enemies and FarmerBosses to the map
     public void Spawn() {
+
+    
         // Add FarmerBosses to the wave
         for (int i = 0; i < this.numFarmerBosses; i++) {
             MapTile bossTile = map.getRandomBossTile();
@@ -38,6 +40,8 @@ public class Wave {
             this.farmerBosses.add(farmerBoss);
             map.addNPC(farmerBoss);
         }
+
+
 
         // Add regular enemies (foxes) to the wave
         for (int i = 0; i < this.numEnemies; i++) {
@@ -65,6 +69,7 @@ public class Wave {
             this.enemies.remove(enemy);
         }
 
+    
         // Remove FarmerBosses marked for removal
         ArrayList<FarmerBoss> bossesToDie = new ArrayList<>();
         for (FarmerBoss boss : this.farmerBosses) {
@@ -73,6 +78,7 @@ public class Wave {
             }
         }
 
+        
         for (FarmerBoss boss : bossesToDie) {
             this.farmerBosses.remove(boss);
         }
@@ -82,6 +88,7 @@ public class Wave {
     public int getEnemiesAlive() {
         return this.enemies.size();
     }
+
 
     // Returns the number of FarmerBosses currently alive
     public int getFarmerBossesAlive() {
