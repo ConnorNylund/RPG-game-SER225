@@ -15,8 +15,7 @@ import GameObject.ImageEffect;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Player;
-import Weapons.TestPistol;
-import Weapons.Weapon;
+import Weapons.*;
 import Level.Map;
 import EnhancedMapTiles.Coin; 
 import Level.EnhancedMapTile; 
@@ -46,7 +45,8 @@ public class Bunny extends Player {
     public void update() {
         super.update();
         if(test) {
-            currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+            //currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+            currentWeapon = new TestPistol(this.getLocation(), this.getMap()); 
             test = false; 
         }
         checkCoinPickup();
@@ -69,7 +69,7 @@ public class Bunny extends Player {
     public void takeDamage(float dmgAmt) {
         if(health != 0) {
             health -= dmgAmt;
-            if(dmgState < 3) {
+            if(dmgState < 3) { //Will need to be updated for health stuff
                 dmgState++; 
                 this.animations = loadAnimations(sptSht);
             }

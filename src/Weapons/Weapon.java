@@ -16,7 +16,7 @@ import Level.Player;
 import Utils.Point;
 
 public class Weapon extends MapEntity{
-    protected int fireRate;
+    protected float fireRate;
     protected float DPH; //Damage per hit
     protected float AOE; 
     protected float antiJankTimer, bulletSpeed;
