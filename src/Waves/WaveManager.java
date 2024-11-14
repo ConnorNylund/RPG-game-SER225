@@ -46,6 +46,7 @@ public class WaveManager {
         if (currentWave != null) {
             currentWave.update();
             numEnemies = currentWave.getEnemiesAlive();
+            
             numFarmerBosses = currentWave.getFarmerBossesAlive();
 
             // If no enemies or FarmerBosses are left, start the next wave
@@ -55,7 +56,9 @@ public class WaveManager {
         }
 
         // Example of additional logic that depends on wave count
-        if (currentWaveIndex >= 2) {
+        if((currentWaveIndex >= 10)) {
+            ((TestMap)testMap).destroyWall2(); 
+        } else if (currentWaveIndex >= 5) {
             ((TestMap) testMap).destroyWall1(); // Custom map logic
         }
     }
@@ -64,6 +67,7 @@ public class WaveManager {
     public void bossupdate() {
         if (currentWave != null) {
             currentWave.update();
+            
             numFarmerBosses = currentWave.getFarmerBossesAlive();
 
             if (numFarmerBosses <= 0) {

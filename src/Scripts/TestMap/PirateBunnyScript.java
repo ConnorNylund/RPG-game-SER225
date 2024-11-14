@@ -28,6 +28,7 @@ public class PirateBunnyScript extends Script {
 
                 }});
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToPirate", true));
+                
 
                 // addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
                 // addScriptAction(new NPCWalkScriptAction(Direction.DOWN, 7, 2));
