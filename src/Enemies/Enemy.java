@@ -27,7 +27,7 @@ public class Enemy extends NPC {
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
     private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Fox.png"), 16, 16);
-    private double lastAttack; 
+    protected double lastAttack; 
     protected float attackRadius; 
     protected float attackSpeed;
     public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation) { //Constructor for subclasses
@@ -124,7 +124,7 @@ public class Enemy extends NPC {
         }
         //System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
     }
-    private void attackPlayer(Player player) {
+    protected void attackPlayer(Player player) {
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
             ((Bunny)player).takeDamage(1);
             lastAttack = System.nanoTime(); 
