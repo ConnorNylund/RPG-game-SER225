@@ -10,11 +10,12 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.Map;
 
-public class ShopScript extends Script {
+// Script for challenging the boss
+public class HiddenScript extends Script {
      // Create an instance of ScreenCoordinator
     private ScreenCoordinator screenCoordinator;
 
-    public ShopScript(ScreenCoordinator screenCoordinator) {
+    public HiddenScript(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator; // Initialize the screen coordinator
     }
 
@@ -29,9 +30,9 @@ public class ShopScript extends Script {
         scriptActions.add(new ScriptAction() {
             @Override
             public ScriptState execute() {
-                System.out.println("Transitioning to ShopScreen");
+                System.out.println("Transitioning to Hidden area");
                 screenCoordinator.saveState();
-                screenCoordinator.setGameState(GameState.SHOP);
+                screenCoordinator.setGameState(GameState.HIDDEN);
                 return ScriptState.COMPLETED;
             }
         });

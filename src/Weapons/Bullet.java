@@ -23,7 +23,7 @@ public class Bullet extends NPC{
     private float projSpeed; 
     private float Fx, Fy; //Final X and Y
     private float prevAngle, curAngle; //Angle shouldn't change, so if it does, we've passed the target
-    private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
+    private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("bullet.png"), 16, 16); //Temporary
     private static int bulletCt = 60;
     private boolean hasDamaged; 
     private float AOE; 

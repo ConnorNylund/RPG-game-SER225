@@ -8,6 +8,7 @@ import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayBossScreen;
 import Screens.PlayShopScreen;
+import Screens.HiddenMapScreen;
 import Screens.AboutScreen; // Import AboutScreen
 
 /*
@@ -74,6 +75,9 @@ public class ScreenCoordinator extends Screen {
 							break;
 						case CREDITS:
 							currentScreen = new CreditsScreen(this);
+							break;
+						case HIDDEN:
+							currentScreen = new HiddenMapScreen(this);
 							break;
 					}
 					currentScreen.initialize();
