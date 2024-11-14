@@ -572,7 +572,7 @@ public abstract class Map {
             if (tile != null && tile.getTileIndex() == 42) {
                 player.walkSpeed = 1.5f;
             } else {
-                player.walkSpeed = 2.3f; 
+                player.walkSpeed = 2.8f; 
             }
         }
 

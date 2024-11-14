@@ -108,6 +108,7 @@ public class Shopmap extends Map {
 
         getMapTile(6, 11).setInteractScript(new ReturnScript(screenCoordinator));
 
+
         super.loadScripts(screenCoordinator);
     }    
 }
