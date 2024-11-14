@@ -13,10 +13,10 @@ public class TestPistol extends Weapon{
     private static SpriteSheet gunPic = new SpriteSheet(ImageLoader.load("Pistol1WBackground.png"), 16, 16);
         public TestPistol(Point playerLoc, Map map) { //In theory, this is all that's needed for a custom weapon...
             super(gunPic, playerLoc, map); 
-            this.fireRate = 1; 
-            this.DPH = .5f;
-            this.bulletSpeed = 6;
-            this.AOE = 20; 
+            this.fireRate = 1; //Lower is faster
+            this.DPH = .5f; //Higher is more damage
+            this.bulletSpeed = 6; //Higher is faster
+            this.AOE = 20; //Larger is bigger
             System.out.println("DEBUG: Weapon Successfuly created");
     }
 }

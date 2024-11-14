@@ -6,6 +6,7 @@ import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
 import GameObject.Frame;
 import Level.*;
+import Maps.TestMap;
 import ScriptActions.*;
 import Maps.TestMap;
 
@@ -50,6 +51,7 @@ public class FisherScript extends Script {
 
                 addScriptAction(new WaitScriptAction(70));
                 addScriptAction(new NPCFacePlayerScriptAction());
+                addScriptAction(new DestroyGrassWallsScriptAction()); 
                 addScriptAction(new TextboxScriptAction () {{
                     addText("Now that your caught up, I need your help");
                     addText("In the field on your right there are swarms of enemies\nwho have taken over my crops?");

@@ -3,7 +3,7 @@ package Maps;
 import EnhancedMapTiles.DestroyableWall;
 import EnhancedMapTiles.PushableRock;
 import EnhancedMapTiles.Coin;
-import EnhancedMapTiles.TestingFarmer; // Import TestingFarmer class
+//import EnhancedMapTiles.TestingFarmer; // Import TestingFarmer class
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.SpriteSheet;
@@ -37,6 +37,8 @@ public class TestMap extends Map {
     public DestroyableWall destroyableWallH3;
     public DestroyableWall destroyableWallH4;
     public DestroyableWall destroyableWallH5;
+
+    public DestroyableWall destroyableWallG1, destroyableWallG2, destroyableWallG3; 
     protected ScreenCoordinator screenCoordinator;
 
     public TestMap(ScreenCoordinator screenCoordinator, int currentMap) {
@@ -54,9 +56,10 @@ public class TestMap extends Map {
         Coin coin = new Coin(getMapTile(35, 20).getLocation());
         enhancedMapTiles.add(coin);
 
-        // Adding the farmer to the map
-        TestingFarmer farmer = new TestingFarmer(getMapTile(20, 5).getLocation()); // Set appropriate location for farmer
-        enhancedMapTiles.add(farmer);
+        // not using this anymore
+        // // Adding the farmer to the map
+        // TestingFarmer farmer = new TestingFarmer(getMapTile(20, 5).getLocation()); // Set appropriate location for farmer
+        // enhancedMapTiles.add(farmer);
 
         // Adding destroyable walls to the map
         destroyableWallV1 = new DestroyableWall(getMapTile(21, 25).getLocation(), "GateVertical.png");
@@ -73,6 +76,10 @@ public class TestMap extends Map {
         destroyableWallH4 = new DestroyableWall(getMapTile(7, 13).getLocation(), "GateHorizontal.png");
         destroyableWallH5 = new DestroyableWall(getMapTile(8, 13).getLocation(), "GateHorizontal.png");
 
+        destroyableWallG1 = new DestroyableWall(getMapTile(30,25).getLocation(), "GateVertical.png");
+        destroyableWallG2 = new DestroyableWall(getMapTile(30,26).getLocation(), "GateVertical.png");
+        destroyableWallG3 = new DestroyableWall(getMapTile(30,27).getLocation(), "GateVertical.png");
+
         enhancedMapTiles.add(destroyableWallV1);
         enhancedMapTiles.add(destroyableWallV2);
         enhancedMapTiles.add(destroyableWallV3);
@@ -87,6 +94,10 @@ public class TestMap extends Map {
         enhancedMapTiles.add(destroyableWallH4);
         enhancedMapTiles.add(destroyableWallH5);
 
+        enhancedMapTiles.add(destroyableWallG1);
+        enhancedMapTiles.add(destroyableWallG2);
+        enhancedMapTiles.add(destroyableWallG3);
+
         System.out.println("DEBUG: Successfully loaded all enhanced tiles to ArrayList");
 
         return enhancedMapTiles;
@@ -97,6 +108,18 @@ public class TestMap extends Map {
         destroyableWallV2.destroyWall();
         destroyableWallV3.destroyWall();
         
+    }
+    public void destroyWall2() {
+        destroyableWallH1.destroyWall();
+        destroyableWallH2.destroyWall();
+        destroyableWallH3.destroyWall();
+        destroyableWallH4.destroyWall();
+        destroyableWallH5.destroyWall();
+    }
+    public void destroyWall3() {
+        destroyableWallG1.destroyWall();
+        destroyableWallG2.destroyWall();
+        destroyableWallG3.destroyWall();
     }
 
     // public void destroyWall2() {
@@ -141,6 +164,7 @@ public class TestMap extends Map {
         getMapTile(2, 6).setInteractScript(new TreeScript());
         getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
+        getMapTile(30, 18).setInteractScript(new HiddenScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }

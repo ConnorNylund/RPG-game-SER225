@@ -16,7 +16,7 @@ import Level.Player;
 import Utils.Point;
 
 public class Weapon extends MapEntity{
-    protected int fireRate;
+    protected float fireRate;
     protected float DPH; //Damage per hit
     protected float AOE; 
     protected float antiJankTimer, bulletSpeed;
@@ -39,13 +39,12 @@ public class Weapon extends MapEntity{
         if ((System.nanoTime()-antiJankTimer)/1000000000.0 > fireRate) {
             System.out.println("DEBUG: shot");
             antiJankTimer = System.nanoTime();
-            bullets.add(new Bullet(new SpriteSheet(ImageLoader.load("tempEnemy.png"), 16, 16), Sx, Sy, Fx, Fy, bulletSpeed, AOE, map, DPH));
+            bullets.add(new Bullet(Sx, Sy, Fx, Fy, bulletSpeed, AOE, map, DPH, true));
             System.out.println("DEBUG: Bullet Added to array list, Active bullets: " + bullets.size()); 
         }
     }
     public void update(Player player) {
         this.setLocation(player.getX(), player.getY()+16); 
-        //System.out.println("DEBUG: Current Gun Position (x,y): " + this.getX() + "," + this.getY());
         for(int i = 0; i<bullets.size(); i++) {
             //System.out.println("Looping, on " + i + "th iteration");
             if(!bullets.get(i).reachedTarget()) {

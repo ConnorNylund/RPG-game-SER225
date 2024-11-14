@@ -23,14 +23,15 @@ public class Bullet extends NPC{
     private float projSpeed; 
     private float Fx, Fy; //Final X and Y
     private float prevAngle, curAngle; //Angle shouldn't change, so if it does, we've passed the target
-    private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("Sword.png"), 16, 16); //Temporary
+    private static SpriteSheet bulletPic = new SpriteSheet(ImageLoader.load("bullet.png"), 16, 16); //Temporary
     private static int bulletCt = 60;
     private boolean hasDamaged; 
     private float AOE; 
     private float bulletLife, creationTime;
     private float DPH; 
     private Map map;
-    public Bullet(SpriteSheet spriteSheet, float Sx, float Sy, float Fx, float Fy, float projSpeed, float AOE, Map map, float DPH) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
+    private boolean enemBullet;
+    public Bullet(float Sx, float Sy, float Fx, float Fy, float projSpeed, float AOE, Map map, float DPH, boolean enemBullet) { //Takes in a starting x and y, and a final x and y, then will travel between the two in a set bullet speed
         super(bulletCt, Sx, Sy, bulletPic, "Anim1");  
         bulletCt++; 
         this.setMap(map);
@@ -41,6 +42,7 @@ public class Bullet extends NPC{
         this.projSpeed = projSpeed; 
         this.AOE = AOE;
         this.DPH = DPH;
+        this.enemBullet = enemBullet; 
 
         curAngle = (float)Math.atan2(Fy-Sy, Fx-Sx);
         prevAngle = curAngle; 
@@ -70,9 +72,10 @@ public class Bullet extends NPC{
         super.moveXHandleCollision(projSpeed*xRatio);
         super.moveYHandleCollision(projSpeed*yRatio); 
         
-        float tempTest = prevAngle-curAngle; 
-        //System.out.println("DEBUG: Angle to Bullet Target Prev-Cur = " + tempTest); 
-        ArrayList<Enemy> activeEnemies = new ArrayList(0);
+        if(enemBullet) {
+            float tempTest = prevAngle-curAngle; 
+            //System.out.println("DEBUG: Angle to Bullet Target Prev-Cur = " + tempTest); 
+            ArrayList<Enemy> activeEnemies = new ArrayList(0);
             for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
                 try {
                     activeEnemies.add((Enemy)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
@@ -81,24 +84,8 @@ public class Bullet extends NPC{
                 }
                 //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
             }
-        // ArrayList<Boss> activeBosses = new ArrayList(0);
-        //     for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
-        //         try {
-        //             activeBosses.add((Boss)map.getActiveNPCs().get(i)); //Grabs all active NPCs by attempting to cast NPCs to an Enemy and catching the error if it's not an enemy
-        //         } catch(ClassCastException e) {
-        //             //System.out.println("Java getting mad about jank casts");
-        //         }
-        //         //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
-        //     }
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
-                // Rectangle enemHitBox = temp.getCalibratedBounds();
-                
-                // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
-                // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
-                // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
-                // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
-                //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
                 if( this.x >= temp.getX()-AOE && 
                     this.x <= temp.getX()+temp.getWidth()+AOE &&
                     this.y >= temp.getY()-AOE &&
@@ -108,28 +95,18 @@ public class Bullet extends NPC{
                         hasDamaged = true; 
                         this.mapEntityStatus = mapEntityStatus.REMOVED; 
                 }
-                // for(int j = 0; j<activeBosses.size(); j++) {
-                //     Boss temps = activeBosses.get(j);
-                //     // Rectangle enemHitBox = temp.getCalibratedBounds();
-                    
-                //     // boolean inX1 = this.x >= enemHitBox.getX1()-attackRange;
-                //     // boolean inX2 = this.x <= enemHitBox.getX2()+attackRange;
-                //     // boolean inY1 = this.y >= enemHitBox.getY1()-attackRange;
-                //     // boolean inY2 = this.y <= enemHitBox.getY2()+attackRange;
-                //     //System.out.println("DEBUG: x1="+enemHitBox.getX1() + " x2=" + enemHitBox.getX2() + " y1=" + enemHitBox.getY1() + " y2=" + enemHitBox.getY2());
-                //     if( this.x >= temps.getX()-AOE && 
-                //         this.x <= temps.getX()+temps.getWidth()+AOE &&
-                //         this.y >= temps.getY()-AOE &&
-                //         this.y <= temps.getY()+temps.getHeight()+AOE &&
-                //         !hasDamaged) {
-                //             temps.takeDamage(); 
-                //             hasDamaged = true; 
-                //             this.mapEntityStatus = mapEntityStatus.REMOVED; 
-                //     }
-                // }
-
-                //System.out.println("DEBUG: >x1" + inX1 + " <x2" + inX2 + " >y1" + inY1 + " <y2" + inY2);
             }
+        } else { //For projectile damage from bosses
+            if( this.x >= player.getX()-AOE && 
+                this.x <= player.getX()+player.getWidth()+AOE &&
+                this.y >= player.getY()-AOE &&
+                this.y <= player.getY()+player.getHeight()+AOE &&
+                !hasDamaged) { 
+                    ((Bunny)player).takeDamage(DPH); 
+                    hasDamaged = true; 
+                    this.mapEntityStatus = mapEntityStatus.REMOVED; 
+            }
+        }
 
         if(this.reachedTarget()) {
             System.out.println("DEBUG: Is reaching target"); 

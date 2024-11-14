@@ -27,7 +27,7 @@ public class Enemy extends NPC {
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
     private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Fox.png"), 16, 16);
-    private double lastAttack; 
+    protected double lastAttack; 
     protected float attackRadius; 
     protected float attackSpeed;
     public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation) { //Constructor for subclasses
@@ -63,10 +63,12 @@ public class Enemy extends NPC {
             map.addEnhancedMapTile(droppedCoin);
             
             System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
-        } else {
+        } else if(curHealth >= 1) {
             int tempHealth = (int)(curHealth+.5f); //Rounds up the dmg amt then casts to int for animations
             System.out.println("DEBUG: DAMAGE" + curHealth);
             setCurrentAnimationName("DAMAGE" + tempHealth);
+        } else {
+            setCurrentAnimationName("DAMAGE1"); 
         }
     }
     
@@ -122,7 +124,7 @@ public class Enemy extends NPC {
         }
         //System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
     }
-    private void attackPlayer(Player player) {
+    protected void attackPlayer(Player player) {
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
             ((Bunny)player).takeDamage(1);
             lastAttack = System.nanoTime(); 

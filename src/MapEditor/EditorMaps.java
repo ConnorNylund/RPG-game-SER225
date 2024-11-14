@@ -5,6 +5,7 @@ import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.Bossmap;
 import Maps.Shopmap;
+import Maps.Hiddenmap;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class EditorMaps {
             add("TitleScreen");
             add("Bossmap");
             add("Shopmap");
-
+            add("Hiddenmap");
         }};
     }
 
@@ -31,7 +32,8 @@ public class EditorMaps {
                 return new Bossmap(null, 1);
             case "Shopmap":
                 return new Shopmap(null);
-
+            case "Hiddenmap":
+                return new Hiddenmap(null);
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

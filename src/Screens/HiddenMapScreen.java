@@ -1,60 +1,41 @@
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Inventory.Inventory;
 import Level.*;
 import Maps.Shopmap;
-import Maps.Bossmap;
-import Maps.TestMap;
+import Maps.Hiddenmap;
+import Players.Cat;
 import Players.Bunny;
-import ScriptActions.TextboxScriptAction;
-import SpriteFont.SpriteFont; 
 import Utils.Direction;
 import Utils.Point;
-import Waves.WaveManager;
-import Engine.Key;
-import java.awt.Color;  
 
 // This class is for when the RPG game is actually being played
-public class PlayLevelScreen extends Screen {
+public class HiddenMapScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected int currentMap;
-    protected int slowTileIndex;
-    protected WaveManager waveManager;
-    protected Inventory inventory;
-    protected InventoryScreen invScreen;
-    private SpriteFont coinCountText; 
 
-    public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+    public HiddenMapScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasLostBall", false);
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToDinosaur", false);
-        flagManager.addFlag("hasTalkedToPirate", false);
-        flagManager.addFlag("hasTalkedToFisher", false);
-        flagManager.addFlag("hasFoundBall", false);
-        flagManager.addFlag("hasSeenScript", false);
+        //flagManager.addFlag("hasLostBall", false);
+        //flagManager.addFlag("hasTalkedToWalrus", false);
+        //flagManager.addFlag("hasTalkedToDinosaur", false);
+        //flagManager.addFlag("hasFoundBall", false);
 
         // define/setup map
-        map = new TestMap(screenCoordinator, 0);
+        map = new Hiddenmap(screenCoordinator);
         map.setFlagManager(flagManager);
-
-        waveManager = new WaveManager(5, map);
-        inventory = new Inventory();
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -71,38 +52,25 @@ public class PlayLevelScreen extends Screen {
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
 
-        winScreen = new WinScreen(this);
-        invScreen = new InventoryScreen();
-
-        // COIN COUNT
-        coinCountText = new SpriteFont("Coins: 0", 700, 20, "Georgia", 20, Color.YELLOW);
-        coinCountText.setOutlineColor(Color.BLACK);
-        coinCountText.setOutlineThickness(2);
     }
 
     public void update() {
-        // check if the key "T" is pressed to show damage taken
-        if (Keyboard.isKeyDown(Key.T)) {
-            System.out.println("Training dummy has taken damage!");
-        }
-
-        waveManager.update();
-
-        // this updates coin count text based on the player's collected coins
-        int coinCount = ((Bunny) player).getCoinCount();
-        coinCountText.setText("Coins: " + coinCount);
-
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
+            // if level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
                 player.update();
                 map.update(player);
-                invScreen.update();
                 break;
-
+            // if level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
+        }
+
+        // if flag is set at any point during gameplay, game is "won"
+        if (map.getFlagManager().isFlagSet("hasFoundBall")) {
+            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
     }
 
@@ -111,10 +79,7 @@ public class PlayLevelScreen extends Screen {
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
-                invScreen.draw(graphicsHandler);
-                coinCountText.draw(graphicsHandler); // this draws the coin count text on screen
                 break;
-
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);
                 break;
@@ -124,6 +89,7 @@ public class PlayLevelScreen extends Screen {
     public PlayLevelScreenState getPlayLevelScreenState() {
         return playLevelScreenState;
     }
+
 
     public void resetLevel() {
         initialize();
