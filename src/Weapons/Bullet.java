@@ -5,19 +5,13 @@ import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Enemies.Enemy;
-import Enemies.Boss;
 import Engine.ImageLoader;
 import GameObject.Frame;
-import GameObject.GameObject;
-import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Level.Map;
-import Level.MapEntity;
-import Level.MapTile;
 import Level.NPC;
 import Level.Player;
 import Players.Bunny;
-import Utils.Point;
 
 public class Bullet extends NPC{
     private float projSpeed; 
@@ -51,11 +45,8 @@ public class Bullet extends NPC{
         bulletLife = 5; 
     }
     public void update(Player player) { 
-        //float Fx = Fx;
-        //float Fy = Fy;
         float curX = this.x;
         float curY = this.y;
-        //System.out.println("DEBUG: Current Bullet Position (x,y): " + curX + "," + curY);
 
         float dx = Fx-curX;
         float dy = Fy-curY;
@@ -67,14 +58,11 @@ public class Bullet extends NPC{
         float xRatio = dx/dMag;
         float yRatio = dy/dMag;
 
-        //System.out.println("DEBUG: curAngle = " + curAngle + " prevAngle" + prevAngle + " projSpeed = " + projSpeed); 
-
         super.moveXHandleCollision(projSpeed*xRatio);
         super.moveYHandleCollision(projSpeed*yRatio); 
         
-        if(enemBullet) {
+        if(enemBullet) { //For player attacks
             float tempTest = prevAngle-curAngle; 
-            //System.out.println("DEBUG: Angle to Bullet Target Prev-Cur = " + tempTest); 
             ArrayList<Enemy> activeEnemies = new ArrayList(0);
             for(int i = 0; i<map.getActiveNPCs().size(); i++) { //In theory this clusterfuck filters out only enemies in potentially the jankiest way I could
                 try {
@@ -82,7 +70,7 @@ public class Bullet extends NPC{
                 } catch(ClassCastException e) {
                     //System.out.println("Java getting mad about jank casts");
                 }
-                //System.out.println("DEBUG: Active Enemies = " + activeEnemies.size());
+                
             }
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);
