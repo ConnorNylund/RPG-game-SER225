@@ -54,7 +54,7 @@ public class PlayLevelScreen extends Screen {
         map.setFlagManager(flagManager);
 
         waveManager = new WaveManager(5, map);
-        inventory = new Inventory();
+        
 
         // setup player
         player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -62,6 +62,7 @@ public class PlayLevelScreen extends Screen {
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
 
+        inventory = new Inventory(player);
         map.setPlayer(player);
 
         // let pieces of map know which button to listen for as the "interact" button
