@@ -53,8 +53,6 @@ public class PlayBossScreen extends Screen {
 
         // waveManager = new WaveManager(5, map);
 
-        inventory = new Inventory();
-
 
         Boss testboss = new Boss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer()); 
         map.addNPC(testboss);

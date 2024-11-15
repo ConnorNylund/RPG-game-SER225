@@ -53,8 +53,8 @@ public class TestMap extends Map {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
         // Adding a coin to the map
-        Coin coin = new Coin(getMapTile(35, 20).getLocation());
-        enhancedMapTiles.add(coin);
+        //Coin coin = new Coin(getMapTile(35, 20).getLocation());
+        //enhancedMapTiles.add(coin);
 
         // not using this anymore
         // // Adding the farmer to the map

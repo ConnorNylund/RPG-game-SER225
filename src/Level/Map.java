@@ -83,7 +83,7 @@ public abstract class Map {
 
     protected ArrayList<MapTile> grassTiles;
 
-    protected ArrayList<MapTile> bossTiles;
+    protected ArrayList<MapTile> snowTiles;
 
     public int currentMap = 0;
 
@@ -104,7 +104,7 @@ public abstract class Map {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
         this.grassTiles = new ArrayList<>();
-        this.bossTiles = new ArrayList<>();
+        this.snowTiles = new ArrayList<>();
         this.random = new Random();
         setupMap(screenCoordinator);
         this.startBoundX = 0;
@@ -189,8 +189,8 @@ public abstract class Map {
                     this.grassTiles.add(tile);
                 }
 
-                if (tile.getTileIndex() == 52) {
-                    this.bossTiles.add(tile);
+                if (tile.getTileIndex() == 42) {
+                    this.snowTiles.add(tile);
                 }
 
                 if (tile.isAnimated()) {
@@ -216,9 +216,9 @@ public abstract class Map {
         return this.grassTiles.get(index);
     }
 
-    public MapTile getRandomBossTile() {
-        int index = random.nextInt(this.bossTiles.size());
-        return this.bossTiles.get(index);
+    public MapTile getRandomSnowTile() {
+        int index = random.nextInt(this.snowTiles.size());
+        return this.snowTiles.get(index);
     }
 
     // gets player start position based on player start tile (basically the start tile's position on the map)
