@@ -62,6 +62,8 @@ public class WaveManager {
             
             ((TestMap) testMap).destroyWall1(); // Custom map logic
         }
+
+        
     }
 
     // Method for handling only the FarmerBoss wave updates (if needed)
