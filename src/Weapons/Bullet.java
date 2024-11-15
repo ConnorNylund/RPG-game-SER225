@@ -70,7 +70,6 @@ public class Bullet extends NPC{
                 } catch(ClassCastException e) {
                     //System.out.println("Java getting mad about jank casts");
                 }
-                
             }
             for(int i = 0; i<activeEnemies.size(); i++) {
                 Enemy temp = activeEnemies.get(i);

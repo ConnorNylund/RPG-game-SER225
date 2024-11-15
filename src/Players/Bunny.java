@@ -21,10 +21,11 @@ import Utils.Point;
 import Weapons.Weapon;
 import Weapons.TestPistol;
 import Weapons.*;
+import Inventory.*; 
 
 public class Bunny extends Player {
-    private float health;
-    private int dmgState;
+    public static float health;
+    public static int dmgState;
     private Weapon currentWeapon;
     private boolean test;
     public static int coinCount = 0; // this is to track coins
@@ -52,6 +53,34 @@ public class Bunny extends Player {
             currentWeapon = new TestPistol(this.getLocation(), this.getMap());
             test = false;
         }
+        //Weapon swapping
+        try {
+            switch(Inventory.items[Inventory.currentSelection].getName()) {
+                case("Pistol With Bayonet"):
+                currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+                break;
+                case("Carrot Rocket Launcher"):
+                currentWeapon = new RPC(this.getLocation(), this.getMap());
+                System.out.println("DEBUG: RPC");
+                break;
+                case("Small Machine Gun"):
+                currentWeapon = new SMG(this.getLocation(), this.getMap());
+                System.out.println("DEBUG: SMG");
+                break;
+                case("Bloody Cleaver"):
+                currentWeapon = new Bow(this.getLocation(), this.getMap());
+                System.out.println("DEBUG: BCleav");
+                break;
+                default:
+                System.out.println("DEBUG: NullDumDum");
+                break; 
+            }
+        } catch(NullPointerException e) {
+            System.out.println("Fuck you Java"); 
+        }
+
+
+
         checkCoinPickup(); // Check for coin pickup each update
         getCalibratedXLocation();
 
