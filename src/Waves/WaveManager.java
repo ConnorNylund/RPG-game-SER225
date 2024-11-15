@@ -62,7 +62,7 @@ public class WaveManager {
         // Example of additional logic that depends on wave count
         if (currentWaveIndex >= 10) {
             ((TestMap) testMap).destroyWall2();
-        } else if (currentWaveIndex >= 2 && !penguinsSpawned) {
+        } else if (currentWaveIndex >= 5 && !penguinsSpawned) {
             ((TestMap) testMap).destroyWall1(); // Custom map logic
             // Adjusts the number of penguins based on the wave index, not the total enemies
             int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
