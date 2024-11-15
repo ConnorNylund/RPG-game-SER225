@@ -27,7 +27,7 @@ public class Bunny extends Player {
     private int dmgState;
     private Weapon currentWeapon;
     private boolean test;
-    private int coinCount = 0; // this is to track coins
+    public static int coinCount = 0; // this is to track coins
     private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
 
     public Bunny(float x, float y) {

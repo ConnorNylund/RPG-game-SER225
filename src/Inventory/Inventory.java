@@ -1,11 +1,15 @@
 package Inventory;
 
+import Level.Player;
+
 public class Inventory {
     public static InventoryItem[] items = new InventoryItem[3];
     public static int currentSelection;
+    private Player player;
 
-    public Inventory() {
+    public Inventory(Player player) {
         currentSelection = 0;
+        this.player = player;
     }
 
     // tries to add an item to the inventory, returns true if it works, false if inventory is full
