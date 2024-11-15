@@ -17,7 +17,7 @@ public class Boss extends Enemy{
      public Boss(int id, Point location, String startingAnimation, Player player) { //startingAnimation is still in here so I don't break other things, it does nothing
         super(id, location, spriteSheet, "DAMAGE4");
         moveSpeed = 0.9f; // Higher is faster
-        attackRadius = 220; // Higher is farther
+        attackRadius = 320; // Higher is farther
         totalHealth = 4; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
@@ -26,10 +26,10 @@ public class Boss extends Enemy{
     @Override
     protected void attackPlayer(Player player) { 
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
-            if(this.getX() > player.getX()) {
-                new Bullet(this.x-15+this.getWidth(), this.y, player.getX(), player.getY(), 5, 20, super.map, 1, false);
-            } else {
+            if(player.getX() > this.getX()) {
                 new Bullet(this.x+15+this.getWidth(), this.y, player.getX(), player.getY(), 5, 20, super.map, 1, false);
+            } else {
+                new Bullet(this.x-15, this.y, player.getX(), player.getY(), 5, 20, super.map, 1, false);
             }
             lastAttack = System.nanoTime(); 
         }
