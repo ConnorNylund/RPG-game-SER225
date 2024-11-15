@@ -108,7 +108,7 @@ public class Shopmap extends Map {
 
         getMapTile(9, 8).setInteractScript(new SimpleTextScript("The Bow and Arrow; Cost 5 Coins "));
         getMapTile(9, 2).setInteractScript(new SimpleTextScript("The Machine Gun; Cost 10 Coins "));
-        getMapTile(4, 2).setInteractScript(new SimpleTextScript("The Pistol Bayonet; Cost 10 Coins "));
+        getMapTile(4, 2).setInteractScript(new SimpleTextScript("The Pistol Bayonet; Cost 5 Coins "));
         getMapTile(4, 8).setInteractScript(new SimpleTextScript("The Carrot Launcher; Cost 20 Coins "));
 
 
