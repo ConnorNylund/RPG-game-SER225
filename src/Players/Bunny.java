@@ -23,8 +23,8 @@ import Weapons.TestPistol;
 import Weapons.*;
 
 public class Bunny extends Player {
-    private float health;
-    private int dmgState;
+    public static float health;
+    public static int dmgState;
     private Weapon currentWeapon;
     private boolean test;
     public static int coinCount = 0; // this is to track coins
