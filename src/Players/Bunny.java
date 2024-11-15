@@ -40,6 +40,9 @@ public class Bunny extends Player {
     public Map getMap() {
         return this.map;  // Accessing the protected map field inherited from the Player class
     }
+    public void setWeapon(Weapon weapon) {
+        currentWeapon = weapon; 
+    }
 
     @Override
     public void update() {
