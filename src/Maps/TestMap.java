@@ -27,6 +27,11 @@ public class TestMap extends Map {
     public DestroyableWall destroyableWallV2;
     public DestroyableWall destroyableWallV3;
      
+
+    public DestroyableWall destroyableWallV4;
+    public DestroyableWall destroyableWallV5;
+    public DestroyableWall destroyableWallV6;
+
     public DestroyableWall destroyableWallH1;
     public DestroyableWall destroyableWallH2;
     public DestroyableWall destroyableWallH3;
@@ -61,6 +66,10 @@ public class TestMap extends Map {
         destroyableWallV2 = new DestroyableWall(getMapTile(21, 26).getLocation(), "GateVertical.png");
         destroyableWallV3 = new DestroyableWall(getMapTile(21, 27).getLocation(), "GateVertical.png");
 
+        // destroyableWallV4 = new DestroyableWall(getMapTile(29, 25).getLocation(), "GateVertical.png");
+        // destroyableWallV5 = new DestroyableWall(getMapTile(29, 26).getLocation(), "GateVertical.png");
+        // destroyableWallV6 = new DestroyableWall(getMapTile(29, 27).getLocation(), "GateVertical.png");
+
         destroyableWallH1 = new DestroyableWall(getMapTile(4, 13).getLocation(), "GateHorizontal.png");
         destroyableWallH2 = new DestroyableWall(getMapTile(5, 13).getLocation(), "GateHorizontal.png");
         destroyableWallH3 = new DestroyableWall(getMapTile(6, 13).getLocation(), "GateHorizontal.png");
@@ -74,6 +83,10 @@ public class TestMap extends Map {
         enhancedMapTiles.add(destroyableWallV1);
         enhancedMapTiles.add(destroyableWallV2);
         enhancedMapTiles.add(destroyableWallV3);
+
+        // enhancedMapTiles.add(destroyableWallV4);
+        // enhancedMapTiles.add(destroyableWallV5);
+        // enhancedMapTiles.add(destroyableWallV6);
 
         enhancedMapTiles.add(destroyableWallH1);
         enhancedMapTiles.add(destroyableWallH2);
@@ -94,6 +107,7 @@ public class TestMap extends Map {
         destroyableWallV1.destroyWall();
         destroyableWallV2.destroyWall();
         destroyableWallV3.destroyWall();
+        
     }
     public void destroyWall2() {
         destroyableWallH1.destroyWall();
@@ -107,6 +121,13 @@ public class TestMap extends Map {
         destroyableWallG2.destroyWall();
         destroyableWallG3.destroyWall();
     }
+
+    // public void destroyWall2() {
+    //     destroyableWallV4.destroyWall();
+    //     destroyableWallV5.destroyWall();
+    //     destroyableWallV6.destroyWall();
+        
+    // }
 
     @Override
     public ArrayList<NPC> loadNPCs() {
@@ -140,7 +161,6 @@ public class TestMap extends Map {
 
     @Override
     public void loadScripts(ScreenCoordinator screenCoordinator) {
-        getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
         getMapTile(2, 6).setInteractScript(new TreeScript());
         getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));

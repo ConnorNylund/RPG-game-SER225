@@ -8,6 +8,7 @@ import GameObject.Frame;
 import Level.*;
 import Maps.TestMap;
 import ScriptActions.*;
+import Maps.TestMap;
 
 import Utils.Direction;
 import Utils.Point;
@@ -16,6 +17,7 @@ import Utils.Visibility;
 // script for talking to dino npc
 // checkout the documentation website for a detailed guide on how this script works
 public class FisherScript extends Script {
+   
 
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
@@ -54,6 +56,8 @@ public class FisherScript extends Script {
                     addText("Now that your caught up, I need your help");
                     addText("In the field on your right there are swarms of enemies\nwho have taken over my crops?");
                     addText("Now, Go if you dare and save my crops.");
+                    
+                    
                 }});
                 
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToFisher", true));
