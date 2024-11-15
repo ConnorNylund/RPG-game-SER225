@@ -26,23 +26,7 @@ public class Wave {
     }
 
     // Spawn method that adds both fox enemies and FarmerBosses to the map
-    public void Spawn() {
-
-    
-        // Add FarmerBosses to the wave
-        for (int i = 0; i < this.numFarmerBosses; i++) {
-            MapTile bossTile = map.getRandomBossTile();
-            Point position = bossTile.getLocation();
-            Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
-
-            // FARMER CODE
-            FarmerBoss farmerBoss = new FarmerBoss(0, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), map.getPlayer()); 
-            this.farmerBosses.add(farmerBoss);
-            map.addNPC(farmerBoss);
-        }
-
-
-
+    public void SpawnFox() {
         // Add regular enemies (foxes) to the wave
         for (int i = 0; i < this.numEnemies; i++) {
             MapTile grassTile = map.getRandomGrassTile();
@@ -55,6 +39,18 @@ public class Wave {
         }
     }
 
+    public void SpawnPenguin() {
+        // Add regular enemies (foxes) to the wave
+        for (int i = 0; i < this.numEnemies; i++) {
+            MapTile snowTile = map.getRandomSnowTile();
+            Point position = snowTile.getLocation();
+            Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
+
+            Enemy testEnem = new Enemy(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
+            this.enemies.add(testEnem);
+            map.addNPC(testEnem);
+        }
+    }
     // Update method for managing active and removed enemies and FarmerBosses
     public void update() {
         // Remove enemies marked for removal
@@ -78,10 +74,7 @@ public class Wave {
             }
         }
 
-        
-        for (FarmerBoss boss : bossesToDie) {
-            this.farmerBosses.remove(boss);
-        }
+
     }
 
     // Returns the number of regular enemies currently alive

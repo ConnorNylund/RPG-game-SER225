@@ -704,6 +704,15 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(bossWallTorchTile);
 
+        Frame ShopSignFrame = new FrameBuilder(getSubImage(8, 0))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopSignTile = new MapTileBuilder(ShopSignFrame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopSignTile);
+
         return mapTiles;
     }
 }

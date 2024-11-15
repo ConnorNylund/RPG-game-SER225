@@ -4,6 +4,7 @@ import Enemies.Enemy;
 import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Maps.TestMap;
+import Waves.Wave;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,8 @@ public class WaveManager {
     public void newWave() {
         if (currentWaveIndex < numWaves) {
             currentWave = waves.get(currentWaveIndex);
-            currentWave.Spawn(); // Spawn enemies and FarmerBosses in the current wave
+            currentWave.SpawnFox(); // Spawn enemies and FarmerBosses in the current wave
+            currentWave.SpawnPenguin(); // Spawn enemies and FarmerBosses in the current wave
             currentWaveIndex++;
         }
     }
@@ -60,6 +62,7 @@ public class WaveManager {
             ((TestMap)testMap).destroyWall2(); 
         } else if (currentWaveIndex >= 5) {
             ((TestMap) testMap).destroyWall1(); // Custom map logic
+
         }
     }
 
