@@ -38,7 +38,6 @@ public class WaveManager {
         if (currentWaveIndex < numWaves) {
             currentWave = waves.get(currentWaveIndex);
             currentWave.SpawnFox(); // Spawn enemies and FarmerBosses in the current wave
-            currentWave.SpawnPenguin(); // Spawn enemies and FarmerBosses in the current wave
             currentWaveIndex++;
         }
     }
@@ -61,9 +60,8 @@ public class WaveManager {
         if((currentWaveIndex >= 10)) {
             ((TestMap)testMap).destroyWall2(); 
         } else if (currentWaveIndex >= 5) {
-            
             ((TestMap) testMap).destroyWall1(); // Custom map logic
-
+            //currentWave.SpawnPenguin(); // Spawn enemies and FarmerBosses in the current wave
         }
 
         

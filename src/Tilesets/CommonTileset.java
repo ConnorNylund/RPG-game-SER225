@@ -713,6 +713,15 @@ public class CommonTileset extends Tileset {
 
         mapTiles.add(ShopSignTile);
 
+        Frame ShopHealthFrame = new FrameBuilder(getSubImage(8, 2))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder ShopHealthTile = new MapTileBuilder(ShopHealthFrame)
+        .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(ShopHealthTile);
+
         return mapTiles;
     }
 }
