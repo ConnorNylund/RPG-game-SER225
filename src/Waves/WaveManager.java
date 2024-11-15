@@ -59,6 +59,7 @@ public class WaveManager {
         if((currentWaveIndex >= 10)) {
             ((TestMap)testMap).destroyWall2(); 
         } else if (currentWaveIndex >= 5) {
+            
             ((TestMap) testMap).destroyWall1(); // Custom map logic
         }
     }
