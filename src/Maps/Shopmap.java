@@ -76,35 +76,41 @@ public class Shopmap extends Map {
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
         
-        getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
+        getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png", 5));
         getMapTile(3, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
+        getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png", 5));
         getMapTile(4, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(5, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png"));
+        getMapTile(5, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png", 5));
         getMapTile(5, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(3, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
+        getMapTile(3, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png", 20));
         getMapTile(3, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(4, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
+        getMapTile(4, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png", 20));
         getMapTile(4, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(5, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png"));
+        getMapTile(5, 7).setItemData(new InventoryItem("Carrot Rocket Launcher", "Weapons\\download (5).png", 20));
         getMapTile(5, 7).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
+        getMapTile(8, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png", 15));
         getMapTile(8, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(9, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
+        getMapTile(9, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png", 15));
         getMapTile(9, 3).setInteractScript(new ItemPickUpScript());
-        getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png"));
+        getMapTile(10, 3).setItemData(new InventoryItem("Small Machine Gun", "Weapons\\download (6).png", 15));
         getMapTile(10, 3).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
+        getMapTile(8, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png", 10));
         getMapTile(8, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(9, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
+        getMapTile(9, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png", 10));
         getMapTile(9, 7).setInteractScript(new ItemPickUpScript());
-        getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png"));
+        getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons\\download (1).png", 10));
         getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
+
+        getMapTile(9, 8).setInteractScript(new SimpleTextScript("The Bow and Arrow; Cost 5 Coins "));
+        getMapTile(9, 2).setInteractScript(new SimpleTextScript("The Machine Gun; Cost 10 Coins "));
+        getMapTile(4, 2).setInteractScript(new SimpleTextScript("The Pistol Bayonet; Cost 5 Coins "));
+        getMapTile(4, 8).setInteractScript(new SimpleTextScript("The Carrot Launcher; Cost 20 Coins "));
+
 
         getMapTile(6, 11).setInteractScript(new ReturnScript(screenCoordinator));
 
