@@ -7,6 +7,8 @@ import Inventory.InventoryItem;
 import Level.*;
 // import NPCs.Bug;
  import NPCs.Dinosaur;
+import ScriptActions.IncreaseHealthScriptAction;
+import Scripts.HealthPickUpScript;
 import Scripts.ItemPickUpScript;
 // import NPCs.Walrus;
 import Scripts.SimpleTextScript;
@@ -76,6 +78,8 @@ public class Shopmap extends Map {
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
         
+        getMapTile(1, 5).setInteractScript(new HealthPickUpScript());
+
         getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png", 5));
         getMapTile(3, 3).setInteractScript(new ItemPickUpScript());
         getMapTile(4, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons\\download.png", 5));
