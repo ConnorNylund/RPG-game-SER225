@@ -17,6 +17,9 @@ public class WaveManager {
     private int numWaves;
     private Map testMap;
 
+    private boolean penguinsSpawned = false;
+
+
     public WaveManager(int numWaves, Map map) {
         this.testMap = map;
         this.numWaves = numWaves;
@@ -38,6 +41,7 @@ public class WaveManager {
         if (currentWaveIndex < numWaves) {
             currentWave = waves.get(currentWaveIndex);
             currentWave.SpawnFox(); // Spawn enemies and FarmerBosses in the current wave
+            penguinsSpawned = false; // Reset penguin spawn flag when a new wave starts
             currentWaveIndex++;
         }
     }
@@ -47,7 +51,6 @@ public class WaveManager {
         if (currentWave != null) {
             currentWave.update();
             numEnemies = currentWave.getEnemiesAlive();
-            
             numFarmerBosses = currentWave.getFarmerBossesAlive();
 
             // If no enemies or FarmerBosses are left, start the next wave
@@ -57,11 +60,14 @@ public class WaveManager {
         }
 
         // Example of additional logic that depends on wave count
-        if((currentWaveIndex >= 10)) {
-            ((TestMap)testMap).destroyWall2(); 
-        } else if (currentWaveIndex >= 5) {
+        if (currentWaveIndex >= 10) {
+            ((TestMap) testMap).destroyWall2();
+        } else if (currentWaveIndex >= 5 && !penguinsSpawned) {
             ((TestMap) testMap).destroyWall1(); // Custom map logic
-            //currentWave.SpawnPenguin(); // Spawn enemies and FarmerBosses in the current wave
+            // Adjusts the number of penguins based on the wave index, not the total enemies
+            int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
+            currentWave.SpawnPenguin(penguinsToSpawn); 
+            penguinsSpawned = true; 
         }
 
         

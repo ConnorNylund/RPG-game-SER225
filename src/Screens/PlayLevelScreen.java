@@ -53,7 +53,7 @@ public class PlayLevelScreen extends Screen {
         map = new TestMap(screenCoordinator, 0);
         map.setFlagManager(flagManager);
 
-        waveManager = new WaveManager(5, map);
+        waveManager = new WaveManager(15, map);
         
 
         // setup player

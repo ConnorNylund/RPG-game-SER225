@@ -3,6 +3,7 @@ package Waves;
 import java.util.ArrayList;
 
 import Enemies.Enemy;
+import Enemies.Penguin;
 import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
@@ -39,14 +40,13 @@ public class Wave {
         }
     }
 
-    public void SpawnPenguin() {
-        // Add regular enemies (foxes) to the wave
-        for (int i = 0; i < this.numEnemies; i++) {
+    public void SpawnPenguin(int numEnemiesToSpawn) {
+        for (int i = 0; i < numEnemiesToSpawn; i++) {
             MapTile snowTile = map.getRandomSnowTile();
             Point position = snowTile.getLocation();
             Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
 
-            Enemy testEnem = new Enemy(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer()); 
+            Penguin testEnem = new Penguin(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer());
             this.enemies.add(testEnem);
             map.addNPC(testEnem);
         }

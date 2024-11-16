@@ -1,6 +1,10 @@
 package Enemies;
 
+import java.util.HashMap;
+
+import Builders.FrameBuilder;
 import Engine.ImageLoader;
+import GameObject.Frame;
 import GameObject.SpriteSheet;
 import Level.Player;
 import Utils.Point;
