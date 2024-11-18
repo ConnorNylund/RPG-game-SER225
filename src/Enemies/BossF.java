@@ -18,7 +18,7 @@ import Utils.Point;
 
 import java.util.HashMap;
 
-public class Boss extends NPC {
+public class BossF extends NPC {
     protected int id = 0;
     protected int curHealth;
     protected int totalHealth;
@@ -30,7 +30,7 @@ public class Boss extends NPC {
     private float attackRadius; 
     private float attackSpeed;
 
-    public Boss(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
+    public BossF(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
         //Variables to change for stats
@@ -108,7 +108,7 @@ public class Boss extends NPC {
     }
     private void attackPlayer(Player player) {
         if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
-            ((Bunny)player).takeDamage();
+            ((Bunny)player).takeDamage(attackRadius);
             lastAttack = System.nanoTime(); 
         }
     }

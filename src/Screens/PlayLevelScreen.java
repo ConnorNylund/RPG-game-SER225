@@ -62,6 +62,10 @@ public class PlayLevelScreen extends Screen {
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
 
+        player = new Bunny(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        ((Bunny) player).setScreenCoordinator(screenCoordinator); // Set the ScreenCoordinator
+        player.setMap(map);
+
         inventory = new Inventory(player);
         map.setPlayer(player);
 

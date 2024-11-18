@@ -18,5 +18,9 @@ public class Penguin extends Enemy{
         attackRadius = 60; 
         totalHealth = 3;
         attackSpeed = 3; 
+
+        lastAttack = 0; 
+        curHealth = totalHealth;
+        antiJankTimer = System.nanoTime();
     }
 }
