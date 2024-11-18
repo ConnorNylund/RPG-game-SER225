@@ -17,19 +17,22 @@ import GameObject.SpriteSheet;
 import Level.EnhancedMapTile;
 import Level.Map;
 import Level.Player;
+import Game.GameState;
+import Game.ScreenCoordinator;
 import Utils.Point;
 import Weapons.Weapon;
 import Weapons.TestPistol;
 import Weapons.*;
-import Inventory.*; 
+import Inventory.*;
 
 public class Bunny extends Player {
     public static float health;
     public static int dmgState;
     private Weapon currentWeapon;
     private boolean test;
-    public static int coinCount = 0; // this is to track coins
+    public static int coinCount = 0; // Tracks coins
     private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
+    private ScreenCoordinator screenCoordinator; 
 
     public Bunny(float x, float y) {
         super(sptSht, x, y, "STAND_RIGHT");
@@ -38,11 +41,16 @@ public class Bunny extends Player {
         test = true;
     }
 
+    public void setScreenCoordinator(ScreenCoordinator screenCoordinator) {
+        this.screenCoordinator = screenCoordinator;
+    }
+
     public Map getMap() {
         return this.map;  // Accessing the protected map field inherited from the Player class
     }
+
     public void setWeapon(Weapon weapon) {
-        currentWeapon = weapon; 
+        currentWeapon = weapon;
     }
 
     @Override
@@ -53,35 +61,34 @@ public class Bunny extends Player {
             currentWeapon = new TestPistol(this.getLocation(), this.getMap());
             test = false;
         }
-        //Weapon swapping
+
+        // Weapon swapping
         try {
-            switch(Inventory.items[Inventory.currentSelection].getName()) {
-                case("Pistol With Bayonet"):
-                currentWeapon = new TestPistol(this.getLocation(), this.getMap());
-                break;
-                case("Carrot Rocket Launcher"):
-                currentWeapon = new RPC(this.getLocation(), this.getMap());
-                System.out.println("DEBUG: RPC");
-                break;
-                case("Small Machine Gun"):
-                currentWeapon = new SMG(this.getLocation(), this.getMap());
-                System.out.println("DEBUG: SMG");
-                break;
-                case("Bloody Cleaver"):
-                currentWeapon = new Bow(this.getLocation(), this.getMap());
-                System.out.println("DEBUG: BCleav");
-                break;
+            switch (Inventory.items[Inventory.currentSelection].getName()) {
+                case ("Pistol With Bayonet"):
+                    currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+                    break;
+                case ("Carrot Rocket Launcher"):
+                    currentWeapon = new RPC(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: RPC");
+                    break;
+                case ("Small Machine Gun"):
+                    currentWeapon = new SMG(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: SMG");
+                    break;
+                case ("Bloody Cleaver"):
+                    currentWeapon = new Bow(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: BCleav");
+                    break;
                 default:
-                System.out.println("DEBUG: NullDumDum");
-                break; 
+                    System.out.println("DEBUG: NullDumDum");
+                    break;
             }
-        } catch(NullPointerException e) {
-            System.out.println("Fuck you Java"); 
+        } catch (NullPointerException e) {
+            // System.out.println("Fuck you Java");
         }
 
-
-
-        checkCoinPickup(); // Check for coin pickup each update
+        checkCoinPickup(); // Check for coin pickup
         getCalibratedXLocation();
 
         if (MouseHandler.leftMouseDown) {
@@ -95,23 +102,37 @@ public class Bunny extends Player {
             }
             System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
         }
+
         currentWeapon.update(this);
       // System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
+
+
+        // Check if player is dead to trigger DeathScreen
+        if (health <= 0) {
+            triggerDeathScreen();
+        }
     }
 
     public void takeDamage(float dmgAmt) {
-        if (health != 0) {
+        if (health > 0) {
             health -= dmgAmt;
             if (dmgState < 3) {
                 dmgState++;
                 this.animations = loadAnimations(sptSht);
             }
         } else {
-            this.lock();
-            this.setLocation(860, 1200);
-            System.out.println("DEBUG: Player has died");
+            // Ensure health doesn't go negative and trigger the death sequence
+            health = 0;
         }
         System.out.println("DEBUG: Health = " + health + " Dmg State = " + dmgState);
+    }
+
+    private void triggerDeathScreen() {
+        if (screenCoordinator != null) {
+            screenCoordinator.setGameState(GameState.DEATH); // Switch to DeathScreen
+        } else {
+            System.out.println("ERROR: ScreenCoordinator not set!");
+        }
     }
 
     private boolean isNearCoin(Coin coin) {
@@ -155,7 +176,7 @@ public class Bunny extends Player {
 
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
-        System.out.println("DEBUG: Anim Dmgstate = " + dmgState); 
+        System.out.println("DEBUG: Anim Dmgstate = " + dmgState);
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[]{
                 new FrameBuilder(spriteSheet.getSprite(dmgState, 0), 14)
