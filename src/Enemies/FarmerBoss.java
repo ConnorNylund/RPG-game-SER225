@@ -67,9 +67,9 @@ public class FarmerBoss extends NPC {
 
     // Attack player if within attack range
     private void attackPlayer(Player player) {
-        if ((System.nanoTime() - lastAttack) / 1_000_000_000.0 > attackSpeed) {
-            ((Bunny)player).takeDamage(); // Assuming player has a takeDamage() method
-            lastAttack = System.nanoTime();
+        if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
+            ((Bunny)player).takeDamage(attackRadius);
+            lastAttack = System.nanoTime(); 
         }
     }
 

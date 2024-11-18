@@ -39,7 +39,10 @@ public class Hiddenmap extends Map {
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        getMapTile(0, 0).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(28, 6).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(28, 7).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(29, 6).setInteractScript(new ReturnScript(screenCoordinator));
+        getMapTile(29, 7).setInteractScript(new ReturnScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }    
