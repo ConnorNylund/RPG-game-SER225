@@ -73,8 +73,6 @@ public class Wave {
                 bossesToDie.add(boss);
             }
         }
-
-
     }
 
     // Returns the number of regular enemies currently alive

@@ -1,5 +1,7 @@
 package Weapons;
 
+import Engine.ImageLoader;
+import GameObject.SpriteSheet;
 import Level.Map;
 import Utils.Point;
 

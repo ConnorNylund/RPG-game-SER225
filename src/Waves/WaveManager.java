@@ -54,7 +54,7 @@ public class WaveManager {
             numFarmerBosses = currentWave.getFarmerBossesAlive();
 
             // If no enemies or FarmerBosses are left, start the next wave
-            if (numEnemies <= 0 && numFarmerBosses <= 0) {
+            if (numEnemies <= 0) {
                 newWave();
             }
         }
