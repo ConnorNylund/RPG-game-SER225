@@ -8,6 +8,7 @@ import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
 import Level.MapTile;
+import NPCs.Boss1Teleporter;
 import Utils.Point;
 
 public class Wave {
@@ -52,7 +53,8 @@ public class Wave {
         }
     }
     public void SpawnBossTP(float x, float y, int waveNum) {
-
+        Boss1Teleporter BossTP = new Boss1Teleporter(9, x, y, null, waveNum);
+        map.addNPC(BossTP);
     }
 
     // Update method for managing active and removed enemies and FarmerBosses

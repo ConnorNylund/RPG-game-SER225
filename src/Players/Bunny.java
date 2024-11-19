@@ -34,11 +34,14 @@ public class Bunny extends Player {
     private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
     private ScreenCoordinator screenCoordinator; 
 
+    private String prevWep; 
+
     public Bunny(float x, float y) {
         super(sptSht, x, y, "STAND_RIGHT");
         health = 4;
         dmgState = 0;
         test = true;
+        prevWep = " ";
     }
 
     public void setScreenCoordinator(ScreenCoordinator screenCoordinator) {
@@ -64,28 +67,39 @@ public class Bunny extends Player {
 
         // Weapon swapping
         try {
+            //System.out.println("DEBUG: " + !prevWep.equals(Inventory.items[Inventory.currentSelection].getName()));
             switch (Inventory.items[Inventory.currentSelection].getName()) {
                 case ("Pistol With Bayonet"):
-                    currentWeapon = new GoodPistol(this.getLocation(), this.getMap());
+                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
+                        currentWeapon = new GoodPistol(this.getLocation(), this.getMap());
+                        System.out.println("DEBUG: GoodPistol");
+                    }
                     break;
                 case ("Carrot Rocket Launcher"):
-                    currentWeapon = new RPC(this.getLocation(), this.getMap());
-                    System.out.println("DEBUG: RPC");
+                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
+                        currentWeapon = new RPC(this.getLocation(), this.getMap());
+                        System.out.println("DEBUG: RPC");
+                    }
                     break;
                 case ("Small Machine Gun"):
-                    currentWeapon = new SMG(this.getLocation(), this.getMap());
-                    System.out.println("DEBUG: SMG");
+                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
+                        currentWeapon = new SMG(this.getLocation(), this.getMap());
+                        System.out.println("DEBUG: SMG");
+                    }
                     break;
                 case ("Bloody Cleaver"):
-                    currentWeapon = new Bow(this.getLocation(), this.getMap());
-                    System.out.println("DEBUG: BCleav");
+                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
+                        currentWeapon = new Bow(this.getLocation(), this.getMap());
+                        System.out.println("DEBUG: BCleav");
+                    }
                     break;
                 default:
                     System.out.println("DEBUG: NullDumDum");
                     break;
             }
+                prevWep = Inventory.items[Inventory.currentSelection].getName();
         } catch (NullPointerException e) {
-            // System.out.println("Fuck you Java");
+            //System.out.println("Fuck you Java");
         }
 
         checkCoinPickup(); // Check for coin pickup
@@ -95,12 +109,12 @@ public class Bunny extends Player {
             float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
             float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
 
-            if (calibratedX > this.x + this.getWidth()) {
+            if (calibratedX > this.x + this.getWidth()) { //Makes sure the bullet doesn't try to go through the player 
                 currentWeapon.shoot(this.x + 15 + this.getWidth(), this.y, calibratedX, calibratedY);
             } else {
                 currentWeapon.shoot(this.x - 15, this.y, calibratedX, calibratedY);
             }
-            System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
+            //System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
         }
 
         currentWeapon.update(this);
