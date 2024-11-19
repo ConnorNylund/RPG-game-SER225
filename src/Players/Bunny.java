@@ -66,7 +66,7 @@ public class Bunny extends Player {
         try {
             switch (Inventory.items[Inventory.currentSelection].getName()) {
                 case ("Pistol With Bayonet"):
-                    currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+                    currentWeapon = new GoodPistol(this.getLocation(), this.getMap());
                     break;
                 case ("Carrot Rocket Launcher"):
                     currentWeapon = new RPC(this.getLocation(), this.getMap());

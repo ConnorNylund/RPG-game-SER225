@@ -68,6 +68,9 @@ public class WaveManager {
             int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
             currentWave.SpawnPenguin(penguinsToSpawn); 
             penguinsSpawned = true; 
+
+            //Logic for boss zone opening
+            
         }
 
         

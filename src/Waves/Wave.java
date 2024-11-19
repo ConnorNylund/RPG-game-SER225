@@ -51,6 +51,10 @@ public class Wave {
             map.addNPC(testEnem);
         }
     }
+    public void SpawnBossTP(float x, float y, int waveNum) {
+
+    }
+
     // Update method for managing active and removed enemies and FarmerBosses
     public void update() {
         // Remove enemies marked for removal
