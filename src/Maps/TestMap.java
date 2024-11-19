@@ -162,7 +162,7 @@ public class TestMap extends Map {
     @Override
     public void loadScripts(ScreenCoordinator screenCoordinator) {
         getMapTile(2, 6).setInteractScript(new TreeScript());
-        getMapTile(27, 18).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile(31, 17).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
         getMapTile(30, 18).setInteractScript(new HiddenScript(screenCoordinator));
 
