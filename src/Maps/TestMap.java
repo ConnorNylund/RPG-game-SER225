@@ -39,7 +39,7 @@ public class TestMap extends Map {
     public DestroyableWall destroyableWallH5;
 
     public DestroyableWall destroyableWallG1, destroyableWallG2, destroyableWallG3; 
-    protected ScreenCoordinator screenCoordinator;
+    public ScreenCoordinator screenCoordinator;
 
     public TestMap(ScreenCoordinator screenCoordinator, int currentMap) {
         super("test_map.txt", new CommonTileset(), screenCoordinator);
@@ -165,6 +165,14 @@ public class TestMap extends Map {
         getMapTile(31, 17).setInteractScript(new BossChallengeScript(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
         getMapTile(30, 18).setInteractScript(new HiddenScript(screenCoordinator));
+
+        super.loadScripts(screenCoordinator);
+    }
+    public void loadBossScript(ScreenCoordinator screenCoordinator, float x, float y) {
+        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }

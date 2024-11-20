@@ -1,7 +1,13 @@
 package Game;
 
+import java.util.HashMap;
+
+import Builders.FrameBuilder;
 import Engine.GameWindow;  
 import Engine.ScreenManager;
+import GameObject.Frame;
+import GameObject.ImageEffect;
+import GameObject.SpriteSheet;
 
 /*
  * The game starts here

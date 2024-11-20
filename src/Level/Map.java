@@ -79,7 +79,7 @@ public abstract class Map {
 
     // reference to current player
     protected Player player;
-    protected ScreenCoordinator screenCoordinator;
+    public ScreenCoordinator screenCoordinator;
 
     protected ArrayList<MapTile> grassTiles;
 

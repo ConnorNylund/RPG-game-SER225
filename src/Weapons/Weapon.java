@@ -22,6 +22,7 @@ public class Weapon extends MapEntity{
     protected float antiJankTimer, bulletSpeed;
     protected Map map;
     protected ArrayList<Bullet> bullets; 
+    protected int bulletCt = 1;
     
     public Weapon(SpriteSheet spriteSheet, Point playerLoc, Map map) { //Copy paste this constructor into your subclass
         super(playerLoc.x, playerLoc.y, spriteSheet, "Anim1");
@@ -39,7 +40,9 @@ public class Weapon extends MapEntity{
         if ((System.nanoTime()-antiJankTimer)/1000000000.0 > fireRate) {
             System.out.println("DEBUG: shot");
             antiJankTimer = System.nanoTime();
-            bullets.add(new Bullet(Sx, Sy, Fx, Fy, bulletSpeed, AOE, map, DPH, true));
+            for(int i = 0; i<bulletCt; i++) {
+                bullets.add(new Bullet(Sx, Sy, Fx, Fy, bulletSpeed, AOE, map, DPH, true));
+            }
             System.out.println("DEBUG: Bullet Added to array list, Active bullets: " + bullets.size()); 
         }
     }

@@ -8,7 +8,9 @@ import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
 import Level.MapTile;
+import Maps.TestMap;
 import NPCs.Boss1Teleporter;
+import Scripts.TestMap.BossChallengeScript;
 import Utils.Point;
 
 public class Wave {
@@ -52,9 +54,12 @@ public class Wave {
             map.addNPC(testEnem);
         }
     }
-    public void SpawnBossTP(float x, float y, int waveNum) {
-        Boss1Teleporter BossTP = new Boss1Teleporter(9, x, y, null, waveNum);
-        map.addNPC(BossTP);
+    public void SpawnBossTP(float x, float y, int waveNum, Map map2) {
+        Point point = new Point(map2.getMapTile((int)x, (int)y).getX(), map2.getMapTile((int)x, (int)y).getY()); 
+        Boss1Teleporter BossTP = new Boss1Teleporter(9, point, "ANIM1", waveNum, map2);
+        System.out.println("DEBUG: Passing X/Y = " +  x + "/" + y); 
+        ((TestMap)map2).loadBossScript(map2.screenCoordinator, x, y); 
+        map2.addNPC(BossTP);
     }
 
     // Update method for managing active and removed enemies and FarmerBosses
