@@ -107,8 +107,8 @@ public abstract class Map {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
         this.grassTiles = new ArrayList<>();
+        this.fireTiles = new ArrayList<>(); 
         this.snowTiles = new ArrayList<>();
-        this.fireTiles = new ArrayList<>();
         this.random = new Random();
         setupMap(screenCoordinator);
         this.startBoundX = 0;
@@ -197,7 +197,7 @@ public abstract class Map {
                     this.snowTiles.add(tile);
                 }
 
-                if (tile.getTileIndex() == 33) {
+                if (tile.getTileIndex() == 34) {
                     this.fireTiles.add(tile);
                 }
 
