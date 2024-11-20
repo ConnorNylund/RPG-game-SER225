@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Enemies.Enemy;
 import Enemies.Penguin;
+import Enemies.Shark;
+
 import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
@@ -54,12 +56,29 @@ public class Wave {
             map.addNPC(testEnem);
         }
     }
+<<<<<<< HEAD
     public void SpawnBossTP(float x, float y, int waveNum, Map map2) {
         Point point = new Point(map2.getMapTile((int)x, (int)y).getX(), map2.getMapTile((int)x, (int)y).getY()); 
         Boss1Teleporter BossTP = new Boss1Teleporter(9, point, "ANIM1", waveNum, map2);
         System.out.println("DEBUG: Passing X/Y = " +  x + "/" + y); 
         ((TestMap)map2).loadBossScript(map2.screenCoordinator, x, y); 
         map2.addNPC(BossTP);
+=======
+    public void SpawnShark(int numEnemiesToSpawn) {
+        for (int i = 0; i < numEnemiesToSpawn; i++) {
+            MapTile fireTile = map.getRandomFireTile();
+            Point position = fireTile.getLocation();
+            Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
+
+            Shark testEnem = new Shark(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer());
+            this.enemies.add(testEnem);
+            map.addNPC(testEnem);
+        }
+    }
+    public void SpawnBossTP(float x, float y, int waveNum) {
+        Boss1Teleporter BossTP = new Boss1Teleporter(9, x, y, null, waveNum);
+        map.addNPC(BossTP);
+>>>>>>> 6b03314f769f3af00db7a8c40e95c1b3041747fd
     }
 
     // Update method for managing active and removed enemies and FarmerBosses

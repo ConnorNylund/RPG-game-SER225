@@ -17,7 +17,10 @@ public class MenuScreen extends Screen {
     protected int menuItemSelected = -1;
     protected SpriteFont playGame;
     protected SpriteFont credits;
+    protected SpriteFont title;
+    protected SpriteFont title2;
     protected SpriteFont about; 
+    protected SpriteFont infoLabel;
     protected Map background;
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
@@ -40,6 +43,14 @@ public class MenuScreen extends Screen {
         about = new SpriteFont("ABOUT", 200, 323, "Arial", 30, new Color(49, 207, 240)); 
         about.setOutlineColor(Color.black);
         about.setOutlineThickness(3);
+
+        title = new SpriteFont("SECTOR", 400, 175, "Arial", 60, new Color(225, 115, 105));
+        title.setOutlineColor(Color.black);
+        title.setOutlineThickness(3);
+
+        title2 = new SpriteFont("SURVIVAL", 400, 250, "Arial", 60, new Color(225, 115, 105));
+        title2.setOutlineColor(Color.black);
+        title2.setOutlineThickness(3);
 
         background = new TitleScreenMap(screenCoordinator);
         background.setAdjustCamera(false);
@@ -112,6 +123,8 @@ public class MenuScreen extends Screen {
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
         playGame.draw(graphicsHandler);
+        title.draw(graphicsHandler);
+        title2.draw(graphicsHandler);
         credits.draw(graphicsHandler);
         about.draw(graphicsHandler); // Draw "About" option
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, new Color(49, 207, 240), Color.black, 2);
