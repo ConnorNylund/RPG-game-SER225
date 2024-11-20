@@ -9,7 +9,7 @@ import Inventory.Inventory;
 import Level.*;
 import Maps.Bossmap2;
 import Players.Bunny;
-import Enemies.Boss; //place the second boss here *****************************************************************************************************************
+import Enemies.polarbearBoss; //place the second boss here *****************************************************************************************************************
 import Utils.Direction;
 
 // This class is for when the RPG game is actually being played
@@ -35,7 +35,7 @@ public class PlayBossScreen2 extends Screen {
         map.setFlagManager(flagManager);
 
         // Add boss to the map
-        Boss testboss = new Boss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer());
+        polarbearBoss testboss = new polarbearBoss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer());
         map.addNPC(testboss);
         testboss.setMap(map);
 
