@@ -54,13 +54,8 @@ public class Enemy extends NPC {
         curHealth -= dmgAmt;
         if (curHealth <= 0) {
             isLocked = true;
+            this.enemDeath();
             this.mapEntityStatus = MapEntityStatus.REMOVED;
-            
-            // Spawn a coin at the enemy's current location upon death
-            MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
-                                                 (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
-            Coin droppedCoin = new Coin(currentTile.getLocation());
-            map.addEnhancedMapTile(droppedCoin);
             
             System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
         } else if(curHealth >= 1) {
@@ -129,6 +124,14 @@ public class Enemy extends NPC {
             ((Bunny)player).takeDamage(1);
             lastAttack = System.nanoTime(); 
         }
+    }
+    protected void enemDeath() { //Made into a seperate method so that individual instances can have custom death stuff
+        
+        // Spawn a coin at the enemy's current location upon death
+        MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
+                                             (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
+        Coin droppedCoin = new Coin(currentTile.getLocation());
+        map.addEnhancedMapTile(droppedCoin);
     }
 
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
