@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Enemies.Enemy;
 import Enemies.Penguin;
+import Enemies.Shark;
+
 import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
@@ -48,6 +50,17 @@ public class Wave {
             Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
 
             Penguin testEnem = new Penguin(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer());
+            this.enemies.add(testEnem);
+            map.addNPC(testEnem);
+        }
+    }
+    public void SpawnShark(int numEnemiesToSpawn) {
+        for (int i = 0; i < numEnemiesToSpawn; i++) {
+            MapTile fireTile = map.getRandomFireTile();
+            Point position = fireTile.getLocation();
+            Point scaledPos = new Point(position.x / map.getTileset().getScaledSpriteWidth(), position.y / map.getTileset().getScaledSpriteHeight());
+
+            Shark testEnem = new Shark(1, map.getMapTile((int) scaledPos.x, (int) scaledPos.y).getLocation(), "DAMAGE3", map.getPlayer());
             this.enemies.add(testEnem);
             map.addNPC(testEnem);
         }
