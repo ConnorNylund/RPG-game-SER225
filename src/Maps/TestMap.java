@@ -162,33 +162,33 @@ public class TestMap extends Map {
     @Override
     public void loadScripts(ScreenCoordinator screenCoordinator) {
         getMapTile(2, 6).setInteractScript(new TreeScript());
-        getMapTile(31, 17).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile(31, 17).setInteractScript(new BossChallengeScript1(screenCoordinator));
         getMapTile(25, 18).setInteractScript(new ShopScript(screenCoordinator));
         getMapTile(30, 18).setInteractScript(new HiddenScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }
     public void loadBossScript1(ScreenCoordinator screenCoordinator, float x, float y) {
-        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript1(screenCoordinator));
+        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript1(screenCoordinator));
+        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript1(screenCoordinator));
+        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript1(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }
     public void loadBossScript2(ScreenCoordinator screenCoordinator, float x, float y) {
-        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript2(screenCoordinator));
+        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript2(screenCoordinator));
+        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript2(screenCoordinator));
+        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript2(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }
     public void loadBossScript3(ScreenCoordinator screenCoordinator, float x, float y) {
-        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript(screenCoordinator));
-        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript(screenCoordinator));
+        getMapTile((int)x+1, (int)y).setInteractScript(new BossChallengeScript3(screenCoordinator));
+        getMapTile((int)x-1, (int)y).setInteractScript(new BossChallengeScript3(screenCoordinator));
+        getMapTile((int)x, (int)y+1).setInteractScript(new BossChallengeScript3(screenCoordinator));
+        getMapTile((int)x, (int)y-1).setInteractScript(new BossChallengeScript3(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }

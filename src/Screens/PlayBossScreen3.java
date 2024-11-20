@@ -7,13 +7,13 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Inventory.Inventory;
 import Level.*;
-import Maps.Bossmap;
+import Maps.Bossmap3;
 import Players.Bunny;
-import Enemies.Boss;
+import Enemies.squidBoss;
 import Utils.Direction;
 
 // This class is for when the RPG game is actually being played
-public class PlayBossScreen extends Screen {
+public class PlayBossScreen3 extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -21,7 +21,7 @@ public class PlayBossScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public PlayBossScreen(ScreenCoordinator screenCoordinator) {
+    public PlayBossScreen3(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -31,11 +31,11 @@ public class PlayBossScreen extends Screen {
         flagManager = new FlagManager();
 
         // define/setup map
-        map = new Bossmap(screenCoordinator, 1);
+        map = new Bossmap3(screenCoordinator, 1);
         map.setFlagManager(flagManager);
 
         // Add boss to the map
-        Boss testboss = new Boss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer());
+        squidBoss testboss = new squidBoss(1, map.getMapTile((int) 5, (int) 5).getLocation(), "DAMAGE3", map.getPlayer());
         map.addNPC(testboss);
         testboss.setMap(map);
 

@@ -15,7 +15,6 @@ import Tilesets.CommonTileset;
 import java.util.ArrayList;
 
 import Enemies.Enemy;
-import Enemies.Boss;
 import Engine.ImageLoader;
 
 // Represents a test map to be used in a level

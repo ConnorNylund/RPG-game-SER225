@@ -12,7 +12,7 @@ import Level.MapEntityStatus;
 import Level.MapTile;
 import Maps.TestMap;
 import NPCs.Boss1Teleporter;
-import Scripts.TestMap.BossChallengeScript;
+import Scripts.TestMap.BossChallengeScript1;
 import Utils.Point;
 
 public class Wave {

@@ -6,7 +6,9 @@ import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
-import Screens.PlayBossScreen;
+import Screens.PlayBossScreen1;
+import Screens.PlayBossScreen2;
+import Screens.PlayBossScreen3;
 import Screens.PlayShopScreen;
 import Screens.HiddenMapScreen;
 import Screens.AboutScreen; // Import AboutScreen
@@ -69,8 +71,14 @@ public class ScreenCoordinator extends Screen {
                         case ABOUT:
                             currentScreen = new AboutScreen(this);
                             break;
-                        case BOSS:
-                            currentScreen = new PlayBossScreen(this);
+                        case BOSS1:
+                            currentScreen = new PlayBossScreen1(this);
+                            break;
+                        case BOSS2:
+                            currentScreen = new PlayBossScreen2(this);
+                            break;
+                        case BOSS3:
+                            currentScreen = new PlayBossScreen3(this);
                             break;
                         case SHOP:
                             currentScreen = new PlayShopScreen(this);
