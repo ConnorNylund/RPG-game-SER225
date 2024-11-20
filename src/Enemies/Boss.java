@@ -5,8 +5,10 @@ import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
+import EnhancedMapTiles.Coin;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
+import Level.MapTile;
 import Level.Player;
 import Players.Bunny;
 import Utils.Point;
@@ -33,6 +35,16 @@ public class Boss extends Enemy{
             }
             lastAttack = System.nanoTime(); 
         }
+    }
+    @Override
+    protected void enemDeath() {
+        
+
+        //Coin Stuff
+        MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
+                                             (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
+        Coin droppedCoin = new Coin(currentTile.getLocation());
+        map.addEnhancedMapTile(droppedCoin);
     }
     @Override //Put custom animations here
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet

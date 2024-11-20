@@ -10,7 +10,7 @@ public class GoodPistol extends Weapon {
     public GoodPistol(Point playerLoc, Map map) {
         super(gunPic, playerLoc, map); 
         this.fireRate = .8f;
-        this.DPH = .75f;
+        this.DPH = 1.25f;
         this.bulletSpeed = 6; 
         this.AOE = 20; 
     }
