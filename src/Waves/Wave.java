@@ -56,11 +56,22 @@ public class Wave {
             map.addNPC(testEnem);
         }
     }
-    public void SpawnBossTP(float x, float y, int waveNum, Map map2) {
+    public void SpawnBossTP(float x, float y, int bossNum, Map map2) {
         Point point = new Point(map2.getMapTile((int)x, (int)y).getX(), map2.getMapTile((int)x, (int)y).getY()); 
-        Boss1Teleporter BossTP = new Boss1Teleporter(9, point, "ANIM1", waveNum, map2);
+        Boss1Teleporter BossTP = new Boss1Teleporter(9, point, "ANIM1", bossNum, map2);
         System.out.println("DEBUG: Passing X/Y = " +  x + "/" + y); 
-        ((TestMap)map2).loadBossScript(map2.screenCoordinator, x, y); 
+        switch(bossNum) { //I should put the hole spawner in here, and hardcode the coords rather than doing it in WaveManager every time... But that makes too much sense and I'm lazy
+            case(1):
+            ((TestMap)map2).loadBossScript1(map2.screenCoordinator, x, y);
+            break;
+            case(2):
+            ((TestMap)map2).loadBossScript2(map2.screenCoordinator, x, y);
+            break;
+            case(3):
+            ((TestMap)map2).loadBossScript3(map2.screenCoordinator, x, y);
+            break;
+        }
+         
         map2.addNPC(BossTP);
     }
     public void SpawnShark(int numEnemiesToSpawn) {
