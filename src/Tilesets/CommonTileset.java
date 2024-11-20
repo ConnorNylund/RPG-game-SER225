@@ -718,7 +718,6 @@ public class CommonTileset extends Tileset {
         .build();
 
         MapTileBuilder ShopHealthTile = new MapTileBuilder(ShopHealthFrame)
-                .withTopLayer(ShopHealthFrame)
                 .withTileType(TileType.PASSABLE);
 
         mapTiles.add(ShopHealthTile);
