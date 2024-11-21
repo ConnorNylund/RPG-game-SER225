@@ -61,9 +61,6 @@ public void update() {
         Inventory.items[Inventory.currentSelection].getName().equals("Speed Potion")) {
         this.walkSpeed = 5.0f; // Increased speed
         System.out.println("Speed Potion activated! walkSpeed: " + walkSpeed);
-    } else {
-        this.walkSpeed = 3.0f; // Default speed
-        System.out.println("Normal speed: " + walkSpeed);
     }
 
     super.update(); // Call the parent update AFTER walkSpeed has been updated
