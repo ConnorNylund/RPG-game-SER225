@@ -30,11 +30,13 @@ public class Enemy extends NPC {
     protected double lastAttack; 
     protected float attackRadius; 
     protected float attackSpeed;
+
     public Enemy(int id, Point location, SpriteSheet spriteSheet, String startingAnimation) { //Constructor for subclasses
         super(id, location.x, location.y, spriteSheet, startingAnimation); 
         this.id = id; 
         antiJankTimer = System.nanoTime();
     }
+
     public Enemy(int id, Point location, String startingAnimation, Player player) { //sample call: Enemy(id = 0, xPos = 0, yPos = 0, spriteSheet = enemy.png, startingAnimation = ("DAMAGE" + totalHealth), totalHealth = 3)
         super(id, location.x, location.y, spriteSheet, startingAnimation);
         this.id = id;
@@ -44,12 +46,12 @@ public class Enemy extends NPC {
         totalHealth = 3; // Bigger is more health
         attackSpeed = 1; // Lower is faster
 
-
         //Don't mess with these ones tho
         lastAttack = 0; 
         curHealth = totalHealth;
         antiJankTimer = System.nanoTime(); 
     }
+
     public void takeDamage(float dmgAmt) {
         curHealth -= dmgAmt;
         if (curHealth <= 0) {
@@ -63,16 +65,24 @@ public class Enemy extends NPC {
             map.addEnhancedMapTile(droppedCoin);
             
             System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
-        } else if(curHealth >= 1) {
-            int tempHealth = (int)(curHealth+.5f); //Rounds up the dmg amt then casts to int for animations
+            
+            // Trigger the onDeath method
+            this.onDeath();
+        } else if (curHealth >= 1) {
+            int tempHealth = (int)(curHealth + 0.5f); //Rounds up the dmg amt then casts to int for animations
             System.out.println("DEBUG: DAMAGE" + curHealth);
             setCurrentAnimationName("DAMAGE" + tempHealth);
         } else {
             setCurrentAnimationName("DAMAGE1"); 
         }
     }
-    
-    
+
+    // New onDeath method
+    public void onDeath() {
+        // Default behavior for enemies when they die
+        System.out.println("Enemy onDeath triggered.");
+    }
+
     public void update(Player player) {
         super.update(player); 
         //System.out.println("DEBUG: RealEnemPos=" + this.getX() + "/" + this.getY());
@@ -87,7 +97,6 @@ public class Enemy extends NPC {
         //     this.takeDamage(); 
         // }
 
-
         //Player tracker
         /*
          * Need to get the position of the player
@@ -101,32 +110,32 @@ public class Enemy extends NPC {
         float ex = this.x;
         float ey = this.y;
         
-        float dx = px-ex;
-        float dy = py-ey;
+        float dx = px - ex;
+        float dy = py - ey;
 
-        float dMag = (float)Math.sqrt((double)(dx*dx+dy*dy));
-        float xRatio = dx/dMag; //What percentage of our movement should go in the X direction
-        float yRatio = dy/dMag; //What percentage of our movement should go in the Y direction
+        float dMag = (float) Math.sqrt((double)(dx * dx + dy * dy));
+        float xRatio = dx / dMag; //What percentage of our movement should go in the X direction
+        float yRatio = dy / dMag; //What percentage of our movement should go in the Y direction
 
         double angToPlay = Math.atan2(dx, dy);
         //System.out.println("DEBUG:\n Enemy Coords: " + ex + ", " + ey + "\n Player Coords: " + px + ", " + py + "\n Angle Between: " + angToPlay + "\n\n");
-        if(!isLocked) {
+        if (!isLocked) {
             //System.out.println("DEBUG: Moving " + moveSpeed * (xRatio/2) + " in X      Moving " + moveSpeed * (yRatio/2) + " in Y");
             lastAmountMovedX = super.moveXHandleCollision(moveSpeed * (xRatio));
             lastAmountMovedY = super.moveYHandleCollision(moveSpeed * (yRatio));
         }
 
-
         float Pdx = (this.getX() + this.getWidth() / 2) - (player.getX() + player.getWidth() / 2);
         float Pdy = (this.getY() + this.getHeight() / 2) - (player.getY() + player.getHeight() / 2);
-        if((float)Math.sqrt(Pdx * Pdx + Pdy * Pdy) < attackRadius) {
+        if ((float) Math.sqrt(Pdx * Pdx + Pdy * Pdy) < attackRadius) {
             attackPlayer(player);
         }
         //System.out.println("DEBUG: xRatio/yRatio" + xRatio + "/" + yRatio); 
     }
+
     protected void attackPlayer(Player player) {
-        if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
-            ((Bunny)player).takeDamage(1);
+        if ((System.nanoTime() - lastAttack) / 1000000000.0 > attackSpeed) {
+            ((Bunny) player).takeDamage(1);
             lastAttack = System.nanoTime(); 
         }
     }

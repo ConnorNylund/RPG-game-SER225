@@ -8,6 +8,7 @@ import Screens.MenuScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayBossScreen;
 import Screens.PlayShopScreen;
+import Screens.WinScreen;
 import Screens.HiddenMapScreen;
 import Screens.AboutScreen; // Import AboutScreen
 import Screens.DeathScreen; // Import DeathScreen
@@ -84,6 +85,10 @@ public class ScreenCoordinator extends Screen {
                         case DEATH: // New case for DEATH screen
                             currentScreen = new DeathScreen(this);
                             break;
+                        case WIN:
+                            currentScreen = new WinScreen(this);
+                            break;
+
 
                     }
                     currentScreen.initialize();

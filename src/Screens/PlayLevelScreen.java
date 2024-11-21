@@ -76,7 +76,7 @@ public class PlayLevelScreen extends Screen {
         // both are supported, however preloading is recommended
         map.preloadScripts(screenCoordinator);
 
-        winScreen = new WinScreen(this);
+        // winScreen = new WinScreen(this);
         invScreen = new InventoryScreen();
 
         // COIN COUNT
