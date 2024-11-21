@@ -5,59 +5,23 @@ import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
-import EnhancedMapTiles.Coin;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
-import Level.MapTile;
 import Level.Player;
 import Players.Bunny;
 import Utils.Point;
 import Weapons.Bullet;
 
-public class Boss extends Enemy{
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("THEfarmerssheet.png"), 32, 32);
-     public Boss(int id, Point location, String startingAnimation, Player player) { //startingAnimation is still in here so I don't break other things, it does nothing
+public class squidBoss extends Enemy{
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Squidboss.png"), 32, 32);
+     public squidBoss(int id, Point location, String startingAnimation, Player player) { //startingAnimation is still in here so I don't break other things, it does nothing
         super(id, location, spriteSheet, "DAMAGE4");
-        moveSpeed = 0.9f; // Higher is faster
-        attackRadius = 320; // Higher is farther
+        moveSpeed = 1f; // Higher is faster
+        attackRadius = 150f; // Higher is farther
         totalHealth = 4; // Bigger is more health
-        attackSpeed = 1; // Lower is faster
+        attackSpeed = 0.5f; // Lower is faster
 
         this.curHealth = totalHealth; 
-    }
-    @Override
-    protected void attackPlayer(Player player) { 
-        if((System.nanoTime()-lastAttack)/1000000000.0 > attackSpeed) {
-            if(player.getX() > this.getX()) {
-                new Bullet(this.x+15+this.getWidth(), this.y, player.getX(), player.getY(), 5, 20, super.map, 1, false);
-            } else {
-                new Bullet(this.x-15, this.y, player.getX(), player.getY(), 5, 20, super.map, 1, false);
-            }
-            lastAttack = System.nanoTime(); 
-        }
-    }
-
-    //new code for win screen
-    @Override
-    public void onDeath() {
-        if (super.map != null && super.map.getPlayer() instanceof Bunny) {
-            Bunny player = (Bunny) super.map.getPlayer();
-            if (player != null) {
-            player.triggerWinScreen(); // Trigger the win screen when the boss dies
-        }
-    }
-}
-
-
-    @Override
-    protected void enemDeath() {
-        
-
-        //Coin Stuff
-        MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
-                                             (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
-        Coin droppedCoin = new Coin(currentTile.getLocation());
-        map.addEnhancedMapTile(droppedCoin);
     }
     @Override //Put custom animations here
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet

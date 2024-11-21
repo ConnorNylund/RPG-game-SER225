@@ -11,11 +11,11 @@ import Game.ScreenCoordinator;
 import Level.Map;
 
 // Script for challenging the boss
-public class BossChallengeScript extends Script {
+public class BossChallengeScript2 extends Script {
      // Create an instance of ScreenCoordinator
     private ScreenCoordinator screenCoordinator;
 
-    public BossChallengeScript(ScreenCoordinator screenCoordinator) {
+    public BossChallengeScript2(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator; // Initialize the screen coordinator
     }
 
@@ -32,7 +32,7 @@ public class BossChallengeScript extends Script {
             public ScriptState execute() {
                 System.out.println("Transitioning to BossChoiceScreen");
                 screenCoordinator.saveState();
-                screenCoordinator.setGameState(GameState.BOSS);
+                screenCoordinator.setGameState(GameState.BOSS2);
                 return ScriptState.COMPLETED;
             }
         });

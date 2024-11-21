@@ -12,6 +12,7 @@ public class RPC extends Weapon{
         this.fireRate = 3f;
         this.DPH = 3f; 
         this.bulletSpeed = 2;
-        this.AOE = 60;
+        this.AOE = 40;
+        this.bulletCt = 5; 
     }
 }

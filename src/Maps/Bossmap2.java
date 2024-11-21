@@ -19,10 +19,10 @@ import Enemies.Boss;
 import Engine.ImageLoader;
 
 // Represents a test map to be used in a level
-public class Bossmap extends Map {
+public class Bossmap2 extends Map {
 
-    public Bossmap(ScreenCoordinator screenCoordinator, int currentMap) {
-        super("Bossmap.txt", new CommonTileset(), screenCoordinator);
+    public Bossmap2(ScreenCoordinator screenCoordinator, int currentMap) {
+        super("Bossmap2.txt", new CommonTileset(), screenCoordinator);
         this.playerStartPosition = getMapTile(5, 12).getLocation();
         this.screenCoordinator = screenCoordinator;
         this.currentMap = 1;

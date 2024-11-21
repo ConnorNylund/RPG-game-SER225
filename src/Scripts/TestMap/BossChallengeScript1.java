@@ -1,20 +1,21 @@
 package Scripts.TestMap;
 
 import java.util.ArrayList;
-
-import Game.GameState;
-import Game.ScreenCoordinator;
 import Level.Script;
 import Level.ScriptState;
 import ScriptActions.LockPlayerScriptAction;
-import ScriptActions.ScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import ScriptActions.ScriptAction;
+import Game.GameState;
+import Game.ScreenCoordinator;
+import Level.Map;
 
-public class Boss1TeleporterScript extends Script {
-    // Create an instance of ScreenCoordinator
+// Script for challenging the boss
+public class BossChallengeScript1 extends Script {
+     // Create an instance of ScreenCoordinator
     private ScreenCoordinator screenCoordinator;
 
-    public Boss1TeleporterScript(ScreenCoordinator screenCoordinator) {
+    public BossChallengeScript1(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator; // Initialize the screen coordinator
     }
 
@@ -31,7 +32,7 @@ public class Boss1TeleporterScript extends Script {
             public ScriptState execute() {
                 System.out.println("Transitioning to BossChoiceScreen");
                 screenCoordinator.saveState();
-                screenCoordinator.setGameState(GameState.BOSS);
+                screenCoordinator.setGameState(GameState.BOSS1);
                 return ScriptState.COMPLETED;
             }
         });
@@ -41,5 +42,4 @@ public class Boss1TeleporterScript extends Script {
 
         return scriptActions;
     }
-    
 }

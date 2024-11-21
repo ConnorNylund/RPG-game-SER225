@@ -7,13 +7,13 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Inventory.Inventory;
 import Level.*;
-import Maps.Bossmap;
+import Maps.Bossmap1;
 import Players.Bunny;
 import Enemies.Boss;
 import Utils.Direction;
 
 // This class is for when the RPG game is actually being played
-public class PlayBossScreen extends Screen {
+public class PlayBossScreen1 extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -21,7 +21,7 @@ public class PlayBossScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public PlayBossScreen(ScreenCoordinator screenCoordinator) {
+    public PlayBossScreen1(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -31,7 +31,7 @@ public class PlayBossScreen extends Screen {
         flagManager = new FlagManager();
 
         // define/setup map
-        map = new Bossmap(screenCoordinator, 1);
+        map = new Bossmap1(screenCoordinator, 1);
         map.setFlagManager(flagManager);
 
         // Add boss to the map

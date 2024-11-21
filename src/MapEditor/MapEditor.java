@@ -5,3 +5,5 @@ public class MapEditor {
         new EditorWindow();
     }
 }
+//6, 15 (Snow Area hole spot)
+//3, 3 (Lava area hole spot)
