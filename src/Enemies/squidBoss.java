@@ -23,6 +23,15 @@ public class squidBoss extends Enemy{
 
         this.curHealth = totalHealth; 
     }
+    @Override
+    public void onDeath() {
+        if (super.map != null && super.map.getPlayer() instanceof Bunny) {
+            Bunny player = (Bunny) super.map.getPlayer();
+            if (player != null) {
+                player.triggerWinScreen(); // Trigger the win screen when the boss dies
+            }
+        }
+    }
     @Override //Put custom animations here
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet
         return new HashMap<String, Frame[]>() {{

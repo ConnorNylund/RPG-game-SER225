@@ -43,10 +43,10 @@ public class Boss extends Enemy{
         if (super.map != null && super.map.getPlayer() instanceof Bunny) {
             Bunny player = (Bunny) super.map.getPlayer();
             if (player != null) {
-            player.triggerWinScreen(); // Trigger the win screen when the boss dies
+                player.triggerWinScreen(); // Trigger the win screen when the boss dies
+            }
         }
     }
-}
 
 
     @Override
