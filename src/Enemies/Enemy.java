@@ -62,7 +62,6 @@ public class Enemy extends NPC {
             System.out.println("Coin dropped at enemy location: (" + this.getX() + ", " + this.getY() + ")");
             
             // Trigger the onDeath method
-            this.onDeath();
         } else if (curHealth >= 1) {
             int tempHealth = (int)(curHealth + 0.5f); //Rounds up the dmg amt then casts to int for animations
             System.out.println("DEBUG: DAMAGE" + curHealth);
@@ -70,12 +69,6 @@ public class Enemy extends NPC {
         } else {
             setCurrentAnimationName("DAMAGE1"); 
         }
-    }
-
-    // New onDeath method
-    public void onDeath() {
-        // Default behavior for enemies when they die
-        System.out.println("Enemy onDeath triggered.");
     }
 
     public void update(Player player) {

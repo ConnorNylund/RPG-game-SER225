@@ -6,7 +6,6 @@ import Enemies.Enemy;
 import Enemies.Penguin;
 import Enemies.Shark;
 
-import Enemies.FarmerBoss;  // Import FarmerBoss
 import Level.Map;
 import Level.MapEntityStatus;
 import Level.MapTile;
@@ -17,7 +16,6 @@ import Utils.Point;
 
 public class Wave {
     private ArrayList<Enemy> enemies;
-    private ArrayList<FarmerBoss> farmerBosses; // List to hold FarmerBosses
     private int numEnemies;
     private int numFarmerBosses; // Number of FarmerBosses
     private Map map;
@@ -25,7 +23,6 @@ public class Wave {
     // Constructor now takes numFarmerBosses as a parameter
     public Wave(int numEnemies, int numFarmerBosses, Map map) {
         this.enemies = new ArrayList<>();
-        this.farmerBosses = new ArrayList<>(); // Initialize FarmerBosses list
         this.numEnemies = numEnemies;
         this.numFarmerBosses = numFarmerBosses; // Set the number of FarmerBosses
         this.map = map;
@@ -100,28 +97,12 @@ public class Wave {
         for (Enemy enemy : enemiesToDie) {
             this.enemies.remove(enemy);
         }
-
-    
-        // Remove FarmerBosses marked for removal
-        ArrayList<FarmerBoss> bossesToDie = new ArrayList<>();
-        for (FarmerBoss boss : this.farmerBosses) {
-            if (boss.getMapEntityStatus() == MapEntityStatus.REMOVED) {
-                bossesToDie.add(boss);
-            }
-        }
     }
 
     // Returns the number of regular enemies currently alive
     public int getEnemiesAlive() {
         return this.enemies.size();
     }
-
-
-    // Returns the number of FarmerBosses currently alive
-    public int getFarmerBossesAlive() {
-        return this.farmerBosses.size();
-    }
-
     // Getter for the total number of regular enemies in this wave
     public int getNumEnemies() {
         return this.numEnemies;

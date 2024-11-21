@@ -24,7 +24,7 @@ public class squidBoss extends Enemy{
         this.curHealth = totalHealth; 
     }
     @Override
-    public void onDeath() {
+    public void enemDeath() {
         if (super.map != null && super.map.getPlayer() instanceof Bunny) {
             Bunny player = (Bunny) super.map.getPlayer();
             if (player != null) {
