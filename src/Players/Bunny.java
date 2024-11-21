@@ -20,8 +20,6 @@ import Level.Player;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Utils.Point;
-import Weapons.Weapon;
-import Weapons.TestPistol;
 import Weapons.*;
 import Inventory.*;
 
@@ -149,6 +147,16 @@ public class Bunny extends Player {
         }
     }
 
+    // new code for win screen
+    public void triggerWinScreen() {
+    if (screenCoordinator != null) {
+        screenCoordinator.setGameState(GameState.WIN); // Switch to WinScreen
+    } else {
+        System.out.println("ERROR: ScreenCoordinator not set!");
+    }
+}
+
+
     private boolean isNearCoin(Coin coin) {
         float pickupRadius = 30.0f;
         float dx = (this.getX() + this.getWidth() / 2) - (coin.getX() + coin.getWidth() / 2);
@@ -260,3 +268,4 @@ public class Bunny extends Player {
         }};
     }
 }
+

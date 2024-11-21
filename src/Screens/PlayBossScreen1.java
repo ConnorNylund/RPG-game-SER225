@@ -87,6 +87,7 @@ public class PlayBossScreen1 extends Screen {
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);
                 break;
+            
         }
     }
 

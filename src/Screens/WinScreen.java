@@ -1,50 +1,57 @@
 package Screens;
 
-import Engine.*;
+import Engine.GraphicsHandler;
+import Engine.ImageLoader;
+import Engine.Keyboard;
+import Engine.Screen;
+import Game.GameState;
+import Game.ScreenCoordinator;
 import SpriteFont.SpriteFont;
+import Engine.Key;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 
-// This class is for the win level screen
 public class WinScreen extends Screen {
-    protected SpriteFont winMessage;
-    protected SpriteFont instructions;
-    protected KeyLocker keyLocker = new KeyLocker();
-    protected PlayLevelScreen playLevelScreen;
+    private ScreenCoordinator screenCoordinator;
+    private SpriteFont winMessage;
+    private SpriteFont instructionMessage;
+    private BufferedImage winImage; 
 
-    public WinScreen(PlayLevelScreen playLevelScreen) {
-        this.playLevelScreen = playLevelScreen;
-        initialize();
+    public WinScreen(ScreenCoordinator screenCoordinator) {
+        this.screenCoordinator = screenCoordinator;
     }
 
     @Override
     public void initialize() {
-        winMessage = new SpriteFont("You win!", 350, 239, "Arial", 30, Color.white);
-        instructions = new SpriteFont("Press Space to play again or Escape to go back to the main menu", 120, 279,"Arial", 20, Color.white);
-        keyLocker.lockKey(Key.SPACE);
-        keyLocker.lockKey(Key.ESC);
+        winMessage = new SpriteFont("YOU WIN!", 275, 100, "Arial", 50, Color.GREEN);
+        winMessage.setOutlineColor(Color.BLACK);
+        winMessage.setOutlineThickness(3);
+
+        instructionMessage = new SpriteFont("Press ENTER to return to the Main Menu", 110, 500, "Arial", 30, Color.YELLOW);
+        instructionMessage.setOutlineColor(Color.BLACK);
+        instructionMessage.setOutlineThickness(2);
+
+        
+        winImage = ImageLoader.load("bloodybunny.png");
     }
 
     @Override
     public void update() {
-        if (Keyboard.isKeyUp(Key.SPACE)) {
-            keyLocker.unlockKey(Key.SPACE);
-        }
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-
-        // if space is pressed, reset level. if escape is pressed, go back to main menu
-        if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE)) {
-            playLevelScreen.resetLevel();
-        } else if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)) {
-            playLevelScreen.goBackToMenu();
+        if (Keyboard.isKeyDown(Key.ENTER)) {
+            screenCoordinator.setGameState(GameState.MENU);
         }
     }
 
+    @Override
     public void draw(GraphicsHandler graphicsHandler) {
-        graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.black);
+        // Draw the win image if it exists
+        if (winImage != null) {
+            graphicsHandler.drawImage(winImage, 175, 170, 400, 300); 
+        }
+
+        // Draw the messages
         winMessage.draw(graphicsHandler);
-        instructions.draw(graphicsHandler);
+        instructionMessage.draw(graphicsHandler);
     }
 }

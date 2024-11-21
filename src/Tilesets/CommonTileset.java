@@ -7,6 +7,7 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import Level.TileType;
 import Level.Tileset;
+import Players.Bunny;
 
 import java.util.ArrayList;
 
@@ -718,10 +719,20 @@ public class CommonTileset extends Tileset {
         .build();
 
         MapTileBuilder ShopHealthTile = new MapTileBuilder(ShopHealthFrame)
-                .withTopLayer(ShopHealthFrame)
                 .withTileType(TileType.PASSABLE);
 
         mapTiles.add(ShopHealthTile);
+
+        Frame speedPotionFrame = new FrameBuilder(getSubImage(6, 8))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder speedPotionTile = new MapTileBuilder(speedPotionFrame)
+        .withTileType(TileType.NOT_PASSABLE); 
+
+        mapTiles.add(speedPotionTile);
+
+
 
         return mapTiles;
     }

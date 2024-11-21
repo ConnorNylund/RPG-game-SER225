@@ -76,7 +76,8 @@ public class GameObject extends AnimatedSprite {
 		this.previousY = y;
 	}
 
-	public boolean isAffectedByTriggers() {
+
+    public boolean isAffectedByTriggers() {
 		return affectedByTriggers;
 	}
 
