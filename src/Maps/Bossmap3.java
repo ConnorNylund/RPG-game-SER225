@@ -1,22 +1,10 @@
 package Maps;
 
-import EnhancedMapTiles.PushableRock;
-import EnhancedMapTiles.Coin;
 import Game.ScreenCoordinator;
-import GameObject.SpriteSheet;
 import Level.*;
-// import NPCs.Bug;
- import NPCs.Dinosaur;
-// import NPCs.Walrus;
-import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
-
 import java.util.ArrayList;
-
-import Enemies.Enemy;
-import Enemies.squidBoss;
-import Engine.ImageLoader;
 
 // Represents a test map to be used in a level
 public class Bossmap3 extends Map {
@@ -83,7 +71,7 @@ public class Bossmap3 extends Map {
 
         //getMapTile(22, 34).setInteractScript(new SimpleTextScript("Eventually will be NPC's area"));
 
-        getMapTile(5, 14).setInteractScript(new ReturnScript(screenCoordinator));
+        //getMapTile(5, 14).setInteractScript(new ReturnScript(screenCoordinator));
 
         super.loadScripts(screenCoordinator);
     }    

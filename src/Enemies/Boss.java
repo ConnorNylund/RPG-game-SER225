@@ -11,6 +11,7 @@ import GameObject.SpriteSheet;
 import Level.MapTile;
 import Level.Player;
 import Players.Bunny;
+import Scripts.TestMap.ReturnScriptB1;
 import Utils.Point;
 import Weapons.Bullet;
 
@@ -38,13 +39,14 @@ public class Boss extends Enemy{
     }
     @Override
     protected void enemDeath() {
-        
-
         //Coin Stuff
         MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
                                              (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
         Coin droppedCoin = new Coin(currentTile.getLocation());
         map.addEnhancedMapTile(droppedCoin);
+
+        //Map swap & Boss death event
+        this.map.getMapTile(5, 14).setInteractScript(new ReturnScriptB1(this.map.screenCoordinator));
     }
     @Override //Put custom animations here
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet

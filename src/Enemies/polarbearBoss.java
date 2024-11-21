@@ -5,10 +5,13 @@ import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
+import EnhancedMapTiles.Coin;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
+import Level.MapTile;
 import Level.Player;
 import Players.Bunny;
+import Scripts.TestMap.ReturnScriptB2;
 import Utils.Point;
 import Weapons.Bullet;
 
@@ -22,6 +25,16 @@ public class polarbearBoss extends Enemy{
         attackSpeed = 0.5f; // Lower is faster
 
         this.curHealth = totalHealth; 
+    }
+    @Override
+    public void enemDeath() {
+        //Coin Stuff
+        MapTile currentTile = map.getMapTile((int) (this.getX() / map.getTileset().getScaledSpriteWidth()), 
+                                             (int) (this.getY() / map.getTileset().getScaledSpriteHeight()));
+        Coin droppedCoin = new Coin(currentTile.getLocation());
+        map.addEnhancedMapTile(droppedCoin);
+        
+        this.map.getMapTile(5, 14).setInteractScript(new ReturnScriptB2(this.map.screenCoordinator));
     }
     @Override //Put custom animations here
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) { //I hate this thing but u guys don't need to worry about it... Colors r definitely backwards rn tho I just need to remake the spritesheet

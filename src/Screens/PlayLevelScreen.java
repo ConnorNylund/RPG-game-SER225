@@ -1,28 +1,24 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Inventory.Inventory;
 import Level.*;
-import Maps.Shopmap;
-import Maps.Bossmap1;
 import Maps.TestMap;
 import Players.Bunny;
-import ScriptActions.TextboxScriptAction;
 import SpriteFont.SpriteFont; 
 import Utils.Direction;
-import Utils.Point;
 import Waves.WaveManager;
-import Engine.Key;
 import java.awt.Color;  
 
 // This class is for when the RPG game is actually being played
 public class PlayLevelScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
-    protected Map map;
+    public Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;

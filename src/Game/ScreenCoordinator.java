@@ -3,17 +3,17 @@ package Game;
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Screens.AboutScreen;
 import Screens.CreditsScreen;
+import Screens.DeathScreen;
+import Screens.HiddenMapScreen;
 import Screens.MenuScreen;
-import Screens.PlayLevelScreen;
 import Screens.PlayBossScreen1;
 import Screens.PlayBossScreen2;
 import Screens.PlayBossScreen3;
-import Screens.PlayShopScreen;
-import Screens.WinScreen;
-import Screens.HiddenMapScreen;
-import Screens.AboutScreen; // Import AboutScreen
-import Screens.DeathScreen; // Import DeathScreen
+import Screens.PlayLevelScreen;
+import Screens.PlayShopScreen; // Import AboutScreen
+import Screens.WinScreen; // Import DeathScreen
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -21,7 +21,7 @@ import Screens.DeathScreen; // Import DeathScreen
  */
 public class ScreenCoordinator extends Screen {
     // currently shown Screen
-    protected Screen currentScreen = new DefaultScreen();
+    public Screen currentScreen = new DefaultScreen();
 
     // keep track of gameState so ScreenCoordinator knows which Screen to show
     protected GameState gameState;
