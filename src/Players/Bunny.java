@@ -28,7 +28,7 @@ public class Bunny extends Player {
     public static int dmgState;
     private Weapon currentWeapon;
     private boolean test;
-    public static int coinCount = 0; // Tracks coins
+    public static int coinCount = 0; 
     private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
     private ScreenCoordinator screenCoordinator; 
 
@@ -55,75 +55,88 @@ public class Bunny extends Player {
     }
 
     @Override
-    public void update() {
-        super.update();
-        if (test) {
-            //currentWeapon = new TestPistol(this.getLocation(), this.getMap());
-            currentWeapon = new TestPistol(this.getLocation(), this.getMap());
-            test = false;
+public void update() {
+    // Adjust walk speed based on inventory selection BEFORE calling super.update()
+    if (Inventory.items[Inventory.currentSelection] != null &&
+        Inventory.items[Inventory.currentSelection].getName().equals("Speed Potion")) {
+        this.walkSpeed = 5.0f; // Increased speed
+        System.out.println("Speed Potion activated! walkSpeed: " + walkSpeed);
+    } else {
+        this.walkSpeed = 3.0f; // Default speed
+        System.out.println("Normal speed: " + walkSpeed);
+    }
+
+    super.update(); // Call the parent update AFTER walkSpeed has been updated
+
+    if (test) {
+        // Initialize the default weapon
+        currentWeapon = new TestPistol(this.getLocation(), this.getMap());
+        test = false;
+    }
+
+    // Weapon swapping
+    try {
+        switch (Inventory.items[Inventory.currentSelection].getName()) {
+            case ("Pistol With Bayonet"):
+                if (!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) {
+                    currentWeapon = new GoodPistol(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: GoodPistol");
+                }
+                break;
+            case ("Carrot Rocket Launcher"):
+                if (!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) {
+                    currentWeapon = new RPC(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: RPC");
+                }
+                break;
+            case ("Small Machine Gun"):
+                if (!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) {
+                    currentWeapon = new SMG(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: SMG");
+                }
+                break;
+            case ("Bloody Cleaver"):
+                if (!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) {
+                    currentWeapon = new Bow(this.getLocation(), this.getMap());
+                    System.out.println("DEBUG: BCleav");
+                }
+                break;
+            default:
+                System.out.println("DEBUG: NullDumDum");
+                break;
         }
+        prevWep = Inventory.items[Inventory.currentSelection].getName();
+    } catch (NullPointerException e) {
+        // Handle potential null errors
+    }
 
-        // Weapon swapping
-        try {
-            //System.out.println("DEBUG: " + !prevWep.equals(Inventory.items[Inventory.currentSelection].getName()));
-            switch (Inventory.items[Inventory.currentSelection].getName()) {
-                case ("Pistol With Bayonet"):
-                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
-                        currentWeapon = new GoodPistol(this.getLocation(), this.getMap());
-                        System.out.println("DEBUG: GoodPistol");
-                    }
-                    break;
-                case ("Carrot Rocket Launcher"):
-                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
-                        currentWeapon = new RPC(this.getLocation(), this.getMap());
-                        System.out.println("DEBUG: RPC");
-                    }
-                    break;
-                case ("Small Machine Gun"):
-                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
-                        currentWeapon = new SMG(this.getLocation(), this.getMap());
-                        System.out.println("DEBUG: SMG");
-                    }
-                    break;
-                case ("Bloody Cleaver"):
-                    if(!prevWep.equals(Inventory.items[Inventory.currentSelection].getName())) { //Makes sure that it's not remaking the weapon if it's the one currently selected... Needs to be repeated in every case cuz Null errors
-                        currentWeapon = new Bow(this.getLocation(), this.getMap());
-                        System.out.println("DEBUG: BCleav");
-                    }
-                    break;
-                default:
-                    System.out.println("DEBUG: NullDumDum");
-                    break;
-            }
-                prevWep = Inventory.items[Inventory.currentSelection].getName();
-        } catch (NullPointerException e) {
-            //System.out.println("Fuck you Java");
-        }
+    if (Inventory.items[Inventory.currentSelection] != null) {
+        System.out.println("Selected Item: " + Inventory.items[Inventory.currentSelection].getName());
+    }
 
-        checkCoinPickup(); // Check for coin pickup
-        getCalibratedXLocation();
+    // Handle coin pickup
+    checkCoinPickup();
 
-        if (MouseHandler.leftMouseDown) {
-            float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
-            float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
+    // Update weapon actions
+    if (MouseHandler.leftMouseDown) {
+        float calibratedX = MouseHandler.mousePos.x + map.getCamera().getX();
+        float calibratedY = MouseHandler.mousePos.y + map.getCamera().getY();
 
-            if (calibratedX > this.x + this.getWidth()) { //Makes sure the bullet doesn't try to go through the player 
-                currentWeapon.shoot(this.x + 15 + this.getWidth(), this.y, calibratedX, calibratedY);
-            } else {
-                currentWeapon.shoot(this.x - 15, this.y, calibratedX, calibratedY);
-            }
-            //System.out.println("DEBUG: MouseX/MouseY" + calibratedX + "/" + calibratedY);
-        }
-
-        currentWeapon.update(this);
-      // System.out.println("DEBUG: Player Pos = " + this.getX() + ", " + this.getY()); 
-
-
-        // Check if player is dead to trigger DeathScreen
-        if (health <= 0) {
-            triggerDeathScreen();
+        if (calibratedX > this.x + this.getWidth()) {
+            currentWeapon.shoot(this.x + 15 + this.getWidth(), this.y, calibratedX, calibratedY);
+        } else {
+            currentWeapon.shoot(this.x - 15, this.y, calibratedX, calibratedY);
         }
     }
+
+    currentWeapon.update(this);
+
+    // Check if player is dead to trigger DeathScreen
+    if (health <= 0) {
+        triggerDeathScreen();
+    }
+}
+    
 
     public void takeDamage(float dmgAmt) {
         if (health > 0) {
