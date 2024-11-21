@@ -6,7 +6,7 @@ import Game.ScreenCoordinator;
 import Inventory.InventoryItem;
 import Level.*;
 // import NPCs.Bug;
- import NPCs.Dinosaur;
+import NPCs.Dinosaur;
 import ScriptActions.IncreaseHealthScriptAction;
 import Scripts.HealthPickUpScript;
 import Scripts.ItemPickUpScript;
@@ -45,12 +45,12 @@ public class Shopmap extends Map {
         // walrus.setInteractScript(new WalrusScript());
         // npcs.add(walrus);
 
-         Dinosaur dinosaur = new Dinosaur(2, getMapTile(7, 4).getLocation());
-         dinosaur.setExistenceFlag("hasTalkedToDinosaur");
-         dinosaur.setInteractScript(new DinoScript());
-         npcs.add(dinosaur);
-        
-        //Removing the Npcs we are not using
+        Dinosaur dinosaur = new Dinosaur(2, getMapTile(7, 4).getLocation());
+        dinosaur.setExistenceFlag("hasTalkedToDinosaur");
+        dinosaur.setInteractScript(new DinoScript());
+        npcs.add(dinosaur);
+
+        //Removing the NPCs we are not using
 
         // Bug bug = new Bug(3, getMapTile(7, 12).getLocation().subtractX(20));
         // bug.setInteractScript(new BugScript());
@@ -77,7 +77,7 @@ public class Shopmap extends Map {
         //getMapTile(20, 4).setInteractScript(new SimpleTextScript("Dino's house"));
 
         //getMapTile(25, 18).setInteractScript(new SimpleTextScript("Eventually will be Shop"));
-        
+
         getMapTile(1, 5).setInteractScript(new HealthPickUpScript());
 
         getMapTile(3, 3).setItemData(new InventoryItem("Pistol With Bayonet", "Weapons/download.png", 5));
@@ -108,18 +108,19 @@ public class Shopmap extends Map {
         getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons/download (1).png", 10));
         getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
+        // getMapTile(12, 5).setItemData(new InventoryItem("Speed Potion", "speedpotion.png", 20));
+        // getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
+
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));
 
         getMapTile(9, 8).setInteractScript(new SimpleTextScript("The Bow and Arrow; Cost 5 Coins "));
         getMapTile(9, 2).setInteractScript(new SimpleTextScript("The Machine Gun; Cost 10 Coins "));
         getMapTile(4, 2).setInteractScript(new SimpleTextScript("The Pistol Bayonet; Cost 5 Coins "));
         getMapTile(4, 8).setInteractScript(new SimpleTextScript("The Carrot Launcher; Cost 20 Coins "));
-
+        getMapTile(12, 6).setInteractScript(new SimpleTextScript("Speed Potion Power up; Cost 20 Coins "));
 
         getMapTile(6, 11).setInteractScript(new ReturnScript(screenCoordinator));
 
-
         super.loadScripts(screenCoordinator);
-    }    
+    }
 }
-
