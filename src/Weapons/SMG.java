@@ -10,7 +10,7 @@ public class SMG extends Weapon {
     public SMG(Point playerLoc, Map map) {
         super(gunPic, playerLoc, map); 
         this.fireRate = .2f; 
-        this.DPH = .3f;
+        this.DPH = .5f;
         this.bulletSpeed = 4;
         this.AOE = 20; 
     }
