@@ -63,34 +63,29 @@ public class WaveManager {
 
         // Example of additional logic that depends on wave count
         if(currentWaveIndex == 15 && !SpawnBossTPSpawned) { //Lava area final wave
-            // currentWave.SpawnBossTP(3,3, 3, testMap);
-
             int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
             currentWave.SpawnBossTP(4, 4, 3, testMap); 
             SpawnBossTPSpawned = true; 
         }
         else if (currentWaveIndex > 10 && !SharksSpawned) { //Snow area final wave
-            // int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
-            // currentWave.SpawnPenguin(penguinsToSpawn); 
-            // penguinsSpawned = true; 
             int sharksToSpawn = Math.max(1, currentWaveIndex / 1); 
             currentWave.SpawnShark(sharksToSpawn); 
             SharksSpawned = true; 
-
-        } else if (currentWaveIndex == 10 && !SpawnBossTPSpawned) {
+        } 
+        else if (currentWaveIndex == 10 && !SpawnBossTPSpawned) {
             int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
             currentWave.SpawnBossTP(6, 15, 2, testMap); 
             SpawnBossTPSpawned = true;         
-        }  else if (currentWaveIndex > 5 && !penguinsSpawned) { //Field area final wave
+        }
+        else if (currentWaveIndex > 5 && !penguinsSpawned) { //Field area final wave
             //((TestMap) testMap).destroyWall1(); // Custom map logic
             // Adjusts the number of penguins based on the wave index, not the total enemies
             int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
             currentWave.SpawnPenguin(penguinsToSpawn); 
             penguinsSpawned = true; 
-
             //Logic for boss zone opening
-
-        } else if(currentWaveIndex == 5 && !SpawnBossTPSpawned) {
+        } 
+        else if(currentWaveIndex == 5 && !SpawnBossTPSpawned) {
             int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
             currentWave.SpawnBossTP(33,27, 1, testMap); 
             SpawnBossTPSpawned = true;         
