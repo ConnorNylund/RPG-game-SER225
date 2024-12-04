@@ -107,7 +107,7 @@ public abstract class Map {
         this.mapFileName = mapFileName;
         this.tileset = tileset;
         this.grassTiles = new ArrayList<>();
-        this.fireTiles = new ArrayList<>(); 
+        this.fireTiles = new ArrayList<>();
         this.snowTiles = new ArrayList<>();
         this.random = new Random();
         setupMap(screenCoordinator);
@@ -154,22 +154,8 @@ public abstract class Map {
     // reads in a map file to create the map's tilemap
     private void loadMapFile() {
         Scanner fileInput;
-        try {
-            // open map file that is located in the MAP_FILES_PATH directory
-            fileInput = new Scanner(new File(Config.MAP_FILES_PATH + this.mapFileName));
-        } catch(FileNotFoundException ex) {
-            // if map file does not exist, create a new one for this map (the map editor uses this)
-            System.out.println("Map file " + Config.MAP_FILES_PATH + this.mapFileName + " not found! Creating empty map file...");
 
-            try {
-                createEmptyMapFile();
-                fileInput = new Scanner(new File(Config.MAP_FILES_PATH + this.mapFileName));
-            } catch(IOException ex2) {
-                ex2.printStackTrace();
-                System.out.println("Failed to create an empty map file!");
-                throw new RuntimeException();
-            }
-        }
+        fileInput = new Scanner(Map.class.getClassLoader().getResourceAsStream(Config.MAP_FILES_PATH + this.mapFileName));
 
         // read in map width and height from the first line of map file
         this.width = fileInput.nextInt();
@@ -528,7 +514,7 @@ public abstract class Map {
         // this does several checks to ensure the player's location releative to the entity's is valid for interaction
         // takes into account things like player's current location, entity's current location, player's facing direction, player's center point, etc.
         // this prevents things like being able to interact with an entity without facing it and other oddities like that
-                
+
         // if player is facing left and entity is completely to the left of the player, location is valid
         if (player.getFacingDirection() == Direction.LEFT && entityBounds.getX2() < playerBounds.getX1()) {
             return true;
@@ -579,12 +565,12 @@ public abstract class Map {
             Point playerLocation = player.getLocation();
             int playerX = (int) Math.floor(playerLocation.x / tileset.getScaledSpriteWidth());
             int playerY = (int) Math.floor(playerLocation.y / tileset.getScaledSpriteHeight());
-    
+
             MapTile tile = getMapTile(playerX, playerY);
             if (tile != null && tile.getTileIndex() == 42) {
                 player.walkSpeed = 1.5f;
             } else {
-                player.walkSpeed = 2.7f; 
+                player.walkSpeed = 2.7f;
             }
         }
 

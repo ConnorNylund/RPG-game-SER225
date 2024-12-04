@@ -33,7 +33,7 @@ public class WinScreen extends Screen {
         instructionMessage.setOutlineThickness(2);
 
         
-        winImage = ImageLoader.load("bloodybunny.png");
+        winImage = ImageLoader.load("Resources/bloodybunny.png");
     }
 
     @Override

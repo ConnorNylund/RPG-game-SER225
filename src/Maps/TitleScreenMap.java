@@ -2,7 +2,6 @@ package Maps;
 
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
-import Engine.Screen;
 import Game.ScreenCoordinator;
 import GameObject.ImageEffect;
 import GameObject.Sprite;
@@ -19,7 +18,7 @@ public class TitleScreenMap extends Map {
     public TitleScreenMap(ScreenCoordinator screenCoordinator) {
         super("title_screen_map.txt", new CommonTileset(), screenCoordinator);
         Point bunnyLocation = getMapTile(15, 4).getLocation().subtractX(6).subtractY(7);
-        bunny = new Sprite(ImageLoader.loadSubImage("bloodybunny.png", Colors.MAGENTA, 0, 0, 16, 16));
+        bunny = new Sprite(ImageLoader.loadSubImage("Resources/bloodybunny.png", Colors.MAGENTA, 0, 0, 16, 16));
         bunny.setScale(3);
         bunny.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         bunny.setLocation(bunnyLocation.x, bunnyLocation.y);

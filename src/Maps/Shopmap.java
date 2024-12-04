@@ -1,13 +1,10 @@
 package Maps;
 
-import EnhancedMapTiles.PushableRock;
-import EnhancedMapTiles.Coin;
 import Game.ScreenCoordinator;
 import Inventory.InventoryItem;
 import Level.*;
 // import NPCs.Bug;
 import NPCs.Dinosaur;
-import ScriptActions.IncreaseHealthScriptAction;
 import Scripts.HealthPickUpScript;
 import Scripts.ItemPickUpScript;
 // import NPCs.Walrus;
@@ -108,7 +105,7 @@ public class Shopmap extends Map {
         getMapTile(10, 7).setItemData(new InventoryItem("Bloody Cleaver", "Weapons/download (1).png", 10));
         getMapTile(10, 7).setInteractScript(new ItemPickUpScript());
 
-        getMapTile(12, 5).setItemData(new InventoryItem("Speed Potion", "speedpotion.png", 0));
+        getMapTile(12, 5).setItemData(new InventoryItem("Speed Potion", "Resources/speedpotion.png", 0));
         getMapTile(12, 5).setInteractScript(new ItemPickUpScript());
 
         getMapTile(7, 5).setInteractScript(new SimpleTextScript("Welcome to the Shop, take a look at the merchandise "));

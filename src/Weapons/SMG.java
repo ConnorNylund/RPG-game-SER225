@@ -6,7 +6,7 @@ import Level.Map;
 import Utils.Point;
 
 public class SMG extends Weapon {
-    private static SpriteSheet gunPic = new SpriteSheet(ImageLoader.load("SMG.png"), 16, 16);
+    private static SpriteSheet gunPic = new SpriteSheet(ImageLoader.load("Resources/SMG.png"), 16, 16);
     public SMG(Point playerLoc, Map map) {
         super(gunPic, playerLoc, map); 
         this.fireRate = .2f; 

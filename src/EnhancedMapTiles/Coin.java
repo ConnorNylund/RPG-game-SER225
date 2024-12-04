@@ -2,15 +2,11 @@ package EnhancedMapTiles;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
-import Engine.MouseHandler;
 import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.SpriteSheet;
 import Level.EnhancedMapTile;
-import Level.Player;
-import Level.PlayerState;
 import Level.TileType;
-import Utils.Direction;
 import Utils.Point;
 import Engine.GraphicsHandler;
 
@@ -24,7 +20,7 @@ public class Coin extends EnhancedMapTile {
     
 
     public Coin(Point location) {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("thecoin.png"), 16, 16), TileType.PASSABLE);
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Resources/thecoin.png"), 16, 16), TileType.PASSABLE);
         this.isCollected = false;
     }
 

@@ -6,7 +6,6 @@ package Enemies;
 
 import Builders.FrameBuilder;
 import Engine.ImageLoader;
-import Engine.MouseHandler;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
 import Level.MapEntityStatus;
@@ -26,7 +25,7 @@ public class Enemy extends NPC {
     protected double antiJankTimer;
     protected float moveSpeed;
     protected float lastAmountMovedY, lastAmountMovedX; 
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Fox.png"), 16, 16);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Resources/Fox.png"), 16, 16);
     protected double lastAttack; 
     protected float attackRadius; 
     protected float attackSpeed;

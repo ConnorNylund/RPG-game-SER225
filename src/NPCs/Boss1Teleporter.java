@@ -8,11 +8,10 @@ import GameObject.Frame;
 import GameObject.SpriteSheet;
 import Level.Map;
 import Level.NPC;
-import Level.Player;
 import Utils.Point;
 
 public class Boss1Teleporter extends NPC {
-    static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("MagicHole.png"), 16, 16); 
+    static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Resources/MagicHole.png"), 16, 16);
     private int waveNum;
     public Boss1Teleporter(int id, Point pos, String startingAnim, int waveNum, Map map) {
         super(id, pos.x, pos.y, spriteSheet, startingAnim); 

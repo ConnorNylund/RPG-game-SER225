@@ -10,13 +10,11 @@ import GameObject.Frame;
 import GameObject.SpriteSheet;
 import Level.MapTile;
 import Level.Player;
-import Players.Bunny;
 import Scripts.TestMap.ReturnScriptB2;
 import Utils.Point;
-import Weapons.Bullet;
 
 public class polarbearBoss extends Enemy{
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("polarbearBoss.png"), 32, 32);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Resources/polarbearBoss.png"), 32, 32);
      public polarbearBoss(int id, Point location, String startingAnimation, Player player) { //startingAnimation is still in here so I don't break other things, it does nothing
         super(id, location, spriteSheet, "DAMAGE3");
         moveSpeed = 1f; // Higher is faster
