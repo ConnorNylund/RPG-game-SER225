@@ -14,6 +14,7 @@ public class WaveManager {
 
     private boolean penguinsSpawned = false;
     private boolean SharksSpawned = false;
+    private boolean SpawnBossTPSpawned = false;
 
     private boolean wave5Done, wave10Done;
 
@@ -42,7 +43,8 @@ public class WaveManager {
             currentWave = waves.get(currentWaveIndex);
             currentWave.SpawnFox(); // Spawn enemies and FarmerBosses in the current wave
             penguinsSpawned = false;
-            SharksSpawned = false; // Reset penguin spawn flag when a new wave starts
+            SharksSpawned = false;
+            SpawnBossTPSpawned = false; // Reset penguin spawn flag when a new wave starts
             currentWaveIndex++;
         }
     }
@@ -60,8 +62,12 @@ public class WaveManager {
         }
 
         // Example of additional logic that depends on wave count
-        if(currentWaveIndex == 15) { //Lava area final wave
-            currentWave.SpawnBossTP(3,3, 3, testMap);
+        if(currentWaveIndex == 15 && !SpawnBossTPSpawned) { //Lava area final wave
+            // currentWave.SpawnBossTP(3,3, 3, testMap);
+
+            int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
+            currentWave.SpawnBossTP(4, 4, 3, testMap); 
+            SpawnBossTPSpawned = true; 
         }
         else if (currentWaveIndex > 10 && !SharksSpawned) { //Snow area final wave
             // int penguinsToSpawn = Math.max(1, currentWaveIndex / 1); 
@@ -71,8 +77,10 @@ public class WaveManager {
             currentWave.SpawnShark(sharksToSpawn); 
             SharksSpawned = true; 
 
-        } else if (currentWaveIndex == 10) {
-            currentWave.SpawnBossTP(6,15, 2, testMap);
+        } else if (currentWaveIndex == 10 && !SpawnBossTPSpawned) {
+            int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
+            currentWave.SpawnBossTP(6, 15, 2, testMap); 
+            SpawnBossTPSpawned = true;         
         }  else if (currentWaveIndex > 5 && !penguinsSpawned) { //Field area final wave
             //((TestMap) testMap).destroyWall1(); // Custom map logic
             // Adjusts the number of penguins based on the wave index, not the total enemies
@@ -82,8 +90,10 @@ public class WaveManager {
 
             //Logic for boss zone opening
 
-        } else if(currentWaveIndex == 5) {
-            currentWave.SpawnBossTP(31,26, 1, testMap);
+        } else if(currentWaveIndex == 5 && !SpawnBossTPSpawned) {
+            int BossTPToSpawn = Math.max(1, currentWaveIndex / currentWaveIndex+1); 
+            currentWave.SpawnBossTP(33,27, 1, testMap); 
+            SpawnBossTPSpawned = true;         
         }
 
         
