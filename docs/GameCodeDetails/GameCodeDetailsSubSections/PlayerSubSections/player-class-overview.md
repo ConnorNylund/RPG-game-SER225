@@ -73,7 +73,7 @@ Looking at the `Cat` class's constructor is a good reference point for making an
 
 ```java
 public Cat(float x, float y) {
-    super(new SpriteSheet(ImageLoader.load("Resources/Cat.png"), 24, 24), x, y, "STAND_RIGHT");
+    super(new SpriteSheet(ImageLoader.load("Cat.png"), 24, 24), x, y, "STAND_RIGHT");
     walkSpeed = 2.3f;
 }
 ```

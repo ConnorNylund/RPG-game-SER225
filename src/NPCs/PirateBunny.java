@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class PirateBunny extends NPC {
 
     public PirateBunny(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Resources/Bunny_npc.png"), 16, 16), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Bunny_npc.png"), 16, 16), "STAND_LEFT");
     }
 
     @Override

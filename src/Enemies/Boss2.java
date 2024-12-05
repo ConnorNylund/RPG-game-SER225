@@ -11,7 +11,7 @@ import Level.Player;
 import Utils.Point;
 
 public class Boss2 extends Enemy{
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Resources/farmersprites.png"), 32, 32);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("farmersprites.png"), 32, 32);
      public Boss2(int id, Point location, String startingAnimation, Player player) { //startingAnimation is still in here so I don't break other things, it does nothing
         super(id, location, spriteSheet, "DAMAGE4");
         moveSpeed = 0.9f; // Higher is faster

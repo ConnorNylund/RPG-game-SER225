@@ -33,7 +33,7 @@ public class DeathScreen extends Screen {
         instructionMessage.setOutlineThickness(2);
 
         
-        deathImage = ImageLoader.load("Resources/diebunny.png");
+        deathImage = ImageLoader.load("diebunny.png");
 
     }
 

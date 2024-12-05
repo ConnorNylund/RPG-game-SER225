@@ -6,7 +6,7 @@ import Level.Player;
 import Utils.Point;
 
 public class Penguin extends Enemy{
-    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("Resources/penguinsprites.png"), 16, 16);
+    private static SpriteSheet spriteSheet = new SpriteSheet(ImageLoader.load("penguinsprites.png"), 16, 16);
     public Penguin(int id, Point location, String startingAnimation, Player player) {
         super(id, location, spriteSheet, startingAnimation);
         this.id = id; 

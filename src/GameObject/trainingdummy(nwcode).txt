@@ -20,7 +20,7 @@ public class TrainingDummy extends GameObject {
 
     public TrainingDummy(float x, float y) {
         // Call the GameObject constructor with initial x, y position and sprite frame
-        super(x, y, new Frame(ImageLoader.load("Resources/normal.png"), ImageEffect.NONE, 1, null));
+        super(x, y, new Frame(ImageLoader.load("normal.png"), ImageEffect.NONE, 1, null));
 
 
         // Initialize health state and load sprites

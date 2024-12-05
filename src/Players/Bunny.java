@@ -27,7 +27,7 @@ public class Bunny extends Player {
     private Weapon currentWeapon;
     private boolean test;
     public static int coinCount = 0; 
-    private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("Resources/bunnyWalkv2.png"), 16, 16);
+    private static SpriteSheet sptSht = new SpriteSheet(ImageLoader.load("bunnyWalkv2.png"), 16, 16);
     private ScreenCoordinator screenCoordinator; 
 
     private String prevWep; 

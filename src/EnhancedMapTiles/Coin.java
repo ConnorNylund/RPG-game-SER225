@@ -20,7 +20,7 @@ public class Coin extends EnhancedMapTile {
     
 
     public Coin(Point location) {
-        super(location.x, location.y, new SpriteSheet(ImageLoader.load("Resources/thecoin.png"), 16, 16), TileType.PASSABLE);
+        super(location.x, location.y, new SpriteSheet(ImageLoader.load("thecoin.png"), 16, 16), TileType.PASSABLE);
         this.isCollected = false;
     }
 

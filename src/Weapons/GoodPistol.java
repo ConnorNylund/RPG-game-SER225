@@ -6,7 +6,7 @@ import Level.Map;
 import Utils.Point;
 
 public class GoodPistol extends Weapon {
-    private static SpriteSheet gunPic = new SpriteSheet(ImageLoader.load("Resources/UpgradedPistol.png"), 16, 16);
+    private static SpriteSheet gunPic = new SpriteSheet(ImageLoader.load("UpgradedPistol.png"), 16, 16);
     public GoodPistol(Point playerLoc, Map map) {
         super(gunPic, playerLoc, map); 
         this.fireRate = .8f;
